@@ -17,27 +17,21 @@
 
 struct Case {
 	std::string ending = "";
+	std::string ending_w_macron = "";
 	std::string Translation1 = "";
 	std::string Translation2 = "";
 	std::string Translation3 = "";
 	std::string explanation = "";
-
-	Case() {
-
-	}
-
-
+	Case() {}
 };
 
 struct Declension {
-
 	bool first;
 	bool second;
 	bool third;
 	bool fourth;
 	bool fifth;
 	std::string declension = "";
-
 	Case Nom;
 	Case Gen;
 	Case Dat;
@@ -45,12 +39,10 @@ struct Declension {
 	Case Abl;
 	Case Voc;
 
-	Declension() : Nom(), Gen(), Dat(), Acc(), Abl, Voc, first(false),
+	Declension() : Nom(), Gen(), Dat(), Acc(), Abl(), Voc(), first(false),
 		second(false), third(false), fourth(false), fifth(false)
-		
-		//,nom_ending(""), gen_ending(""), dat_ending(""), acc_ending(""), abl_ending(""), voc_ending("")
 	{
-
+		SetDeclension();
 	}
 
 
@@ -61,16 +53,41 @@ struct Declension {
 		answer[2] = third;
 		answer[3] = fourth;
 		answer[4] = fifth;
-
-
-		declension == answer;
-
-
+		int x = std::stoi(answer);
+		if (x == 10000)
+			declension._Equal("First");
+		else if (x == 1000)
+			declension._Equal("Second");
+		else if (x == 100)
+			declension._Equal("Third");
+		else if (x == 10)
+			declension._Equal("Fourth");
+		else if (x == 1)
+			declension._Equal("Fifth");
+		else
+			declension._Equal("ERROR");
 	}
 
 	void SetEndings(std::string declinsion) {
 
+		if (declension == "First") {
 
+		}
+		else if (declension == "Second") {
+
+		}
+		else if (declension == "Third") {
+
+		}
+		else if (declension == "Fourth") {
+
+		}
+		else if (declension == "Fifth") {
+
+		}
+		else {
+
+		}
 
 	}
 
