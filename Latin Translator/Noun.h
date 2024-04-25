@@ -16,13 +16,72 @@
 #define FIF_ENDS
 
 struct Case {
-	std::string ending = "";
-	std::string ending_w_macron = "";
-	std::string Translation1 = "";
-	std::string Translation2 = "";
-	std::string Translation3 = "";
-	std::string explanation = "";
+public:
+	// Constructor
 	Case() {}
+
+	// Getters
+	std::string SingularEnding() const {
+
+	}
+	std::string SingularEnding_w_Macron() const {
+
+	}
+	std::string PluralEnding() const {
+
+	}
+	std::string PluralEnding_w_Macron() const {
+
+	}
+	std::string Translation1() const {
+
+	}
+	std::string Translation2() const {
+
+	}
+	std::string Translation3() const {
+
+	}
+	std::string Explanation() const {
+
+	}
+
+	// Setters
+	void SetSingularEnding(const char thing) {
+		singularEnding = thing;
+	}
+	void SetSingularEnding_w_Macron() {
+
+	}
+	void SetPluralEnding(const char thing) {
+		pluralEnding = thing;
+
+	}
+	void SetPluralEnding_w_Macron() {
+
+	}
+	void SetTranslation1(std::string addition) {
+
+	}
+	void SetTranslation2(std::string addition) {
+
+	}
+	void SetTranslation3(std::string addition) {
+
+	}
+	void SetExplanation()  {
+
+	}
+
+private:
+	std::string singularEnding = "";
+	std::string singularEnding_w_macron = "";
+	std::string pluralEnding = "";
+	std::string pluralEnding_w_macron = "";
+	std::string translation1 = "";
+	std::string translation2 = "";
+	std::string translation3 = "";
+	std::string explanation = "";
 };
 
 struct Declension {
@@ -41,10 +100,53 @@ struct Declension {
 
 	Declension() : Nom(), Gen(), Dat(), Acc(), Abl(), Voc(), first(false),
 		second(false), third(false), fourth(false), fifth(false)
-	{
-		SetDeclension();
+	{	}
+
+	void SetFirst() {
+		first = true;
+		second = false;
+		third = false;
+		fourth = false;
+		fifth = false;
+		Apply();
 	}
 
+	void SetSecond() {
+		first = false;
+		second = true;
+		third = false;
+		fourth = false;
+		fifth = false;
+		Apply();
+	}
+	void SetThird() {
+		first = false;
+		second = false;
+		third = true;
+		fourth = false;
+		fifth = false;
+		Apply();
+	}
+	void SetFourth() {
+		first = false;
+		second = false;
+		third = false;
+		fourth = true;
+		fifth = false;
+		Apply();
+	}
+	void SetFifth() {
+		first = false;
+		second = false;
+		third = false;
+		fourth = false;
+		fifth = true;
+		Apply();
+	}
+	void Apply() {
+		SetDeclension();
+		SetEndings(declension);
+	}
 
 	void SetDeclension() const {
 		std::string answer = "00000";
@@ -68,10 +170,62 @@ struct Declension {
 			declension._Equal("ERROR");
 	}
 
-	void SetEndings(std::string declinsion) {
+	void SetEndings(std::string _declension) {
 
 		if (declension == "First") {
+			Nom.SetSingularEnding('a');
+			Nom.SetSingularEnding_w_Macron();
+			Nom.SetPluralEnding();
+			Nom.SetPluralEnding_w_Macron();
+			Nom.SetTranslation1();
+			Nom.SetTranslation2();
+			Nom.SetTranslation3();
+			Nom.SetExplanation();
 
+			Gen.SetSingularEnding('ae');
+			Gen.SetSingularEnding_w_Macron();
+			Gen.SetPluralEnding();
+			Gen.SetPluralEnding_w_Macron();
+			Gen.SetTranslation1();
+			Gen.SetTranslation2();
+			Gen.SetTranslation3();
+			Gen.SetExplanation();
+
+			Dat.SetSingularEnding('ae');
+			Dat.SetSingularEnding_w_Macron();
+			Dat.SetPluralEnding();
+			Dat.SetPluralEnding_w_Macron();
+			Dat.SetTranslation1();
+			Dat.SetTranslation2();
+			Dat.SetTranslation3();
+			Dat.SetExplanation();
+
+			Acc.SetSingularEnding('am');
+			Acc.SetSingularEnding_w_Macron();
+			Acc.SetPluralEnding();
+			Acc.SetPluralEnding_w_Macron();
+			Acc.SetTranslation1();
+			Acc.SetTranslation2();
+			Acc.SetTranslation3();
+			Acc.SetExplanation();
+
+			Abl.SetSingularEnding('a');
+			Abl.SetSingularEnding_w_Macron();
+			Abl.SetPluralEnding();
+			Abl.SetPluralEnding_w_Macron();
+			Abl.SetTranslation1();
+			Abl.SetTranslation2();
+			Abl.SetTranslation3();
+			Abl.SetExplanation();
+
+			Voc.SetSingularEnding('a');
+			Voc.SetSingularEnding_w_Macron();
+			Voc.SetPluralEnding();
+			Voc.SetPluralEnding_w_Macron();
+			Voc.SetTranslation1();
+			Voc.SetTranslation2();
+			Voc.SetTranslation3();
+			Voc.SetExplanation();
 		}
 		else if (declension == "Second") {
 
