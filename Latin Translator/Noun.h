@@ -5,6 +5,23 @@
 #include <string>
 #include <vector>
 
+namespace Macrons {
+	char32_t lower_a = '\u0101';
+	char32_t upper_A = '\u0100';
+
+	char32_t lower_e = '\u0113';
+	char32_t upper_E = '\u0112';
+
+	char32_t lower_i = '\u012B';
+	char32_t upper_I = '\u012A';
+
+	char32_t lower_o = '\u014D';
+	char32_t upper_O = '\u014C';
+
+	char32_t lower_u = '\u016B';
+	char32_t upper_U = '\u016A';
+}
+
 #define FIR_ENDS
 
 
@@ -23,61 +40,61 @@ public:
 
 	// Getters
 	std::string SingularEnding() const {
-
+		return singularEnding;
 	}
 	std::string SingularEnding_w_Macron() const {
 
 	}
 	std::string PluralEnding() const {
-
+		return pluralEnding;
 	}
 	std::string PluralEnding_w_Macron() const {
 
 	}
 	std::string SingularTranslation1() const {
-
+		return singularTranslation1;
 	}
 	std::string SingularTranslation2() const {
-
+		return singularTranslation2;
 	}
 	std::string SingularTranslation3() const {
-
+		return singularTranslation3;
 	}
 	std::string SingularTranslation4() const {
-
+		return singularTranslation4;
 	}
 	std::string SingularTranslation5() const {
-
+		return singularTranslation5;
 	}
 	std::string SingularTranslation6() const {
-
+		return singularTranslation6;
 	}
 	std::string SingularTranslation7() const {
-
+		return singularTranslation7;
 	}
 	std::string PluralTranslation1() const {
-
+		return pluralTranslation1;
 	}
 	std::string PluralTranslation2() const {
-
+		return pluralTranslation2;
 	}
 	std::string PluralTranslation3() const {
-
+		return pluralTranslation3;
 	}
 	std::string PluralTranslation4() const {
-
+		return pluralTranslation4;
 	}
 	std::string PluralTranslation5() const {
-
+		return pluralTranslation5;
 	}
 	std::string PluralTranslation6() const {
-
+		return pluralTranslation6;
 	}
 	std::string PluralTranslation7() const {
-
+		return pluralTranslation7;
 	}
 	std::string Explanation() const {
-
+		return explanation;
 	}
 
 	// Setters
@@ -89,55 +106,54 @@ public:
 	}
 	void SetPluralEnding(const char thing) {
 		pluralEnding = thing;
-
 	}
 	void SetPluralEnding_w_Macron() {
 
 	}
 	void SetSingularTranslation1(std::string addition) {
-
+		singularTranslation1 = addition;
 	}
 	void SetSingularTranslation2(std::string addition) {
-
+		singularTranslation2 = addition;
 	}
 	void SetSingularTranslation3(std::string addition) {
-
+		singularTranslation3 = addition;
 	}
 	void SetSingularTranslation4(std::string addition) {
-
+		singularTranslation4 = addition;
 	}	
 	void SetSingularTranslation5(std::string addition) {
-
+		singularTranslation5 = addition;
 	}	
 	void SetSingularTranslation6(std::string addition) {
-
+		singularTranslation6 = addition;
 	}	
 	void SetSingularTranslation7(std::string addition) {
-
+		singularTranslation7 = addition;
 	}
 	void SetPluralTranslation1(std::string addition) {
-
+		pluralTranslation1 = addition;
 	}
 	void SetPluralTranslation2(std::string addition) {
-
+		pluralTranslation2 = addition;
 	}
 	void SetPluralTranslation3(std::string addition) {
-
+		pluralTranslation3 = addition;
 	}
 	void SetPluralTranslation4(std::string addition) {
-
+		pluralTranslation4 = addition;
 	}	
 	void SetPluralTranslation5(std::string addition) {
-
+		pluralTranslation5 = addition;
 	}
 	void SetPluralTranslation6(std::string addition) {
-
+		pluralTranslation6 = addition;
 	}
 	void SetPluralTranslation7(std::string addition) {
-
+		pluralTranslation7 = addition;
 	}
-	void SetExplanation() {
-
+	void SetExplanation(std::string info) {
+		explanation = info;
 	}
 
 private:
@@ -242,93 +258,107 @@ struct Declension {
 		answer[3] = fourth;
 		answer[4] = fifth;
 		int x = std::stoi(answer);
-		if (x == 10000)
-			declension._Equal("First");
-		else if (x == 1000)
-			declension._Equal("Second");
-		else if (x == 100)
-			declension._Equal("Third");
-		else if (x == 10)
-			declension._Equal("Fourth");
-		else if (x == 1)
-			declension._Equal("Fifth");
+		if (x == 10000) {
+			std::string answer = "First";
+			declension == answer;
+		}
+		else if (x == 1000){
+			std::string answer = "Second";
+			declension == answer;
+		}
+		else if (x == 100) {
+			std::string answer = "Third";
+			declension == answer;
+		}
+		else if (x == 10) {
+			std::string answer = "Fourth";
+			declension == answer;
+		}
+		else if (x == 1) {
+			std::string answer = "Fifth";
+			declension == answer;
+		}
 		else
-			declension._Equal("ERROR");
+		{
+			std::string answer = "ERROR";
+			declension == answer;
+		}
 	}
 
 	void SetEndings(std::string _declension) {
 
 		if (declension == "First") {
 			Nom.SetSingularEnding('a');
-			Nom.SetSingularEnding_w_Macron();
+			Nom.SetSingularEnding_w_Macron('a');
 			Nom.SetPluralEnding('ae');
-			Nom.SetPluralEnding_w_Macron();
-			Nom.SetSingularTranslation1("a");
-			Nom.SetSingularTranslation2("an");
-			Nom.SetSingularTranslation3("the");
+			Nom.SetPluralEnding_w_Macron('ae');
+			Nom.SetSingularTranslation1("the");
+			Nom.SetSingularTranslation2("a");
 			Nom.SetPluralTranslation1("the");
-			Nom.SetPluralTranslation2("");
-			Nom.SetPluralTranslation3("");
-			Nom.SetExplanation();
+			Nom.SetPluralTranslation2("s");
+			Nom.SetExplanation("This case has two distinct uses:\n1.)The Subject of a verb- When a noun is used in this manner it is typically the person or thing performing the actions in the sentence. 2.) A Predicate Nominative- This typically involves a sentence with two nouns in the Nominative Case, where one is used to provide further information about the other. This grammatical construction typically involves some form of the verb Sum(to be/exist)");
 
 			Gen.SetSingularEnding('ae');
-			Gen.SetSingularEnding_w_Macron();
+			Gen.SetSingularEnding_w_Macron('ae');
 			Gen.SetPluralEnding('arum');
-			Gen.SetPluralEnding_w_Macron();
-			Nom.SetSingularTranslation1("of the");
-			Nom.SetSingularTranslation2("of a");
-			Nom.SetSingularTranslation3("'s");
-			Nom.SetPluralTranslation1("of the");
-			Nom.SetPluralTranslation2("'s");
-			Nom.SetPluralTranslation3("");
+			Gen.SetPluralEnding_w_Macron(Macrons::lower_a + 'rum');
+			Gen.SetSingularTranslation1("of the");
+			Gen.SetSingularTranslation2("of a");
+			Gen.SetSingularTranslation3("the __'s");
+			Gen.SetSingularTranslation4("a __'s");
+			Gen.SetPluralTranslation1("of the");
+			Gen.SetPluralTranslation2("__'s");
 			Gen.SetExplanation();
 
 			Dat.SetSingularEnding('ae');
-			Dat.SetSingularEnding_w_Macron();
+			Dat.SetSingularEnding_w_Macron('ae');
 			Dat.SetPluralEnding('is');
-			Dat.SetPluralEnding_w_Macron();
-			Nom.SetSingularTranslation1("to the");
-			Nom.SetSingularTranslation2("for the");
-			Nom.SetSingularTranslation3("to a");
-			Nom.SetPluralTranslation1("for the");
-			Nom.SetPluralTranslation2("to the");
-			Nom.SetPluralTranslation3("");
+			Dat.SetPluralEnding_w_Macron(Macrons::lower_i + 's');
+			Dat.SetSingularTranslation1("to the");
+			Dat.SetSingularTranslation2("for the");
+			Dat.SetSingularTranslation3("to a");
+			Dat.SetSingularTranslation4("for a");
+			Dat.SetSingularTranslation5("to ");
+			Dat.SetSingularTranslation6("for");
+			Dat.SetPluralTranslation1("to the");
+			Dat.SetPluralTranslation2("for the");
+			Dat.SetPluralTranslation3("to");
+			Dat.SetPluralTranslation4("for");
 			Dat.SetExplanation();
 
 			Acc.SetSingularEnding('am');
-			Acc.SetSingularEnding_w_Macron();
-			Acc.SetPluralEnding();
-			Acc.SetPluralEnding_w_Macron();
-			Nom.SetSingularTranslation1("A");
-			Nom.SetSingularTranslation2("An");
-			Nom.SetSingularTranslation3("");
-			Nom.SetPluralTranslation1("The");
-			Nom.SetPluralTranslation2("");
-			Nom.SetPluralTranslation3("");
+			Acc.SetSingularEnding_w_Macron(am);
+			Acc.SetPluralEnding('as');
+			Acc.SetPluralEnding_w_Macron(Macrons::lower_a + 's');
+			Acc.SetSingularTranslation1("the");
+			Acc.SetSingularTranslation2("a");
+			Acc.SetPluralTranslation1("the");
+			Acc.SetPluralTranslation2("s");
 			Acc.SetExplanation();
 
 			Abl.SetSingularEnding('a');
-			Abl.SetSingularEnding_w_Macron();
-			Abl.SetPluralEnding();
-			Abl.SetPluralEnding_w_Macron();
-			Nom.SetSingularTranslation1("A");
-			Nom.SetSingularTranslation2("An");
-			Nom.SetSingularTranslation3("");
-			Nom.SetPluralTranslation1("The");
-			Nom.SetPluralTranslation2("");
-			Nom.SetPluralTranslation3("");
+			Abl.SetSingularEnding_w_Macron(Macrons::lower_a);
+			Abl.SetPluralEnding('is');
+			Abl.SetPluralEnding_w_Macron(Macrons::lower_i + 's');
+			Abl.SetSingularTranslation1("by the");
+			Abl.SetSingularTranslation2("by a");
+			Abl.SetSingularTranslation3("with a");
+			Abl.SetSingularTranslation4("with the");
+			Abl.SetSingularTranslation5("from a");
+			Abl.SetSingularTranslation6("from the");
+			Abl.SetPluralTranslation1("by the");
+			Abl.SetPluralTranslation2("with the");
+			Abl.SetPluralTranslation3("from the");
 			Abl.SetExplanation();
 
 			Voc.SetSingularEnding('a');
-			Voc.SetSingularEnding_w_Macron();
-			Voc.SetPluralEnding();
-			Voc.SetPluralEnding_w_Macron();
-			Nom.SetSingularTranslation1("A");
-			Nom.SetSingularTranslation2("An");
-			Nom.SetSingularTranslation3("");
-			Nom.SetPluralTranslation1("The");
-			Nom.SetPluralTranslation2("");
-			Nom.SetPluralTranslation3("");
+			Voc.SetSingularEnding_w_Macron('a');
+			Voc.SetPluralEnding('ae');
+			Voc.SetPluralEnding_w_Macron('ae');
+			Voc.SetSingularTranslation1("oh");
+			Voc.SetSingularTranslation2("Oh");
+			Voc.SetPluralTranslation1("oh");
+			Voc.SetPluralTranslation2("Oh");
 			Voc.SetExplanation();
 		}
 		else if (declension == "Second") {
