@@ -21,9 +21,21 @@
     <ClCompile Include="Noun.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Case.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Declension.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Noun.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Case.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Declension.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

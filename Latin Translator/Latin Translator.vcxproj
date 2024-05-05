@@ -127,10 +127,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Case.cpp" />
+    <ClCompile Include="Declension.cpp" />
     <ClCompile Include="Latin Translator.cpp" />
     <ClCompile Include="Noun.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Case.h" />
+    <ClInclude Include="Declension.h" />
     <ClInclude Include="Noun.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
