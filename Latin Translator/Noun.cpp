@@ -5,6 +5,9 @@ Noun::Noun() {}
 Noun::Noun(std::string _declension, std::string _gender, std::string _nominative, std::string _genitive, std::string _definition)
     : declension(_declension), gender(_gender), nominative(_nominative), genitive(_genitive), definition(_definition)
 {
+    declension.SetDeclension();
+    gender.SetGender(_gender);
+
 }
 
 const char* Noun::Nominative() const {
