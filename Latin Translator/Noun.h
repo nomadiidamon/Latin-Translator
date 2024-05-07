@@ -13,13 +13,13 @@ struct Gender {
 	}
 
 	void SetGender(std::string _gender) {
-		if (_gender == "Masculine") {
+		if (_gender == "Masculine" || _gender == "Masc" || _gender == "M") {
 			SetMasculine();
 		}
-		else if (_gender == "Feminine") {
+		else if (_gender == "Feminine" || _gender == "Fem" || _gender == "F") {
 			SetFeminine();
 		}
-		else if (_gender == "Neuter") {
+		else if (_gender == "Neuter" || _gender == "Neut" || _gender == "N") {
 			SetNeuter();
 		}
 		else {
@@ -65,6 +65,10 @@ private:
 	Gender gender;
 	std::string nominative;
 	std::string genitive;
+	std::string dative;
+	std::string accusative;
+	std::string ablative;
+	std::string vocative;
 	std::string definition;
 	std::string base;
 	std::vector<Noun> synonyms;
@@ -83,14 +87,31 @@ public:
 	const char* Genitive() const;
 	void SetGenitive(const std::string& newWord);
 
+	const char* Dative() const;
+	void SetDative(const std::string& newWord);
+
+	const char* Accusative() const;
+	void SetAccusative(const std::string& newWord);
+
+	const char* Ablative() const;
+	void SetAblative(const std::string& newWord);
+
+	const char* Vocative() const;
+	void SetVocative(const std::string& newWord);
+
 	const Declension& getDeclension() const;
 	void SetDeclension(const Declension& newDeclension);
 
 	const char* Definition() const;
 	void SetDefinition(const std::string& newLatinDefinition);
 
-	// Display function
-	void display() const;
+	// Display functions
+	void ShowSingular_w_Macrons() const;
+	void ShowPlural_w_Macrons()const;
+	void ShowSingular() const;
+	void ShowPlural()const;
+	void SimpleDisplay()const;
+	void Display() const;
 
 	// Serialize function to write the object to a file
 	void serialize(const std::string& filename) const;

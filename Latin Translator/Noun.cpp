@@ -39,33 +39,89 @@ void Noun::SetDefinition(const std::string& newLatinDefinition) {
     definition = newLatinDefinition;
 }
 
-void Noun::display() const {
+void Noun::ShowSingular_w_Macrons() const{
+    std::cout << "Singular Forms With Macrons:\n" << std::endl;
+    std::cout << "Nominative: " << base;
+    std::wcout << declension.Nom.SingularEnding_w_Macron() << std::endl;
+    std::cout << "Genitive: " << genitive << std::endl;
+    std::cout << "Dative: " << base;
+    std::wcout << declension.Dat.SingularEnding_w_Macron() << std::endl;
+    std::cout << "Accusative: " << base;
+    std::wcout << declension.Acc.SingularEnding_w_Macron() << std::endl;
+    std::cout << "Ablative: " << base;
+    std::wcout << declension.Abl.SingularEnding_w_Macron() << std::endl;
+    std::cout << "Vocative: " << base;
+    std::wcout << declension.Voc.SingularEnding_w_Macron() << std::endl;
+}
+
+void Noun::ShowPlural_w_Macrons() const{
+    std::cout << "Plural Forms With Macrons:\n" << std::endl;
+    std::cout << "Nominative: " << base;
+    std::wcout << declension.Nom.PluralEnding_w_Macron() << std::endl;
+    std::cout << "Genitive: " << base;
+    std::wcout << declension.Gen.PluralEnding_w_Macron() << std::endl;
+    std::cout << "Dative: " << base;
+    std::wcout << declension.Dat.PluralEnding_w_Macron() << std::endl;
+    std::cout << "Accusative: " << base;
+    std::wcout << declension.Acc.PluralEnding_w_Macron() << std::endl;
+    std::cout << "Ablative: " << base;
+    std::wcout << declension.Abl.PluralEnding_w_Macron() << std::endl;
+    std::cout << "Vocative: " << base;
+    std::wcout << declension.Voc.PluralEnding_w_Macron() << std::endl;
+}
+
+void Noun::ShowSingular() const{
+    std::cout << "Singular Forms Without Macrons:\n" << std::endl;
+    std::cout << "Nominative: " << nominative << std::endl;
+    std::cout << "Genitive: " << genitive << std::endl;
+    std::cout << "Dative: " << base << declension.Dat.SingularEnding() << std::endl;
+    std::cout << "Accusative: " << base << declension.Acc.SingularEnding() << std::endl;
+    std::cout << "Ablative: " << base << declension.Abl.SingularEnding() << std::endl;
+    std::cout << "Vocative: " << base << declension.Voc.SingularEnding() << std::endl;
+}
+
+void Noun::ShowPlural() const{
+    std::cout << "Plural Forms Without Macrons:\n" << std::endl;
+    std::cout << "Dative: " << base << declension.Nom.PluralEnding() << std::endl;
+    std::cout << "Dative: " << base << declension.Dat.PluralEnding() << std::endl;
+    std::cout << "Accusative: " << base << declension.Acc.PluralEnding() << std::endl;
+    std::cout << "Ablative: " << base << declension.Abl.PluralEnding() << std::endl;
+    std::cout << "Dative: " << base << declension.Gen.PluralEnding() << std::endl;
+    std::cout << "Vocative: " << base << declension.Voc.PluralEnding() << std::endl;
+}
+
+void Noun::SimpleDisplay() const {
+    std::cout << "Gender: " << gender.getGender() << std::endl;
+    std::cout << "Nominative & Genitive: " << nominative << ", " << genitive << std::endl;
+    std::cout << "Definition: " << Definition() << std::endl;
+}
+
+void Noun::Display() const {
     std::cout << "Declension: " << declension.GetDeclension() << std::endl;
     std::cout << "Gender: " << gender.getGender() << std::endl;
     std::cout << "Nominative & Genitive: " << nominative << ", " << genitive << std::endl;
     std::cout << "Definition: " << Definition() << std::endl;
+    std::cout << std::endl;
 
-    std::cout << "Forms With Macrons:\n" << std::endl;
-    std::cout << "Nominative: " << nominative << std::endl;
-    std::cout << "Genitive: " << genitive << std::endl;
-    std::cout << "Dative: " << base;
-    std::wcout << declension.Dat.SingularEnding_w_Macron() << std::endl;
-    std::cout << "Accusative: " << declension.accusative << std::endl;
-    std::cout << "Ablative: " << declension.ablative << std::endl;
-    std::cout << "Vocative: " << declension.vocative << std::endl;
+    ShowSingular_w_Macrons();
+    std::cout << std::endl;
 
-    std::cout << "Forms Without Macrons:\n" << std::endl;
-    std::cout << "Nominative: " << declension.nominative << std::endl;
-    std::cout << "Genitive: " << declension.genitive << std::endl;
-    std::cout << "Dative: " << declension.dative << std::endl;
-    std::cout << "Accusative: " << declension.accusative << std::endl;
-    std::cout << "Ablative: " << declension.ablative << std::endl;
-    std::cout << "Vocative: " << declension.vocative << std::endl;
+    ShowSingular();
+    std::cout << std::endl;
 
-    std::cout << "Synonyms:" << std::endl;
-    for (const auto& synonym : synonyms) {
-        std::cout << "- " << synonym << std::endl;
-    }
+    ShowPlural_w_Macrons();
+    std::cout << std::endl;
+
+    ShowPlural();
+    std::cout << std::endl;
+
+
+    //std::cout << "Synonyms:" << std::endl;
+    //for (const auto& synonym : synonyms) {
+    //    std::cout << "- ";
+    //    synonym.SimpleDisplay();
+    //    std::cout << std::endl;
+    //}
 }
 
 void Noun::serialize(const std::string& filename) const {
@@ -103,7 +159,7 @@ std::string Noun::GetBase() const {
 void Noun::SetBase()
 {
     base = genitive;
-    int x = declension.Gen.SingularEnding().length();
+    size_t x = declension.Gen.SingularEnding().length();
     for (int i = 0; i < x; i++) {
         base.pop_back();
     }

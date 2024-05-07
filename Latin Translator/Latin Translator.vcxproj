@@ -135,6 +135,7 @@
   <ItemGroup>
     <ClInclude Include="Case.h" />
     <ClInclude Include="Declension.h" />
+    <ClInclude Include="Macrons.h" />
     <ClInclude Include="Noun.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

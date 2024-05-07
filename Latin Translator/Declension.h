@@ -1,5 +1,6 @@
 #pragma once
 #include "Case.h"
+#include "Macrons.h"
 
 #define FIR_ENDS
 
@@ -17,7 +18,7 @@ struct Declension {
 	bool third;
 	bool fourth;
 	bool fifth;
-	std::string declension = "";
+	std::string declension;
 	Case Nom;
 	Case Gen;
 	Case Dat;
@@ -33,23 +34,28 @@ struct Declension {
 		: Nom(), Gen(), Dat(), Acc(), Abl(), Voc(), first(false),
 		second(false), third(false), fourth(false), fifth(false), declension(_declension)
 	{
-		if (_declension == "First") {
+		if (_declension == "First" || _declension == "first" || _declension == "1") {
+			declension = _declension;
 			SetFirst();
 		}
-		else if (_declension == "Second") {
+		else if (_declension == "Second" || _declension == "second" || _declension == "2") {
+			declension = _declension;
 			SetSecond();
 		}
-		else if (_declension == "Third") {
+		else if (_declension == "Third" || _declension == "third" || _declension == "3") {
+			declension = _declension;
 			SetThird();
 		}
-		else if (_declension == "Fourth") {
+		else if (_declension == "Fourth" || _declension == "fourth" || _declension == "4") {
+			declension = _declension;
 			SetFourth();
 		}
-		else if (_declension == "Fifth") {
+		else if (_declension == "Fifth" || _declension == "fifth" || _declension == "5") {
+			declension = _declension;
 			SetFifth();
 		}
 		else {
-			_declension = "ERROR";
+			declension = "ERROR";
 		}
 	}
 
@@ -100,37 +106,43 @@ struct Declension {
 	}
 
 	void SetDeclension() {
-		std::string answer = "00000";
-		answer[0] = first;
-		answer[1] = second;
-		answer[2] = third;
-		answer[3] = fourth;
-		answer[4] = fifth;
-		int x = std::stoi(answer);
-		if (x == 10000) {
-			std::string answer = "First";
-			declension = answer;
+		//std::string answer;// = "00000";
+		//answer.push_back(first);
+		//answer.push_back(second);
+		//answer.push_back(third);
+		//answer.push_back(fourth);
+		//answer.push_back(fifth);
+
+		//answer[0] = first;
+		//answer[1] = second;
+		//answer[2] = third;
+		//answer[3] = fourth;
+		//answer[4] = fifth;
+		//int x = std::stoi(answer);
+		if (first) {
+			//std::string answer = "First";
+			declension = "First";
 		}
-		else if (x == 1000) {
-			std::string answer = "Second";
-			declension = answer;
+		else if (second) {
+			//std::string answer = "Second";
+			declension = "Second";
 		}
-		else if (x == 100) {
-			std::string answer = "Third";
-			declension = answer;
+		else if (third) {
+			//std::string answer = "Third";
+			declension = "Third";
 		}
-		else if (x == 10) {
-			std::string answer = "Fourth";
-			declension = answer;
+		else if (fourth) {
+			//std::string answer = "Fourth";
+			declension = "Fourth";
 		}
-		else if (x == 1) {
-			std::string answer = "Fifth";
-			declension = answer;
+		else if (fifth) {
+			//std::string answer = "Fifth";
+			declension = "Fifth";
 		}
 		else
 		{
-			std::string answer = "ERROR";
-			declension = answer;
+			//std::string answer = "ERROR";
+			declension = "ERROR";
 		}
 	}
 
@@ -154,7 +166,7 @@ struct Declension {
 			Gen.SetSingularEnding((char)'ae');
 			Gen.SetSingularEnding_w_Macron('ae');
 			Gen.SetPluralEnding((char)'arum');
-			Gen.SetPluralEnding_w_Macron(Macrons::lower_a + 'rum');
+			Gen.SetPluralEnding_w_Macron(lower_a, (char)'rum');
 			Gen.SetSingularTranslation1("of the");
 			Gen.SetSingularTranslation2("of a");
 			Gen.SetSingularTranslation3("the __'s");
@@ -166,7 +178,7 @@ struct Declension {
 			Dat.SetSingularEnding((char)'ae');
 			Dat.SetSingularEnding_w_Macron('ae');
 			Dat.SetPluralEnding((char)'is');
-			Dat.SetPluralEnding_w_Macron(Macrons::lower_i + 's');
+			Dat.SetPluralEnding_w_Macron(lower_i, 's');
 			Dat.SetSingularTranslation1("to the");
 			Dat.SetSingularTranslation2("for the");
 			Dat.SetSingularTranslation3("to a");
@@ -182,7 +194,7 @@ struct Declension {
 			Acc.SetSingularEnding((char)'am');
 			Acc.SetSingularEnding_w_Macron('am');
 			Acc.SetPluralEnding((char)'as');
-			Acc.SetPluralEnding_w_Macron(Macrons::lower_a + 's');
+			Acc.SetPluralEnding_w_Macron(lower_a, 's');
 			Acc.SetSingularTranslation1("the");
 			Acc.SetSingularTranslation2("a");
 			Acc.SetPluralTranslation1("the");
@@ -190,9 +202,9 @@ struct Declension {
 			Acc.SetExplanation("");
 
 			Abl.SetSingularEnding((char)'a');
-			Abl.SetSingularEnding_w_Macron(Macrons::lower_a);
+			Abl.SetSingularEnding_w_Macron(lower_a);
 			Abl.SetPluralEnding((char)'is');
-			Abl.SetPluralEnding_w_Macron(Macrons::lower_i + 's');
+			Abl.SetPluralEnding_w_Macron(lower_i, 's');
 			Abl.SetSingularTranslation1("by the");
 			Abl.SetSingularTranslation2("by a");
 			Abl.SetSingularTranslation3("with a");

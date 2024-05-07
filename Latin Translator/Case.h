@@ -5,19 +5,6 @@
 #include <string>
 #include <vector>
 
-namespace Macrons {
-	wchar_t lower_a = L'\u0101';
-	wchar_t upper_A = L'\u0100';
-	wchar_t lower_e = L'\u0113';
-	wchar_t upper_E = L'\u0112';
-	wchar_t lower_i = L'\u012B';
-	wchar_t upper_I = L'\u012A';
-	wchar_t lower_o = L'\u014D';
-	wchar_t upper_O = L'\u014C';
-	wchar_t lower_u = L'\u016B';
-	wchar_t upper_U = L'\u016A';
-}
-
 struct Case {
 public:
 	// Constructor
@@ -86,14 +73,22 @@ public:
 	void SetSingularEnding(const char thing) {
 		singularEnding = thing;
 	}
-	void SetSingularEnding_w_Macron(wchar_t thing) {
-		singularEnding_w_macron = thing;
+	void SetSingularEnding_w_Macron(wchar_t thing1, const char thing2) {
+		singularEnding_w_macron += thing1;
+		singularEnding_w_macron += thing2;
+	}
+	void SetSingularEnding_w_Macron(const wchar_t thing) {
+		singularEnding_w_macron += thing;
 	}
 	void SetPluralEnding(const char thing) {
 		pluralEnding = thing;
 	}
-	void SetPluralEnding_w_Macron(wchar_t thing) {
-		pluralEnding_w_macron = thing;
+	void SetPluralEnding_w_Macron(wchar_t thing1, const char thing2) {
+		pluralEnding_w_macron += thing1;
+		pluralEnding_w_macron += thing2;
+	}
+	void SetPluralEnding_w_Macron(const wchar_t thing) {
+		pluralEnding_w_macron += thing;
 	}
 	void SetSingularTranslation1(std::string addition) {
 		singularTranslation1 = addition;
