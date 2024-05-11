@@ -5,8 +5,10 @@
 #include "Noun.h"
 int main()
 {
-    std::cout << "Hello World!\n";
+    Noun girl("First", "Fem", "Puella", "Puellae", "girl");
+    Noun slavegirl("First", "Fem", "Ancilla", "Ancillae", "a female servant, slavegirl");
+    slavegirl.SimpleDisplay();
+    std::cout << "\n\n" << std::endl;
+    slavegirl.Display();
 
-    Noun girl("First", "Fem", "puella", "puellae", "girl");
-    girl.Display();
 }

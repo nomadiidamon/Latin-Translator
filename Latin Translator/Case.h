@@ -70,7 +70,7 @@ public:
 	}
 
 	// Setters
-	void SetSingularEnding(const char thing) {
+	void SetSingularEnding(const char* thing) {
 		singularEnding = thing;
 	}
 	void SetSingularEnding_w_Macron(wchar_t thing1, const char thing2) {
@@ -80,7 +80,7 @@ public:
 	void SetSingularEnding_w_Macron(const wchar_t thing) {
 		singularEnding_w_macron += thing;
 	}
-	void SetPluralEnding(const char thing) {
+	void SetPluralEnding(const char* thing) {
 		pluralEnding = thing;
 	}
 	void SetPluralEnding_w_Macron(wchar_t thing1, const char thing2) {

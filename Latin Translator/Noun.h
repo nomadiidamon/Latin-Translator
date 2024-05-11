@@ -1,68 +1,13 @@
 #pragma once
 #include "Declension.h"
-
-struct Gender {
-	bool masculine;
-	bool feminine;
-	bool neuter;
-
-	Gender() : masculine(false), feminine(false), neuter(false) {}
-	Gender(std::string _gender) : masculine(false), feminine(false), neuter(false) 
-	{
-		SetGender(_gender);
-	}
-
-	void SetGender(std::string _gender) {
-		if (_gender == "Masculine" || _gender == "Masc" || _gender == "M") {
-			SetMasculine();
-		}
-		else if (_gender == "Feminine" || _gender == "Fem" || _gender == "F") {
-			SetFeminine();
-		}
-		else if (_gender == "Neuter" || _gender == "Neut" || _gender == "N") {
-			SetNeuter();
-		}
-		else {
-			SetUnknown();
-		}
-	}
-
-	std::string getGender() const {
-		if (masculine)
-			return "Masculine";
-		else if (feminine)
-			return "Feminine";
-		else if (neuter)
-			return "Neuter";
-		return "Unknown";
-	}
-
-	void SetMasculine() {
-		masculine = true;
-		feminine = false;
-		neuter = false;
-	}
-	void SetFeminine() {
-		masculine = false;
-		feminine = true;
-		neuter = false;
-	}
-	void SetNeuter() {
-		masculine = false;
-		feminine = false;
-		neuter = true;
-	}
-	void SetUnknown() {
-		masculine = false;
-		feminine = false;
-		neuter = false;
-	}
-};
+#include "Gender.h"
+#include "Number.h"
 
 class Noun {
 private:
 	Declension declension;
 	Gender gender;
+	Number number;
 	std::string nominative;
 	std::string genitive;
 	std::string dative;
@@ -77,41 +22,51 @@ private:
 
 public:
 	Noun();
-	Noun(std::string _declension, std::string _gender, std::string _nominative, std::string _genitive, std::string _definition);
+	Noun(std::string _declension, std::string _gender, std::string _nominative, std::string _genitive, std::string _definition, bool _macrons = false);
 
+	//void SetMacrons(bool answer);
+	//bool Macrons_R_True();
 
 	// Getters and setters
-	const char* Nominative() const;
+	std::string Nominative() const;
 	void SetNominative(const std::string& newWord);
+	void SetNominative();
 
-	const char* Genitive() const;
+	std::string Genitive() const;
 	void SetGenitive(const std::string& newWord);
+	void SetGenitive();
 
-	const char* Dative() const;
+	std::string Dative() const;
 	void SetDative(const std::string& newWord);
+	void SetDative();
 
-	const char* Accusative() const;
+	std::string Accusative() const;
 	void SetAccusative(const std::string& newWord);
+	void SetAccusative();
 
-	const char* Ablative() const;
+	std::string Ablative() const;
 	void SetAblative(const std::string& newWord);
+	void SetAblative();
 
-	const char* Vocative() const;
+	std::string Vocative() const;
 	void SetVocative(const std::string& newWord);
+	void SetVocative();
+
+	void SetForms();
 
 	const Declension& getDeclension() const;
 	void SetDeclension(const Declension& newDeclension);
 
-	const char* Definition() const;
+	std::string Definition() const;
 	void SetDefinition(const std::string& newLatinDefinition);
 
 	// Display functions
-	void ShowSingular_w_Macrons() const;
-	void ShowPlural_w_Macrons()const;
-	void ShowSingular() const;
-	void ShowPlural()const;
+	//void ShowSingular_w_Macrons() const;
+	//void ShowPlural_w_Macrons()const;
+	void ShowSingular();
+	void ShowPlural();
 	void SimpleDisplay()const;
-	void Display() const;
+	void Display();
 
 	// Serialize function to write the object to a file
 	void serialize(const std::string& filename) const;

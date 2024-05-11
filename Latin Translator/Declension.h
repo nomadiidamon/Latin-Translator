@@ -106,42 +106,23 @@ struct Declension {
 	}
 
 	void SetDeclension() {
-		//std::string answer;// = "00000";
-		//answer.push_back(first);
-		//answer.push_back(second);
-		//answer.push_back(third);
-		//answer.push_back(fourth);
-		//answer.push_back(fifth);
-
-		//answer[0] = first;
-		//answer[1] = second;
-		//answer[2] = third;
-		//answer[3] = fourth;
-		//answer[4] = fifth;
-		//int x = std::stoi(answer);
 		if (first) {
-			//std::string answer = "First";
 			declension = "First";
 		}
 		else if (second) {
-			//std::string answer = "Second";
 			declension = "Second";
 		}
 		else if (third) {
-			//std::string answer = "Third";
 			declension = "Third";
 		}
 		else if (fourth) {
-			//std::string answer = "Fourth";
 			declension = "Fourth";
 		}
 		else if (fifth) {
-			//std::string answer = "Fifth";
 			declension = "Fifth";
 		}
 		else
 		{
-			//std::string answer = "ERROR";
 			declension = "ERROR";
 		}
 	}
@@ -153,9 +134,9 @@ struct Declension {
 	void SetEndings(std::string _declension) {
 
 		if (declension == "First") {
-			Nom.SetSingularEnding((char)'a');
+			Nom.SetSingularEnding("a");
 			Nom.SetSingularEnding_w_Macron('a');
-			Nom.SetPluralEnding((char)'ae');
+			Nom.SetPluralEnding("ae");
 			Nom.SetPluralEnding_w_Macron('ae');
 			Nom.SetSingularTranslation1("the");
 			Nom.SetSingularTranslation2("a");
@@ -163,9 +144,9 @@ struct Declension {
 			Nom.SetPluralTranslation2("s");
 			Nom.SetExplanation("This case has two distinct uses:\n1.)The Subject of a verb- When a noun is used in this manner it is typically the person or thing performing the actions in the sentence.\n2.) A Predicate Nominative- This typically involves a sentence with two nouns in the Nominative Case, where one is used to provide further information about the other. This grammatical construction typically involves some form of the verb Sum(to be/exist)");
 
-			Gen.SetSingularEnding((char)'ae');
+			Gen.SetSingularEnding("ae");
 			Gen.SetSingularEnding_w_Macron('ae');
-			Gen.SetPluralEnding((char)'arum');
+			Gen.SetPluralEnding("arum");
 			Gen.SetPluralEnding_w_Macron(lower_a, (char)'rum');
 			Gen.SetSingularTranslation1("of the");
 			Gen.SetSingularTranslation2("of a");
@@ -175,9 +156,9 @@ struct Declension {
 			Gen.SetPluralTranslation2("__'s");
 			Gen.SetExplanation("");
 
-			Dat.SetSingularEnding((char)'ae');
+			Dat.SetSingularEnding("ae");
 			Dat.SetSingularEnding_w_Macron('ae');
-			Dat.SetPluralEnding((char)'is');
+			Dat.SetPluralEnding("is");
 			Dat.SetPluralEnding_w_Macron(lower_i, 's');
 			Dat.SetSingularTranslation1("to the");
 			Dat.SetSingularTranslation2("for the");
@@ -191,9 +172,9 @@ struct Declension {
 			Dat.SetPluralTranslation4("for");
 			Dat.SetExplanation("");
 
-			Acc.SetSingularEnding((char)'am');
+			Acc.SetSingularEnding("am");
 			Acc.SetSingularEnding_w_Macron('am');
-			Acc.SetPluralEnding((char)'as');
+			Acc.SetPluralEnding("as");
 			Acc.SetPluralEnding_w_Macron(lower_a, 's');
 			Acc.SetSingularTranslation1("the");
 			Acc.SetSingularTranslation2("a");
@@ -201,9 +182,9 @@ struct Declension {
 			Acc.SetPluralTranslation2("s");
 			Acc.SetExplanation("");
 
-			Abl.SetSingularEnding((char)'a');
+			Abl.SetSingularEnding("a");
 			Abl.SetSingularEnding_w_Macron(lower_a);
-			Abl.SetPluralEnding((char)'is');
+			Abl.SetPluralEnding("is");
 			Abl.SetPluralEnding_w_Macron(lower_i, 's');
 			Abl.SetSingularTranslation1("by the");
 			Abl.SetSingularTranslation2("by a");
@@ -216,9 +197,9 @@ struct Declension {
 			Abl.SetPluralTranslation3("from the");
 			Abl.SetExplanation("");
 
-			Voc.SetSingularEnding((char)'a');
+			Voc.SetSingularEnding("a");
 			Voc.SetSingularEnding_w_Macron('a');
-			Voc.SetPluralEnding((char)'ae');
+			Voc.SetPluralEnding("ae");
 			Voc.SetPluralEnding_w_Macron('ae');
 			Voc.SetSingularTranslation1("oh");
 			Voc.SetSingularTranslation2("Oh");

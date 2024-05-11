@@ -131,12 +131,15 @@
     <ClCompile Include="Declension.cpp" />
     <ClCompile Include="Latin Translator.cpp" />
     <ClCompile Include="Noun.cpp" />
+    <ClCompile Include="Number.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Case.h" />
     <ClInclude Include="Declension.h" />
+    <ClInclude Include="Gender.h" />
     <ClInclude Include="Macrons.h" />
     <ClInclude Include="Noun.h" />
+    <ClInclude Include="Number.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
