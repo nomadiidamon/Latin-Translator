@@ -247,9 +247,10 @@ void Noun::Display()  {
 }
 
 void Noun::serialize(const std::string& filename) const {
-	std::ofstream file(filename, std::ios::binary);
+	std::ofstream file;
+	file.open(filename, std::ios::binary);
 	if (file.is_open()) {
-		file.write(reinterpret_cast<const char*>(this), sizeof(*this));
+		file.write(filename.c_str(), sizeof(Noun));
 		file.close();
 	}
 	else {
@@ -258,9 +259,11 @@ void Noun::serialize(const std::string& filename) const {
 }
 
 void Noun::deserialize(const std::string& filename) {
-	std::ifstream file(filename, std::ios::binary);
+	std::ifstream file;
+	file.open(filename, std::ios::binary);
 	if (file.is_open()) {
-		file.read(reinterpret_cast<char*>(this), sizeof(*this));
+		Noun unknown;
+		file.read((char*)this, sizeof(Noun));
 		file.close();
 	}
 	else {

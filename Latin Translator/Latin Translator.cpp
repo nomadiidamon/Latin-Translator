@@ -11,4 +11,12 @@ int main()
     std::cout << "\n\n" << std::endl;
     slavegirl.Display();
 
+    
+    Noun farmer("First", "M", "Agricola", "Agricolae", "farmer");
+    Noun poet("First", "M", "Poeta", "Poetae", "poet");
+    Noun rose("First", "Fem", "Rosa", "Rosae", "rose");
+
+
+
 }
+
