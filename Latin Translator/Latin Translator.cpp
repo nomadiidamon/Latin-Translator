@@ -5,18 +5,17 @@
 #include "Noun.h"
 int main()
 {
-    Noun girl("First", "Fem", "Puella", "Puellae", "girl");
-    Noun slavegirl("First", "Fem", "Ancilla", "Ancillae", "a female servant, slavegirl");
-    slavegirl.SimpleDisplay();
-    std::cout << "\n\n" << std::endl;
-    slavegirl.Display();
+	Noun port("First", "F", "Porta", "Portae", "gate, entrance");
 
-    
-    Noun farmer("First", "M", "Agricola", "Agricolae", "farmer");
-    Noun poet("First", "M", "Poeta", "Poetae", "poet");
-    Noun rose("First", "Fem", "Rosa", "Rosae", "rose");
+	//for (int i = 0; i < port.forms.size(); i++) {
+	//	std::cout << port.forms[i] << "\n";
+	//}
 
+	port.ParseDefinitions();
 
+	for (int i = 0; i < port.definitions.size(); i++) {
+		std::cout << port.definitions[i] << "\n";
+	}
 
 }
 

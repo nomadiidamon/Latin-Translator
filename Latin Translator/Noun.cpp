@@ -10,28 +10,9 @@ Noun::Noun(std::string _declension, std::string _gender, std::string _nominative
 	SetBase();
 	number.SetSingular();
 	SetForms();
+	StoreForms();
 
 }
-
-//void Noun::SetMacrons(bool answer)
-//{
-//	if (answer) {
-//		macrons = true;
-//	}
-//	else {
-//		macrons = false;
-//	}
-//}
-//
-//bool Noun::Macrons_R_True()
-//{
-//	if (macrons) {
-//		return true;
-//	}
-//	else {
-//		return false;
-//	}
-//}
 
 std::string Noun::Nominative() const {
 	return nominative;
@@ -146,6 +127,56 @@ void Noun::SetVocative()
 		vocative += declension.Voc.PluralEnding();
 	}
 }
+void Noun::ParseDefinitions()
+{
+	std::string answer = Definition();
+	std::string buffer;
+
+	for (int i = 0; i < answer.size() +1; i++) {
+
+		if (answer[i] == ',' || answer[i] == ';' || answer[i] == '\0') {
+			StoreDefinitions(buffer);
+			buffer = "";
+		}
+		else if (answer[i] == ' ') {
+			continue;
+		}
+		else {
+			buffer.push_back(answer[i]);
+		}
+	}
+}
+void Noun::StoreDefinitions(std::string def)
+{
+	definitions.push_back(def);
+}
+void Noun::SetTranslations()
+{
+	std::string translation;
+	number.SetSingular();
+	declension.Nom.SingularTranslation1();
+	declension.Nom.SingularTranslation2();
+	declension.Nom.SingularTranslation3();
+	declension.Nom.SingularTranslation4();
+	declension.Nom.SingularTranslation5();
+	declension.Nom.SingularTranslation6();
+	declension.Nom.SingularTranslation7();
+
+	declension.Nom.PluralTranslation1();
+	declension.Nom.PluralTranslation2();
+	declension.Nom.PluralTranslation3();
+	declension.Nom.PluralTranslation4();
+	declension.Nom.PluralTranslation5();
+	declension.Nom.PluralTranslation6();
+	declension.Nom.PluralTranslation7();
+
+
+	number.SetPlural();
+}
+void Noun::StoreTranslation(std::string input)
+{
+	translations.push_back(input);
+}
 void Noun::SetForms()
 {
 	SetNominative();
@@ -154,6 +185,37 @@ void Noun::SetForms()
 	SetAccusative();
 	SetAblative();
 	SetVocative();
+}
+void Noun::StoreForms()
+{
+	number.SetSingular();
+	SetForms();
+	forms.push_back(Nominative());
+	forms.push_back(Genitive());
+	forms.push_back(Dative());
+	forms.push_back(Accusative());
+	forms.push_back(Ablative());
+	forms.push_back(Vocative());
+
+	number.SetPlural();
+	SetForms();
+	forms.push_back(Nominative());
+	forms.push_back(Genitive());
+	forms.push_back(Dative());
+	forms.push_back(Accusative());
+	forms.push_back(Ablative());
+	forms.push_back(Vocative());
+}
+bool Noun::FindForm(std::string toFind)
+{
+	bool found = false;
+
+	for (int i = 0; i < forms.size(); i++) {
+		if (toFind == forms[i]) {
+			found = true;
+		}
+	}
+	return found;
 }
 const Declension& Noun::getDeclension() const {
 	return declension;
@@ -169,37 +231,6 @@ std::string Noun::Definition() const {
 void Noun::SetDefinition(const std::string& newLatinDefinition) {
 	definition = newLatinDefinition;
 }
-
-//void Noun::ShowSingular_w_Macrons() const {
-//	std::cout << "Singular Forms With Macrons:\n" << std::endl;
-//	std::cout << "Nominative: " << base;
-//	std::wcout << declension.Nom.SingularEnding_w_Macron() << std::endl;
-//	std::cout << "Genitive: " << genitive << std::endl;
-//	std::cout << "Dative: " << base;
-//	std::wcout << declension.Dat.SingularEnding_w_Macron() << std::endl;
-//	std::cout << "Accusative: " << base;
-//	std::wcout << declension.Acc.SingularEnding_w_Macron() << std::endl;
-//	std::cout << "Ablative: " << base;
-//	std::wcout << declension.Abl.SingularEnding_w_Macron() << std::endl;
-//	std::cout << "Vocative: " << base;
-//	std::wcout << declension.Voc.SingularEnding_w_Macron() << std::endl;
-//}
-
-//void Noun::ShowPlural_w_Macrons() const {
-//	std::cout << "Plural Forms With Macrons:\n" << std::endl;
-//	std::cout << "Nominative: " << base;
-//	std::wcout << declension.Nom.PluralEnding_w_Macron() << std::endl;
-//	std::cout << "Genitive: " << base;
-//	std::wcout << declension.Gen.PluralEnding_w_Macron() << std::endl;
-//	std::cout << "Dative: " << base;
-//	std::wcout << declension.Dat.PluralEnding_w_Macron() << std::endl;
-//	std::cout << "Accusative: " << base;
-//	std::wcout << declension.Acc.PluralEnding_w_Macron() << std::endl;
-//	std::cout << "Ablative: " << base;
-//	std::wcout << declension.Abl.PluralEnding_w_Macron() << std::endl;
-//	std::cout << "Vocative: " << base;
-//	std::wcout << declension.Voc.PluralEnding_w_Macron() << std::endl;
-//}
 
 void Noun::ShowSingular() {
 	number.SetSingular();
@@ -262,7 +293,6 @@ void Noun::deserialize(const std::string& filename) {
 	std::ifstream file;
 	file.open(filename, std::ios::binary);
 	if (file.is_open()) {
-		Noun unknown;
 		file.read((char*)this, sizeof(Noun));
 		file.close();
 	}
@@ -272,12 +302,6 @@ void Noun::deserialize(const std::string& filename) {
 }
 
 std::string Noun::GetBase() const {
-	// Find the last index of the genitive
-	//size_t pos = declension.genitive.find_last_of(' ');
-	//if (pos != std::string::npos) {
-	//    return declension.genitive.substr(0, pos);
-	//}
-	//return declension.genitive;
 	return base;
 }
 

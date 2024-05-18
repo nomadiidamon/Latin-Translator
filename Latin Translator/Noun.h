@@ -16,16 +16,14 @@ private:
 	std::string vocative;
 	std::string definition;
 	std::string base;
-	std::vector<Noun> synonyms;
-	std::vector<std::string> forms;
-
 
 public:
+	std::vector<std::string> forms;
+	std::vector<std::string> translations;
+	std::vector<std::string> definitions;
+
 	Noun();
 	Noun(std::string _declension, std::string _gender, std::string _nominative, std::string _genitive, std::string _definition, bool _macrons = false);
-
-	//void SetMacrons(bool answer);
-	//bool Macrons_R_True();
 
 	// Getters and setters
 	std::string Nominative() const;
@@ -52,17 +50,24 @@ public:
 	void SetVocative(const std::string& newWord);
 	void SetVocative();
 
+	std::string Definition() const;
+	void SetDefinition(const std::string& newLatinDefinition);
+	void ParseDefinitions();
+	void StoreDefinitions(std::string def);
+
+	void SetTranslations();
+	void StoreTranslation(std::string input);
+	bool FindTranslation(std::string toFind);
+
 	void SetForms();
+	void StoreForms();
+	bool FindForm(std::string toFind);
 
 	const Declension& getDeclension() const;
 	void SetDeclension(const Declension& newDeclension);
 
-	std::string Definition() const;
-	void SetDefinition(const std::string& newLatinDefinition);
 
 	// Display functions
-	//void ShowSingular_w_Macrons() const;
-	//void ShowPlural_w_Macrons()const;
 	void ShowSingular();
 	void ShowPlural();
 	void SimpleDisplay()const;
