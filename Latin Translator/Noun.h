@@ -57,6 +57,7 @@ public:
 
 	void SetTranslations();
 	void StoreTranslation(std::string input);
+	void CleanUpTranslations();
 	bool FindTranslation(std::string toFind);
 
 	void SetForms();

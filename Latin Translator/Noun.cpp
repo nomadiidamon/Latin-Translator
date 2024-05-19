@@ -152,30 +152,130 @@ void Noun::StoreDefinitions(std::string def)
 }
 void Noun::SetTranslations()
 {
-	std::string translation;
-	number.SetSingular();
-	declension.Nom.SingularTranslation1();
-	declension.Nom.SingularTranslation2();
-	declension.Nom.SingularTranslation3();
-	declension.Nom.SingularTranslation4();
-	declension.Nom.SingularTranslation5();
-	declension.Nom.SingularTranslation6();
-	declension.Nom.SingularTranslation7();
+	std::string translation; 
 
-	declension.Nom.PluralTranslation1();
-	declension.Nom.PluralTranslation2();
-	declension.Nom.PluralTranslation3();
-	declension.Nom.PluralTranslation4();
-	declension.Nom.PluralTranslation5();
-	declension.Nom.PluralTranslation6();
-	declension.Nom.PluralTranslation7();
+	for (int i = 0; i < definitions.size(); i++) {
+
+		//SINGULAR
+		number.SetSingular();
+		SetForms();
+		//number 1
+		translation = declension.Nom.SingularTranslation1();
+		translation += " ";
+		translation += definitions[i];
+		StoreTranslation(translation);
+		translation = "";
+
+		//number 2
+		translation = declension.Nom.SingularTranslation2();
+		translation += " ";
+		translation += definitions[i];
+		StoreTranslation(translation);
+		translation = "";
+
+		//number 3
+		translation = declension.Nom.SingularTranslation3();
+		translation += " ";
+		translation += definitions[i];
+		StoreTranslation(translation);
+		translation = "";
+
+		//number 4
+		translation = declension.Nom.SingularTranslation4();
+		translation += " ";
+		translation += definitions[i];
+		StoreTranslation(translation);
+		translation = "";
+
+		//number 5
+		translation = declension.Nom.SingularTranslation5();
+		translation += " ";
+		translation += definitions[i];
+		StoreTranslation(translation);
+		translation = "";
+
+		//number 6
+		translation = declension.Nom.SingularTranslation6();
+		translation += " ";
+		translation += definitions[i];
+		StoreTranslation(translation);
+		translation = "";
+
+		//number 7
+		translation = declension.Nom.SingularTranslation7();
+		translation += " ";
+		translation += definitions[i];
+		StoreTranslation(translation);
+		translation = "";
 
 
-	number.SetPlural();
+		//PLURAL
+		number.SetPlural();
+		SetForms();
+		//number 1
+		translation = declension.Nom.PluralTranslation1();
+		translation += " ";
+		translation += definitions[i];
+		StoreTranslation(translation);
+		translation = "";
+
+		//number 2
+		translation = declension.Nom.PluralTranslation2();
+		translation += " ";
+		translation += definitions[i];
+		StoreTranslation(translation);
+		translation = "";
+
+		//number 3
+		translation = declension.Nom.PluralTranslation4();
+		translation += " ";
+		translation += definitions[i];
+		StoreTranslation(translation);
+		translation = "";
+
+		//number 4
+		translation = declension.Nom.PluralTranslation5();
+		translation += " ";
+		translation += definitions[i];
+		StoreTranslation(translation);
+		translation = "";
+
+		//number 5
+		translation = declension.Nom.PluralTranslation6();
+		translation += " ";
+		translation += definitions[i];
+		StoreTranslation(translation);
+		translation = "";
+
+		//number 6
+		translation = declension.Nom.PluralTranslation7();
+		translation += " ";
+		translation += definitions[i];
+		StoreTranslation(translation);
+		translation = "";
+
+		//number 7
+		translation = declension.Nom.PluralTranslation1();
+		translation += " ";
+		translation += definitions[i];
+		StoreTranslation(translation);
+		translation = "";
+	}
+	CleanUpTranslations();
 }
 void Noun::StoreTranslation(std::string input)
 {
 	translations.push_back(input);
+}
+void Noun::CleanUpTranslations()
+{
+	for (int i = 0; i < translations.size(); i++) {
+		std::string line = translations[i];
+
+		if (line[0] == ' ') {
+			translations.erase(translations.begin() + i);
+		}
+	}
 }
 void Noun::SetForms()
 {
