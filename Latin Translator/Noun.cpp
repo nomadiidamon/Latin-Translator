@@ -220,9 +220,9 @@ void Noun::SetTranslations()
 		translation = "";
 
 		//number 2
-		translation = declension.Nom.PluralTranslation2();
-		translation += " ";
-		translation += definitions[i];
+		translation = definitions[i];
+		translation += declension.Nom.PluralTranslation2();
+		//translation += " ";
 		StoreTranslation(translation);
 		translation = "";
 
@@ -269,13 +269,31 @@ void Noun::StoreTranslation(std::string input)
 }
 void Noun::CleanUpTranslations()
 {
+	std::string line;
+
 	for (int i = 0; i < translations.size(); i++) {
-		std::string line = translations[i];
+		line = translations[i];
 
 		if (line[0] == ' ') {
 			translations.erase(translations.begin() + i);
 		}
 	}
+	for (int i = 0; i < translations.size(); i++) {
+		line = translations[i];
+
+		if (line[0] == ' ') {
+			translations.erase(translations.begin() + i);
+		}
+	}
+	for (int i = 0; i < translations.size(); i++) {
+		line = translations[i];
+
+		if (line[0] == ' ') {
+			translations.erase(translations.begin() + i);
+		}
+	}
+
+
 }
 void Noun::SetForms()
 {
