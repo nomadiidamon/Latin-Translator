@@ -4,6 +4,7 @@
 #include <fstream>
 #include <string>
 #include <vector>
+#include "Declension.h"
 
 struct Case {
 public:
@@ -177,6 +178,8 @@ private:
 public:
 	//Constructor
 	NominativeCase() {
+		Declension _dec;
+		dec = _dec;
 		ApplyDeclension(dec.GetDeclension());
 	}
 
@@ -296,6 +299,8 @@ private:
 public:
 	//Constructor
 	GenitiveCase() {
+		Declension _dec;
+		dec = _dec;
 		ApplyDeclension(dec.GetDeclension());
 	}
 
@@ -435,6 +440,8 @@ private:
 public:
 	//Constructor
 	DativeCase() {
+		Declension _dec;
+		dec = _dec;
 		ApplyDeclension(dec.GetDeclension());
 	}
 	void ApplyDeclension(std::string _declension) {
@@ -597,6 +604,8 @@ private:
 public:
 	//Constructor
 	AccusativeCase() {
+		Declension _dec;
+		dec = _dec;
 		ApplyDeclension(dec.GetDeclension());
 	}
 	void ApplyDeclension(std::string _declension) {
@@ -725,6 +734,8 @@ private:
 public:
 	//Constructor
 	AblativeCase() {
+		Declension _dec;
+		dec = _dec;
 		ApplyDeclension(dec.GetDeclension());
 	}
 	void ApplyDeclension(std::string _declension) {
@@ -896,6 +907,8 @@ private:
 public:
 	//Constructor
 	VocativeCase() {
+		Declension _dec;
+		dec = _dec;
 		ApplyDeclension(dec.GetDeclension());
 	}
 	void ApplyDeclension(std::string _declension) {

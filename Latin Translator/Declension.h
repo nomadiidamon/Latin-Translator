@@ -99,7 +99,7 @@ struct Declension {
 	}
 	void Apply() {
 		SetDeclension();
-		ApplyDeclension(declension);
+		//ApplyDeclension(declension);
 	}
 
 	void SetDeclension() {

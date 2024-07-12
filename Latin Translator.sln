@@ -5,6 +5,8 @@ VisualStudioVersion = 17.7.34221.43
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Latin Translator", "Latin Translator\Latin Translator.vcxproj", "{F2F3DB21-CD8A-48B3-BB2E-2B195A1220FD}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TranslatorTests", "TranslatorTests\TranslatorTests.vcxproj", "{392F5CB0-1511-4159-8CD7-C16670848E27}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -21,6 +23,14 @@ Global
 		{F2F3DB21-CD8A-48B3-BB2E-2B195A1220FD}.Release|x64.Build.0 = Release|x64
 		{F2F3DB21-CD8A-48B3-BB2E-2B195A1220FD}.Release|x86.ActiveCfg = Release|Win32
 		{F2F3DB21-CD8A-48B3-BB2E-2B195A1220FD}.Release|x86.Build.0 = Release|Win32
+		{392F5CB0-1511-4159-8CD7-C16670848E27}.Debug|x64.ActiveCfg = Debug|x64
+		{392F5CB0-1511-4159-8CD7-C16670848E27}.Debug|x64.Build.0 = Debug|x64
+		{392F5CB0-1511-4159-8CD7-C16670848E27}.Debug|x86.ActiveCfg = Debug|Win32
+		{392F5CB0-1511-4159-8CD7-C16670848E27}.Debug|x86.Build.0 = Debug|Win32
+		{392F5CB0-1511-4159-8CD7-C16670848E27}.Release|x64.ActiveCfg = Release|x64
+		{392F5CB0-1511-4159-8CD7-C16670848E27}.Release|x64.Build.0 = Release|x64
+		{392F5CB0-1511-4159-8CD7-C16670848E27}.Release|x86.ActiveCfg = Release|Win32
+		{392F5CB0-1511-4159-8CD7-C16670848E27}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
