@@ -4,7 +4,6 @@
 
 
 class Declension {
-
 public:
 
 	Declension();
