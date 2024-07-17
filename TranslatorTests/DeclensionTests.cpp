@@ -11,10 +11,10 @@ namespace TranslatorTests
 
 		TEST_METHOD(Blank_Constructor)
 		{
-			std::string title = "First";
 
 			Declension one;
 			one.SetFirst();
+			std::string title = "First";
 			Assert::AreEqual(one.GetDeclension(), title);
 
 			Declension two;
