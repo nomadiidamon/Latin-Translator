@@ -13,10 +13,10 @@ int main()
 
 	port.ParseDefinitions();
 
-	port.SetTranslations();
+	//port.SetTranslations();
 
-	for (int i = 0; i < port.translations.size(); i++) {
-		std::cout << i << "\t" << port.translations[i] << "\n";
-	}
+	//for (int i = 0; i < port.translations.size(); i++) {
+	//	std::cout << i << "\t" << port.translations[i] << "\n";
+	//}
 }
 

@@ -127,19 +127,32 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="AblativeCase.cpp" />
+    <ClCompile Include="AccusativeCase.cpp" />
     <ClCompile Include="Case.cpp" />
+    <ClCompile Include="DativeCase.cpp" />
     <ClCompile Include="Declension.cpp" />
+    <ClCompile Include="Gender.cpp" />
+    <ClCompile Include="GenitiveCase.cpp" />
     <ClCompile Include="Latin Translator.cpp" />
+    <ClCompile Include="NominativeCase.cpp" />
     <ClCompile Include="Noun.cpp" />
     <ClCompile Include="Number.cpp" />
+    <ClCompile Include="VocativeCase.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AblativeCase.h" />
+    <ClInclude Include="AccusativeCase.h" />
     <ClInclude Include="Case.h" />
+    <ClInclude Include="DativeCase.h" />
     <ClInclude Include="Declension.h" />
     <ClInclude Include="Gender.h" />
+    <ClInclude Include="GenitiveCase.h" />
     <ClInclude Include="Macrons.h" />
+    <ClInclude Include="NominativeCase.h" />
     <ClInclude Include="Noun.h" />
     <ClInclude Include="Number.h" />
+    <ClInclude Include="VocativeCase.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

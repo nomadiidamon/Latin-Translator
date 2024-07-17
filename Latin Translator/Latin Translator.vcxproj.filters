@@ -30,6 +30,27 @@
     <ClCompile Include="Number.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="NominativeCase.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GenitiveCase.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DativeCase.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="AccusativeCase.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="AblativeCase.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="VocativeCase.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Gender.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Noun.h">
@@ -48,6 +69,24 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Number.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="NominativeCase.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GenitiveCase.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DativeCase.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="AccusativeCase.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="AblativeCase.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="VocativeCase.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

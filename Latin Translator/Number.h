@@ -9,9 +9,9 @@ public:
 	void SetPlural();
 	void SetUnknown();
 	std::string GetNumber();
-	bool isSingular();
-	bool isPlural();
-	bool isUnknown();
+	bool IsSingular();
+	bool IsPlural();
+	bool IsUnknown();
 
 private:
 	bool singular;

@@ -1,12 +1,15 @@
 #include "Number.h"
 
-Number::Number() : singular(false), plural(false), unknown(true), number()
+Number::Number() 
+	: singular(false), plural(false), unknown(true), number()
 {
+
 }
 
 Number::Number(std::string _number)
 	: singular(false), plural(false), unknown(true), number()
 {
+
 }
 
 void Number::SetSingular()
@@ -42,7 +45,7 @@ std::string Number::GetNumber()
 	return "Unknown";
 }
 
-bool Number::isSingular()
+bool Number::IsSingular()
 {
 	if (singular) {
 		return true;
@@ -52,7 +55,7 @@ bool Number::isSingular()
 	}
 }
 
-bool Number::isPlural()
+bool Number::IsPlural()
 {
 	if (plural) {
 		return true;
@@ -62,7 +65,7 @@ bool Number::isPlural()
 	}
 }
 
-bool Number::isUnknown()
+bool Number::IsUnknown()
 {
 	if (unknown) {
 		return true;

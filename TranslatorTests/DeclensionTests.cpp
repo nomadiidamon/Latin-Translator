@@ -11,15 +11,31 @@ namespace TranslatorTests
 
 		TEST_METHOD(Blank_Constructor)
 		{
-			Declension dec;
-			Assert::IsFalse(dec.first);
-			Assert::IsFalse(dec.second);
-			Assert::IsFalse(dec.third);
-			Assert::IsFalse(dec.fourth);
-			Assert::IsFalse(dec.fifth);
-			std::string empty = "";
-			Assert::AreEqual(dec.declension, empty);
+			std::string title = "First";
 
+			Declension one;
+			one.SetFirst();
+			Assert::AreEqual(one.GetDeclension(), title);
+
+			Declension two;
+			two.SetSecond();
+			title = "Second";
+			Assert::AreEqual(two.GetDeclension(), title);
+
+			Declension three;
+			three.SetThird();
+			title = "Third";
+			Assert::AreEqual(three.GetDeclension(), title);
+
+			Declension four;
+			four.SetFourth();
+			title = "Fourth";
+			Assert::AreEqual(four.GetDeclension(), title);
+
+			Declension five;
+			five.SetFifth();
+			title = "Fifth";
+			Assert::AreEqual(five.GetDeclension(), title);
 
 		}
 
