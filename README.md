@@ -9,4 +9,4 @@ As mentioned, I am working on this project on my own and I am aware that my know
 If in reviewing this repo, you notice any glaring issues regarding programming syntax or best practices, please feel free to make a pull request- any and all advise is greatly welcomed. 
 Also, if you have knowledge of Classical Latin and feel as if any lingual changes should be made, I too implore you to share your feedback.
 
-Note on Branching: As I do not expect many people to be contributing to this repo, I typically will merge things directly from my local repo to main as opposed to a development branch. Going forward I will attempt to better consilidate changes to specific brances make collaboration more effect.
+Note on Branching: As I do not expect many people to be contributing to this repo, I typically will merge things directly from my local repo to main as opposed to a development branch. Going forward I will attempt to better consilidate changes to specific brances to make collaboration more effect.
