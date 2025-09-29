@@ -13,10 +13,11 @@ public:
 	void SetBoth();
 	void SetUnknown();
 	std::string GetNumber() const;
-	bool IsSingular();
-	bool IsPlural();
-	bool IsBoth();	
-	bool IsUnknown();
+
+	bool IsSingular() const;
+	bool IsPlural() const;
+	bool IsBoth() const;	
+	bool IsUnknown() const;
 
 private:
 	bool singular;

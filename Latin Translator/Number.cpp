@@ -49,8 +49,8 @@ void Number::SetPlural()
 
 void Number::SetBoth()
 {
-	singular = true;
-	plural = true;
+	singular = false;
+	plural = false;
 	both = true;
 }
 
@@ -63,19 +63,19 @@ void Number::SetUnknown()
 
 std::string Number::GetNumber() const
 {
-	if (singular) {
+	if (both) {
+		return "Both";
+	}
+	else if (singular) {
 		return "Singluar";
 	}
 	else if (plural) {
 		return "Plural";
 	}
-	else if (both) {
-		return "Both";
-	}
 	return "Unknown";
 }
 
-bool Number::IsSingular()
+bool Number::IsSingular() const
 {
 	if (singular) {
 		return true;
@@ -85,7 +85,7 @@ bool Number::IsSingular()
 	}
 }
 
-bool Number::IsPlural()
+bool Number::IsPlural() const
 {
 	if (plural) {
 		return true;
@@ -95,7 +95,7 @@ bool Number::IsPlural()
 	}
 }
 
-bool Number::IsBoth()
+bool Number::IsBoth() const
 {
 	if (both) {
 		return true;
@@ -105,7 +105,7 @@ bool Number::IsBoth()
 	}
 }
 
-bool Number::IsUnknown()
+bool Number::IsUnknown() const
 {
 	if (both) {
 		return true;

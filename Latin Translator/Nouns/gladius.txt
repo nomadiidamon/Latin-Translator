@@ -1,0 +1,9 @@
+{
+    "Declension": "Second",
+    "Definition": "sword",
+    "Gender": "Masculine",
+    "Genitive": "Gladiorum",
+    "Nominative": "Gladii",
+    "Noun": "Gladii",
+    "Number": "Plural"
+}

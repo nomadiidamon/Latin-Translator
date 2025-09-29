@@ -1,0 +1,9 @@
+{
+    "Declension": "First",
+    "Definition": "gate, entrance",
+    "Gender": "Feminine",
+    "Genitive": "Portae",
+    "Nominative": "Porta",
+    "Noun": "Porta",
+    "Number": "Both"
+}

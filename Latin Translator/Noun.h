@@ -24,12 +24,20 @@ private:
 	AblativeCase abl;
 	VocativeCase voc;
 
-	std::string nominative;
-	std::string genitive;
-	std::string dative;
-	std::string accusative;
-	std::string ablative;
-	std::string vocative;
+	std::string nominative_singular;
+	std::string genitive_singular;
+	std::string dative_singular;
+	std::string accusative_singular;
+	std::string ablative_singular;
+	std::string vocative_singular;
+
+	std::string nominative_plural;
+	std::string genitive_plural;
+	std::string dative_plural;
+	std::string accusative_plural;
+	std::string ablative_plural;
+	std::string vocative_plural;
+
 	std::string definition;
 	std::string base;
 
@@ -43,28 +51,34 @@ public:
 	void Dispose();
 
 	// Getters and setters
-	std::string Nominative() const;
-	void SetNominative(const std::string& newWord);
+	std::string NominativeSingular() const;
+	std::string NominativePlural() const;
+	void SetNominative(const std::string& newWord, bool singular = true);
 	void SetNominative();
 
-	std::string Genitive() const;
-	void SetGenitive(const std::string& newWord);
+	std::string GenitiveSingular() const;
+	std::string GenitivePlural() const;
+	void SetGenitive(const std::string& newWord, bool singular = true);
 	void SetGenitive();
 
-	std::string Dative() const;
-	void SetDative(const std::string& newWord);
+	std::string DativeSingular() const;
+	std::string DativePlural() const;
+	void SetDative(const std::string& newWord, bool singular = true);
 	void SetDative();
 
-	std::string Accusative() const;
-	void SetAccusative(const std::string& newWord);
+	std::string AccusativeSingular() const;
+	std::string AccusativePlural() const;
+	void SetAccusative(const std::string& newWord, bool singular = true);
 	void SetAccusative();
 
-	std::string Ablative() const;
-	void SetAblative(const std::string& newWord);
+	std::string AblativeSingular() const;
+	std::string AblativePlural() const;
+	void SetAblative(const std::string& newWord, bool singular = true);
 	void SetAblative();
 
-	std::string Vocative() const;
-	void SetVocative(const std::string& newWord);
+	std::string VocativeSingular() const;
+	std::string VocativePlural() const;
+	void SetVocative(const std::string& newWord, bool singular = true);
 	void SetVocative();
 
 	std::string Definition() const;
@@ -75,6 +89,10 @@ public:
 
 	const Declension& getDeclension() const;
 	void SetDeclension(const Declension& newDeclension);
+
+	void SetNumber(const Number& newNumber);
+	void SetNumber(const std::string& newNumber);
+	std::string GetNumber() const;
 
 
 	// Display functions

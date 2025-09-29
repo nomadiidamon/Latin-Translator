@@ -1,12 +1,12 @@
 #include "Noun.h"
 
-Noun::Noun() 
+Noun::Noun()
 {
 
 }
 
 Noun::Noun(std::string _declension, std::string _gender, std::string _number, std::string _nominative, std::string _genitive, std::string _definition)
-	: declension(_declension), gender(_gender), number(_number), nominative(_nominative), genitive(_genitive), definition(_definition)
+	: declension(_declension), gender(_gender), number(_number), nominative_singular(_nominative), genitive_singular(_genitive), definition(_definition)
 {
 	int decNum = declension.GetDeclensionNumber();
 	nom = NominativeCase(decNum);
@@ -16,13 +16,16 @@ Noun::Noun(std::string _declension, std::string _gender, std::string _number, st
 	abl = AblativeCase(decNum);
 	voc = VocativeCase(decNum);
 
-
-	nominative = _nominative;
-	genitive = _genitive;
+	nominative_singular = _nominative;
+	genitive_singular = _genitive;
 	definition = _definition;
 
 	SetBase();
 	SetForms();
+
+	Display();
+	std::cout << "--------------------->" << std::endl;
+
 }
 
 Noun::~Noun()
@@ -43,143 +46,177 @@ void Noun::Dispose()
 	abl.Dispose();
 	voc.Dispose();
 
-	nominative.clear();
-	genitive.clear();
-	dative.clear();
-	accusative.clear();
-	ablative.clear();
-	vocative.clear();
+	nominative_singular.clear();
+	genitive_singular.clear();
+	dative_singular.clear();
+	accusative_singular.clear();
+	ablative_singular.clear();
+	vocative_singular.clear();
+
+	nominative_plural.clear();
+	genitive_plural.clear();
+	dative_plural.clear();
+	accusative_plural.clear();
+	ablative_plural.clear();
+	vocative_plural.clear();
+
 	definition.clear();
 	base.clear();
 }
 
-std::string Noun::Nominative() const {
-	return nominative;
+std::string Noun::NominativeSingular() const {
+	return nominative_singular;
 }
 
-void Noun::SetNominative(const std::string& newWord) {
+std::string Noun::NominativePlural() const
+{
+	return nominative_plural;
+}
 
-	nominative = newWord;
+void Noun::SetNominative(const std::string& newWord, bool singular) {
+	if (singular)
+		nominative_singular = newWord;
+	else
+		nominative_plural = newWord;
 }
 
 void Noun::SetNominative()
 {
-	if (number.IsSingular()) {
-		nominative = base + nom.SingularEnding();
-	}
-	else if (number.IsPlural()) {
-		nominative = base + nom.PluralEnding();
-	}
+	nominative_singular = base;
+	nominative_singular = base + nom.SingularEnding();
+	nominative_plural = base;
+	nominative_plural = base + nom.PluralEnding();
 }
 
-std::string Noun::Genitive() const
+std::string Noun::GenitiveSingular() const
 {
-	return genitive;
+	return genitive_singular;
 }
 
-void Noun::SetGenitive(const std::string& newWord)
+std::string Noun::GenitivePlural() const
 {
-	genitive = newWord;
+	return genitive_plural;
+}
+
+void Noun::SetGenitive(const std::string& newWord, bool singular)
+{
+	if (singular)
+		genitive_singular = newWord;
+	else
+		genitive_plural = newWord;
 }
 
 void Noun::SetGenitive()
 {
-	genitive = base;
+	genitive_singular = base;
+	genitive_singular += gen.SingularEnding();
+	genitive_plural = base;
+	genitive_plural += gen.PluralEnding();
 
-	if (number.IsSingular()) {
-		genitive += gen.SingularEnding();
-	}
-	else if (number.IsPlural()) {
-		genitive += gen.PluralEnding();
-	}
 }
 
-std::string Noun::Dative() const
+std::string Noun::DativeSingular() const
 {
-	return dative;
+	return dative_singular;
 }
 
-void Noun::SetDative(const std::string& newWord)
+std::string Noun::DativePlural() const
 {
-	dative = newWord;
+	return genitive_plural;
+}
+
+void Noun::SetDative(const std::string& newWord, bool singular)
+{
+	if (singular)
+		dative_singular = newWord;
+	else
+		dative_plural = newWord;
 }
 
 void Noun::SetDative()
 {
-	dative = base;
-
-	if (number.IsSingular()) {
-		dative += dat.SingularEnding();
-	}
-	else if (number.IsPlural()) {
-		dative += dat.PluralEnding();
-	}
+	dative_singular = GetBase() + dat.SingularEnding();
+	//dative_singular += dat.SingularEnding();
+	dative_plural = GetBase() + dat.PluralEnding();
+	//dative_plural += dat.PluralEnding();
 }
 
-std::string Noun::Accusative() const
+std::string Noun::AccusativeSingular() const
 {
-	return accusative;
+	return accusative_singular;
 }
 
-void Noun::SetAccusative(const std::string& newWord)
+std::string Noun::AccusativePlural() const
 {
-	accusative = newWord;
+	return genitive_plural;
+}
+
+void Noun::SetAccusative(const std::string& newWord, bool singular)
+{
+	if (singular)
+		accusative_singular = newWord;
+	else
+		accusative_plural = newWord;
 }
 
 void Noun::SetAccusative()
 {
-	accusative = base;
-
-	if (number.IsSingular()) {
-		accusative += acc.SingularEnding();
-	}
-	else if (number.IsPlural()) {
-		accusative += acc.PluralEnding();
-	}
+	accusative_singular = GetBase();
+	accusative_singular += acc.SingularEnding();
+	accusative_plural = GetBase();
+	accusative_plural += acc.PluralEnding();
 }
 
-std::string Noun::Ablative() const
+std::string Noun::AblativeSingular() const
 {
-	return ablative;
+	return ablative_singular;
 }
 
-void Noun::SetAblative(const std::string& newWord)
+std::string Noun::AblativePlural() const
 {
-	ablative = newWord;
+	return genitive_plural;
+}
+
+void Noun::SetAblative(const std::string& newWord, bool singular)
+{
+	if (singular)
+		ablative_singular = newWord;
+	else
+		ablative_plural = newWord;
 }
 
 void Noun::SetAblative()
 {
-	ablative = base;
-
-	if (number.IsSingular()) {
-		ablative += abl.SingularEnding();
-	}
-	else if (number.IsPlural()) {
-		ablative += abl.PluralEnding();
-	}
+	ablative_singular = GetBase();
+	ablative_singular += abl.SingularEnding();
+	ablative_plural = GetBase();
+	ablative_plural += abl.PluralEnding();
 }
 
-std::string Noun::Vocative() const
+std::string Noun::VocativeSingular() const
 {
-	return vocative;
+	return vocative_singular;
 }
 
-void Noun::SetVocative(const std::string& newWord)
+std::string Noun::VocativePlural() const
 {
-	vocative = newWord;
+	return genitive_plural;
+}
+
+void Noun::SetVocative(const std::string& newWord, bool singular)
+{
+	if (singular)
+		vocative_singular = newWord;
+	else
+		vocative_plural = newWord;
 }
 
 void Noun::SetVocative()
 {
-	vocative = base;
-
-	if (number.IsSingular()) {
-		vocative += voc.SingularEnding();
-	}
-	else if (number.IsPlural()) {
-		vocative += voc.PluralEnding();
-	}
+	vocative_singular = GetBase();
+	vocative_singular += voc.SingularEnding();
+	vocative_plural = GetBase();
+	vocative_plural += voc.PluralEnding();
 }
 
 
@@ -195,27 +232,27 @@ void Noun::SetForms()
 
 bool Noun::FindForm(std::string toFind, std::string& outFoundCase)
 {
-	if (toFind == Nominative()) {
+	if (toFind == NominativeSingular() || toFind == NominativePlural()) {
 		outFoundCase = "Nominative";
 		return true;
 	}
-	else if (toFind == Genitive()) {
+	else if (toFind == GenitiveSingular() || toFind == GenitivePlural()) {
 		outFoundCase = "Genitive";
 		return true;
 	}
-	else if (toFind == Dative()) {
+	else if (toFind == DativeSingular() || toFind == DativePlural()) {
 		outFoundCase = "Dative";
 		return true;
 	}
-	else if (toFind == Accusative()) {
+	else if (toFind == AccusativeSingular() || toFind == AccusativePlural()) {
 		outFoundCase = "Accusative";
 		return true;
 	}
-	else if (toFind == Ablative()) {
+	else if (toFind == AblativeSingular() || toFind == AblativePlural()) {
 		outFoundCase = "Ablative";
 		return true;
 	}
-	else if (toFind == Vocative()) {
+	else if (toFind == VocativeSingular() || toFind == VocativePlural()) {
 		outFoundCase = "Vocative";
 		return true;
 	}
@@ -230,6 +267,21 @@ void Noun::SetDeclension(const Declension& newDeclension) {
 	declension = newDeclension;
 }
 
+void Noun::SetNumber(const Number& newNumber)
+{
+	number = newNumber;
+}
+
+void Noun::SetNumber(const std::string& newNumber)
+{
+	number = Number(newNumber);
+}
+
+std::string Noun::GetNumber() const
+{
+	return number.GetNumber();
+}
+
 std::string Noun::Definition() const {
 	return definition.c_str();
 }
@@ -239,39 +291,41 @@ void Noun::SetDefinition(const std::string& newLatinDefinition) {
 }
 
 void Noun::ShowSingular() {
-	number.SetSingular();
+	//number.SetSingular();
 	SetForms();
 	std::cout << "Singular Forms:\n" << std::endl;
-	std::cout << "Nominative: " << Nominative() << std::endl;
-	std::cout << "Genitive: " << Genitive() << std::endl;
-	std::cout << "Dative: " << Dative() << std::endl;
-	std::cout << "Accusative: " << Accusative() << std::endl;
-	std::cout << "Ablative: " << Ablative() << std::endl;
-	std::cout << "Vocative: " << Vocative() << std::endl;
+	std::cout << "Nominative: " << NominativeSingular() << std::endl;
+	std::cout << "Genitive: " << GenitiveSingular() << std::endl;
+	std::cout << "Dative: " << DativeSingular() << std::endl;
+	std::cout << "Accusative: " << AccusativeSingular() << std::endl;
+	std::cout << "Ablative: " << AblativeSingular() << std::endl;
+	std::cout << "Vocative: " << VocativeSingular() << std::endl;
 }
 
-void Noun::ShowPlural(){
-	number.SetPlural();
+void Noun::ShowPlural() {
+	//number.SetPlural();
 	SetForms();
-	std::cout << "Plural Forms:\n" << std::endl;	
-	std::cout << "Nominative: " << Nominative() << std::endl;
-	std::cout << "Genitive: " << Genitive() << std::endl;
-	std::cout << "Dative: " << Dative() << std::endl;
-	std::cout << "Accusative: " << Accusative() << std::endl;
-	std::cout << "Ablative: " << Ablative() << std::endl;
-	std::cout << "Vocative: " << Vocative() << std::endl;
+	std::cout << "Plural Forms:\n" << std::endl;
+	std::cout << "Nominative: " << NominativePlural() << std::endl;
+	std::cout << "Genitive: " << GenitivePlural() << std::endl;
+	std::cout << "Dative: " << DativePlural() << std::endl;
+	//std::cout << "Dative: " << GetBase() << dat.PluralEnding() << std::endl;
+
+	std::cout << "Accusative: " << AccusativePlural() << std::endl;
+	std::cout << "Ablative: " << AblativePlural() << std::endl;
+	std::cout << "Vocative: " << VocativePlural() << std::endl;
 }
 
 void Noun::SimpleDisplay() const {
 	std::cout << "Gender: " << gender.GetGender() << std::endl;
-	std::cout << "Nominative & Genitive: " << Nominative() << ", " << Genitive() << std::endl;
+	std::cout << "Nominative & Genitive: " << NominativeSingular() << ", " << GenitiveSingular() << std::endl;
 	std::cout << "Definition: " << Definition() << std::endl;
 }
 
-void Noun::Display()  {
+void Noun::Display() {
 	std::cout << "Declension: " << declension.GetDeclensionNumber() << std::endl;
 	std::cout << "Gender: " << gender.GetGender() << std::endl;
-	std::cout << "Nominative & Genitive: " << Nominative() << ", " << Genitive() << std::endl;
+	std::cout << "Nominative & Genitive: " << NominativeSingular() << ", " << GenitiveSingular() << std::endl;
 	std::cout << "Definition: " << Definition() << std::endl;
 	std::cout << std::endl;
 
@@ -298,11 +352,24 @@ void Noun::Serialize(const std::string& filename) const {
 void Noun::SerializeToJson(const std::string& filename) const
 {
 	json j;
+
+	j["Noun"] = nominative_singular;
 	j["Declension"] = declension.GetDeclensionString();
 	j["Gender"] = gender.GetGender();
-	j["Number"] = number.GetNumber();
-	j["Nominative"] = nominative;
-	j["Genitive"] = genitive;
+	if (number.IsBoth()) {
+		j["Number"] = "Both";
+	}
+	else if (number.IsSingular()) {
+		j["Number"] = "Singular";
+	}
+	else if (number.IsPlural()) {
+		j["Number"] = "Plural";
+	}
+	else {
+		j["Number"] = "Unknown";
+	}
+	j["Nominative"] = nominative_singular;
+	j["Genitive"] = genitive_singular;
 	j["Definition"] = definition;
 	std::ofstream file(filename);
 	if (file.is_open()) {
@@ -342,8 +409,8 @@ void Noun::DeserializeFromJson(const std::string& filename)
 		std::string gen = j["Genitive"];
 		std::string def = j["Definition"];
 
-		Noun noun(dec, gender, number, nominative, genitive, definition);
-
+		Noun noun(dec, gender, number, nom, gen, def);
+		*this = noun;
 	}
 	else {
 		std::cerr << "Error: Unable to open file for reading." << std::endl;
@@ -359,7 +426,7 @@ std::string Noun::GetBase() const {
 
 void Noun::SetBase()
 {
-	base = genitive;
+	base = genitive_singular;
 	size_t x = gen.SingularEndingLength();
 	for (int i = 0; i < x; i++) {
 		base.pop_back();

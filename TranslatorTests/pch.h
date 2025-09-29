@@ -9,4 +9,12 @@
 
 // add headers that you want to pre-compile here
 
+#include "../Latin Translator/NominativeCase.h"
+#include "../Latin Translator/GenitiveCase.h"
+#include "../Latin Translator/DativeCase.h"
+#include "../Latin Translator/AccusativeCase.h"
+#include "../Latin Translator/AblativeCase.h"
+#include "../Latin Translator/VocativeCase.h"
+#include "../Latin Translator/json.hpp"
+
 #endif //PCH_H

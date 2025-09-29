@@ -90,4 +90,8 @@
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="Nouns\Noun.txt" />
+    <Text Include="Nouns\gladius.txt" />
+  </ItemGroup>
 </Project>
