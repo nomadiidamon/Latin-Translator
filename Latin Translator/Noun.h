@@ -50,49 +50,68 @@ public:
 	~Noun();
 	void Dispose();
 
-	// Getters and setters
+	// Getters
 	std::string NominativeSingular() const;
-	std::string NominativePlural() const;
-	void SetNominative(const std::string& newWord, bool singular = true);
-	void SetNominative();
-
 	std::string GenitiveSingular() const;
-	std::string GenitivePlural() const;
-	void SetGenitive(const std::string& newWord, bool singular = true);
-	void SetGenitive();
-
 	std::string DativeSingular() const;
-	std::string DativePlural() const;
-	void SetDative(const std::string& newWord, bool singular = true);
-	void SetDative();
-
 	std::string AccusativeSingular() const;
-	std::string AccusativePlural() const;
-	void SetAccusative(const std::string& newWord, bool singular = true);
-	void SetAccusative();
-
 	std::string AblativeSingular() const;
-	std::string AblativePlural() const;
-	void SetAblative(const std::string& newWord, bool singular = true);
-	void SetAblative();
-
 	std::string VocativeSingular() const;
+
+	std::string NominativePlural() const;
+	std::string GenitivePlural() const;
+	std::string DativePlural() const;
+	std::string AccusativePlural() const;
+	std::string AblativePlural() const;
 	std::string VocativePlural() const;
-	void SetVocative(const std::string& newWord, bool singular = true);
-	void SetVocative();
 
 	std::string Definition() const;
-	void SetDefinition(const std::string& newLatinDefinition);
+	const Declension& GetDeclension() const;
+
+	std::string GetNumber() const;
+
+
+	// Setters
+	void SetNominativeSingular(const std::string& newNominativeSingular);
+	void SetNominativeForms();
+	void SetNominativeSingularForm();
+	void SetNominativePluralForm();
+
+	void SetGenitiveSingular(const std::string& newGenitiveSingular);
+	void SetGenitiveForms();
+	void SetGenitiveSingularForm();
+	void SetGenitivePluralForm();
+
+	void SetDativeForms();
+	void SetDativeSingularForm();
+	void SetDativePluralForm();
+
+	void SetAccusativeForms();
+	void SetAccusativeSingularForm();
+	void SetAccusativePluralForm();
+
+	void SetAblativeForms();
+	void SetAblativeSingularForm();
+	void SetAblativePluralForm();
+
+	void SetVocativeForms();
+	void SetVocativeSingularForm();
+	void SetVocativePluralForm();
 
 	void SetForms();
 	bool FindForm(std::string toFind, std::string& outFoundCase);
 
-	const Declension& getDeclension() const;
+
+
+	void SetDefinition(const std::string& newLatinDefinition);
+
+
 	void SetDeclension(const Declension& newDeclension);
 
 	void SetNumber(const Number& newNumber);
 	void SetNumber(const std::string& newNumber);
-	std::string GetNumber() const;
+	void SetGender(const Gender& newGender);
+	void SetGender(const std::string& newGender);
 
 
 	// Display functions
@@ -103,11 +122,14 @@ public:
 
 	// Serialize function to write the object to a file
 	void Serialize(const std::string& filename) const;
-	void SerializeToJson(const std::string& filename) const;
+	void SerializeToJson(const std::string& filename, const std::string& arrayName = "Nouns") const;
+	bool QuickSerializeToJson(const std::string& filename, const std::string& arrayName = "Nouns") const;
+
 
 	// Deserialize function to read the object from a file
 	void Deserialize(const std::string& filename);
 	void DeserializeFromJson(const std::string& filename);
+	static bool DeserializeNounsFromJson(const std::string& filename, std::vector<Noun>& nouns);
 
 	// Function to get the base of the noun
 	std::string GetBase() const;

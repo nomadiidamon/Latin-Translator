@@ -27,6 +27,12 @@
     <ClCompile Include="..\Latin Translator\Declension.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="NumberTests.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Number.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h">
