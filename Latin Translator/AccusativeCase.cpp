@@ -17,6 +17,11 @@ AccusativeCase::AccusativeCase(int declension) {
 
 AccusativeCase::~AccusativeCase()
 {
+	Dispose();
+}
+
+void AccusativeCase::Dispose()
+{
 	accCase.Dispose();
 	gender.Dispose();
 	number.Dispose();

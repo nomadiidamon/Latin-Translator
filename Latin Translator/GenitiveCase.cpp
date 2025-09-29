@@ -16,6 +16,11 @@ GenitiveCase::GenitiveCase(int declension) {
 
 GenitiveCase::~GenitiveCase()
 {
+	Dispose();
+}
+
+void GenitiveCase::Dispose()
+{
 	genCase.Dispose();
 	gender.Dispose();
 	number.Dispose();

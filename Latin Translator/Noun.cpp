@@ -25,6 +25,34 @@ Noun::Noun(std::string _declension, std::string _gender, std::string _number, st
 	SetForms();
 }
 
+Noun::~Noun()
+{
+	Dispose();
+}
+
+void Noun::Dispose()
+{
+	declension.Dispose();
+	gender.Dispose();
+	number.Dispose();
+
+	nom.Dispose();
+	gen.Dispose();
+	dat.Dispose();
+	acc.Dispose();
+	abl.Dispose();
+	voc.Dispose();
+
+	nominative.clear();
+	genitive.clear();
+	dative.clear();
+	accusative.clear();
+	ablative.clear();
+	vocative.clear();
+	definition.clear();
+	base.clear();
+}
+
 std::string Noun::Nominative() const {
 	return nominative;
 }
@@ -165,6 +193,35 @@ void Noun::SetForms()
 	SetVocative();
 }
 
+bool Noun::FindForm(std::string toFind, std::string& outFoundCase)
+{
+	if (toFind == Nominative()) {
+		outFoundCase = "Nominative";
+		return true;
+	}
+	else if (toFind == Genitive()) {
+		outFoundCase = "Genitive";
+		return true;
+	}
+	else if (toFind == Dative()) {
+		outFoundCase = "Dative";
+		return true;
+	}
+	else if (toFind == Accusative()) {
+		outFoundCase = "Accusative";
+		return true;
+	}
+	else if (toFind == Ablative()) {
+		outFoundCase = "Ablative";
+		return true;
+	}
+	else if (toFind == Vocative()) {
+		outFoundCase = "Vocative";
+		return true;
+	}
+	return false;
+}
+
 const Declension& Noun::getDeclension() const {
 	return declension;
 }
@@ -226,7 +283,7 @@ void Noun::Display()  {
 
 }
 
-void Noun::serialize(const std::string& filename) const {
+void Noun::Serialize(const std::string& filename) const {
 	std::ofstream file;
 	file.open(filename, std::ios::binary);
 	if (file.is_open()) {
@@ -238,7 +295,26 @@ void Noun::serialize(const std::string& filename) const {
 	}
 }
 
-void Noun::deserialize(const std::string& filename) {
+void Noun::SerializeToJson(const std::string& filename) const
+{
+	json j;
+	j["Declension"] = declension.GetDeclensionString();
+	j["Gender"] = gender.GetGender();
+	j["Number"] = number.GetNumber();
+	j["Nominative"] = nominative;
+	j["Genitive"] = genitive;
+	j["Definition"] = definition;
+	std::ofstream file(filename);
+	if (file.is_open()) {
+		file << j.dump(4); // Pretty print with 4 spaces indentation
+		file.close();
+	}
+	else {
+		std::cerr << "Error: Unable to open file for writing." << std::endl;
+	}
+}
+
+void Noun::Deserialize(const std::string& filename) {
 	std::ifstream file;
 	file.open(filename, std::ios::binary);
 	if (file.is_open()) {
@@ -248,6 +324,33 @@ void Noun::deserialize(const std::string& filename) {
 	else {
 		std::cerr << "Error: Unable to open file for reading." << std::endl;
 	}
+}
+
+void Noun::DeserializeFromJson(const std::string& filename)
+{
+	std::string json_string;
+	std::ofstream file(filename);
+	if (file.is_open()) {
+		file << json_string;
+		file.close();
+		json j = json::parse(json_string);
+
+		std::string dec = j["Declension"];
+		std::string gender = j["Gender"];
+		std::string number = j["Number"];
+		std::string nom = j["Nominative"];
+		std::string gen = j["Genitive"];
+		std::string def = j["Definition"];
+
+		Noun noun(dec, gender, number, nominative, genitive, definition);
+
+	}
+	else {
+		std::cerr << "Error: Unable to open file for reading." << std::endl;
+		return;
+	}
+
+
 }
 
 std::string Noun::GetBase() const {

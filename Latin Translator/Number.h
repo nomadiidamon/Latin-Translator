@@ -12,7 +12,7 @@ public:
 	void SetPlural();
 	void SetBoth();
 	void SetUnknown();
-	std::string GetNumber();
+	std::string GetNumber() const;
 	bool IsSingular();
 	bool IsPlural();
 	bool IsBoth();	

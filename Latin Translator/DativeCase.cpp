@@ -16,6 +16,11 @@ DativeCase::DativeCase(int declension) {
 
 DativeCase::~DativeCase()
 {
+	Dispose();
+}
+
+void DativeCase::Dispose()
+{
 	datCase.Dispose();
 	gender.Dispose();
 	number.Dispose();

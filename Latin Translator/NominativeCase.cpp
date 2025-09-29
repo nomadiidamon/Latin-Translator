@@ -18,6 +18,11 @@ NominativeCase::NominativeCase(int declension) {
 
 NominativeCase::~NominativeCase()
 {
+	Dispose();
+}
+
+void NominativeCase::Dispose()
+{
 	nomCase.Dispose();
 	gender.Dispose();
 	number.Dispose();

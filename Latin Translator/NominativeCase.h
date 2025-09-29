@@ -20,6 +20,7 @@ public:
 	NominativeCase();
 	NominativeCase(int declension);
 	~NominativeCase();
+	void Dispose();
 
 	void ApplyDeclension(const int& _declension);
 

@@ -7,6 +7,8 @@
 #include "VocativeCase.h"
 #include <fstream>
 #include <iostream>
+#include "json.hpp"
+using json = nlohmann::json;
 
 
 class Noun {
@@ -34,10 +36,11 @@ private:
 
 
 public:
-	std::vector<std::string> translationsByCase;
 
 	Noun();
 	Noun(std::string _declension, std::string _gender, std::string _number, std::string _nominative, std::string _genitive, std::string _definition);
+	~Noun();
+	void Dispose();
 
 	// Getters and setters
 	std::string Nominative() const;
@@ -68,7 +71,7 @@ public:
 	void SetDefinition(const std::string& newLatinDefinition);
 
 	void SetForms();
-	bool FindForm(std::string toFind);
+	bool FindForm(std::string toFind, std::string& outFoundCase);
 
 	const Declension& getDeclension() const;
 	void SetDeclension(const Declension& newDeclension);
@@ -81,10 +84,12 @@ public:
 	void Display();
 
 	// Serialize function to write the object to a file
-	void serialize(const std::string& filename) const;
+	void Serialize(const std::string& filename) const;
+	void SerializeToJson(const std::string& filename) const;
 
 	// Deserialize function to read the object from a file
-	void deserialize(const std::string& filename);
+	void Deserialize(const std::string& filename);
+	void DeserializeFromJson(const std::string& filename);
 
 	// Function to get the base of the noun
 	std::string GetBase() const;

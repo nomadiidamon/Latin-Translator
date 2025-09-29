@@ -16,6 +16,11 @@ AblativeCase::AblativeCase(int declension) {
 
 AblativeCase::~AblativeCase()
 {
+	Dispose();
+}
+
+void AblativeCase::Dispose()
+{
 	ablCase.Dispose();
 	gender.Dispose();
 	number.Dispose();

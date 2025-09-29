@@ -21,6 +21,7 @@ public:
 	AccusativeCase();
 	AccusativeCase(int declension);
 	~AccusativeCase();
+	void Dispose();
 
 	void ApplyDeclension(const int& _declension);
 

@@ -21,6 +21,7 @@ public:
 	AblativeCase();
 	AblativeCase(int declension);
 	~AblativeCase();
+	void Dispose();
 
 	void ApplyDeclension(const int& _declension);
 

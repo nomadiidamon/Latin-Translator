@@ -16,6 +16,11 @@ VocativeCase::VocativeCase(int declension) {
 
 VocativeCase::~VocativeCase()
 {
+	Dispose();
+}
+
+void VocativeCase::Dispose()
+{
 	vocCase.Dispose();
 	gender.Dispose();
 	number.Dispose();

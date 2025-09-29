@@ -22,6 +22,7 @@ public:
 	GenitiveCase();
 	GenitiveCase(int declension);
 	~GenitiveCase();
+	void Dispose();
 
 	void ApplyDeclension(const int& _declension);
 

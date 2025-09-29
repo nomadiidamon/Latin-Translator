@@ -23,6 +23,7 @@ public:
 	VocativeCase();
 	VocativeCase(int declension);
 	~VocativeCase();
+	void Dispose();
 
 	void ApplyDeclension(const int& _declension);
 

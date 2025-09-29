@@ -61,7 +61,7 @@ void Number::SetUnknown()
 	both = false;
 }
 
-std::string Number::GetNumber()
+std::string Number::GetNumber() const
 {
 	if (singular) {
 		return "Singluar";
