@@ -1,16 +1,20 @@
 #pragma once
-#include <vector>
+#include "NominativeCase.h"
+#include "GenitiveCase.h"
+#include "DativeCase.h"
+#include "AccusativeCase.h"
+#include "AblativeCase.h"
+#include "VocativeCase.h"
 #include <fstream>
 #include <iostream>
-#include "Case.h"
-#include "Gender.h"
-#include "Number.h"
+
 
 class Noun {
 private:
 	Declension declension;
 	Gender gender;
 	Number number;
+
 	std::string nominative;
 	std::string genitive;
 	std::string dative;
@@ -19,14 +23,14 @@ private:
 	std::string vocative;
 	std::string definition;
 	std::string base;
+
 	NominativeCase nom;
 	GenitiveCase gen;
 	DativeCase dat;
 	AccusativeCase acc;
 	AblativeCase abl;
 	VocativeCase voc;
-	bool onlySingular;
-	bool onlyPlural;
+
 
 public:
 	std::vector<std::string> forms;

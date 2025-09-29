@@ -4,10 +4,15 @@
 
 
 class Declension {
+
 public:
 
 	Declension();
 	Declension(std::string _declension);
+	Declension(int _declension);
+	~Declension();
+	void Dispose();
+
 	void SetFirst();
 	void SetSecond();
 	void SetThird();
@@ -15,7 +20,9 @@ public:
 	void SetFifth();
 	void Apply();
 	void SetDeclension();
-	std::string GetDeclension() const;
+	std::string GetDeclensionString() const;
+	int GetDeclensionNumber() const;
+	bool IsValid() const;
 
 private:
 

@@ -2,108 +2,73 @@
 
 
 //Constructor
-AccusativeCase::AccusativeCase() {
+AccusativeCase::AccusativeCase(int declension) {
 	Declension _dec;
 	dec = _dec;
-	ApplyDeclension(dec.GetDeclension());
+	ApplyDeclension(dec.GetDeclensionNumber());
 }
-void AccusativeCase::ApplyDeclension(std::string _declension) {
 
-	if (dec.GetDeclension() == "First") {
+AccusativeCase::~AccusativeCase()
+{
+	accCase.Dispose();
+	gender.Dispose();
+	number.Dispose();
+	dec.Dispose();
+	explanation.clear();
+}
 
+void AccusativeCase::ApplyDeclension(const int& _declension) {
 
-		SetSingularEnding("am");
-		SetSingularEnding_w_Macron('am');
-		SetPluralEnding("as");
-		SetPluralEnding_w_Macron(lower_a, 's');
-		SetSingularTranslation1("the");
-		SetSingularTranslation2("a");
-		SetPluralTranslation1("the");
-		SetPluralTranslation2("s");
-		SetExplanation("");
-
-
+	if (dec.GetDeclensionNumber() == 1) {
+		accCase.SetSingularEnding("am");
+		accCase.SetSingularEnding_w_Macron('am');
+		accCase.SetPluralEnding("as");
+		accCase.SetPluralEnding_w_Macron(lower_a, 's');
 	}
-	else if (dec.GetDeclension() == "Second") {
-
+	else if (dec.GetDeclensionNumber() == 2) {
+		accCase.SetSingularEnding("um");
+		accCase.SetSingularEnding_w_Macron('u', 'm');
+		accCase.SetPluralEnding("os");
+		accCase.SetPluralEnding_w_Macron(lower_o, 's');
 	}
-	else if (dec.GetDeclension() == "Third") {
-
+	else if (dec.GetDeclensionNumber() == 3) {
+		accCase.SetSingularEnding("em");
+		accCase.SetSingularEnding_w_Macron('e', 'm');
+		accCase.SetPluralEnding("es");
+		accCase.SetPluralEnding_w_Macron(lower_e, 's');
 	}
-	else if (dec.GetDeclension() == "Fourth") {
-
+	else if (dec.GetDeclensionNumber() == 4) {
+		accCase.SetSingularEnding("um");
+		accCase.SetSingularEnding_w_Macron('u', 'm');
+		accCase.SetPluralEnding("us");
+		accCase.SetPluralEnding_w_Macron('u', 's');
 	}
-	else if (dec.GetDeclension() == "Fifth") {
-
+	else if (dec.GetDeclensionNumber() == 5) {
+		accCase.SetSingularEnding("em");
+		accCase.SetSingularEnding_w_Macron('e', 'm');
+		accCase.SetPluralEnding("es");
+		accCase.SetPluralEnding_w_Macron('e', 's');
 	}
 	else {
-
+		accCase.SetSingularEnding("ERROR");
+		accCase.SetPluralEnding("ERROR");
+		accCase.AddToSingularTranslations("ERROR");
+		accCase.AddToPluralTranslations("ERROR");
 	}
+	accCase.AddToSingularTranslations("the");
+	accCase.AddToSingularTranslations("a");
+	accCase.AddToPluralTranslations("the");
+	accCase.AddToPluralTranslations("s");
 
+	SetExplanation("");
 }
 
 //Getters
-std::string AccusativeCase::SingularEnding() const {
-	return singularEnding;
-}
-std::wstring AccusativeCase::SingularEnding_w_Macron() const {
-	return singularEnding_w_macron;
-}
-std::string AccusativeCase::PluralEnding() const {
-	return pluralEnding;
-}
-std::wstring AccusativeCase::PluralEnding_w_Macron() const {
-	return pluralEnding_w_macron;
-}
-std::string AccusativeCase::SingularTranslation1() const {
-	return singularTranslation1;
-}
-std::string AccusativeCase::SingularTranslation2() const {
-	return singularTranslation2;
-}
-std::string AccusativeCase::PluralTranslation1() const {
-	return pluralTranslation1;
-}
-std::string AccusativeCase::PluralTranslation2() const {
-	return pluralTranslation2;
-}
 std::string AccusativeCase::Explanation() const {
 	return explanation;
 }
 
 //Setters
-void AccusativeCase::SetSingularEnding(const char* thing) {
-	singularEnding = thing;
-}
-void AccusativeCase::SetSingularEnding_w_Macron(wchar_t thing1, const char thing2) {
-	singularEnding_w_macron += thing1;
-	singularEnding_w_macron += thing2;
-}
-void AccusativeCase::SetSingularEnding_w_Macron(const wchar_t thing) {
-	singularEnding_w_macron += thing;
-}
-void AccusativeCase::SetPluralEnding(const char* thing) {
-	pluralEnding = thing;
-}
-void AccusativeCase::SetPluralEnding_w_Macron(wchar_t thing1, const char thing2) {
-	pluralEnding_w_macron += thing1;
-	pluralEnding_w_macron += thing2;
-}
-void AccusativeCase::SetPluralEnding_w_Macron(const wchar_t thing) {
-	pluralEnding_w_macron += thing;
-}
-void AccusativeCase::SetSingularTranslation1(std::string addition) {
-	singularTranslation1 = addition;
-}
-void AccusativeCase::SetSingularTranslation2(std::string addition) {
-	singularTranslation2 = addition;
-}
-void AccusativeCase::SetPluralTranslation1(std::string addition) {
-	pluralTranslation1 = addition;
-}
-void AccusativeCase::SetPluralTranslation2(std::string addition) {
-	pluralTranslation2 = addition;
-}
 void AccusativeCase::SetExplanation(std::string info) {
 	explanation = info;
 }

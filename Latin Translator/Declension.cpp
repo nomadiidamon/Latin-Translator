@@ -34,6 +34,39 @@ Declension::Declension(std::string _declension)
 	}
 }
 
+Declension::Declension(int _declension)
+	: first(false), second(false), third(false), fourth(false), fifth(false)
+{
+	if (_declension == 1) {
+		SetFirst();
+	}
+	else if (_declension == 2) {
+		SetSecond();
+	}
+	else if (_declension == 3) {
+		SetThird();
+	}
+	else if (_declension == 4) {
+		SetFourth();
+	}
+	else if (_declension == 5) {
+		SetFifth();
+	}
+	else {
+		declension = "ERROR";
+	}
+}
+
+Declension::~Declension()
+{
+	Dispose();
+}
+
+void Declension::Dispose()
+{
+	declension.clear();
+}
+
 void Declension::SetFirst() {
 	first = true;
 	second = false;
@@ -106,7 +139,22 @@ void Declension::SetDeclension() {
 	}
 }
 
-std::string Declension::GetDeclension() const {
+std::string Declension::GetDeclensionString() const {
 	return declension;
+}
+
+int Declension::GetDeclensionNumber() const
+{
+	return std::stoi(declension);
+}
+
+bool Declension::IsValid() const
+{
+	if (declension == "ERROR") {
+		return false;
+	}
+	else {
+		return true;
+	}
 }
 

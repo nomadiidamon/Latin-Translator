@@ -1,36 +1,64 @@
 #include "Number.h"
 
 Number::Number() 
-	: singular(false), plural(false), unknown(true), number()
+	: singular(false), plural(false), both(false)
 {
-
+	SetUnknown();
 }
 
 Number::Number(std::string _number)
-	: singular(false), plural(false), unknown(true), number()
+	: singular(false), plural(false), both(false)
 {
+	if (_number == "Singular" || _number == "singular" || _number == "Sing" || _number == "sing") {
+		SetSingular();
+	}
+	else if (_number == "Plural" || _number == "plural" || _number == "Plur" || _number == "plur") {
+		SetPlural();
+	}
+	else if (_number == "Both" || _number == "both") {
+		SetBoth();
+	}
+	else {
+		SetUnknown();
+	}
+}
 
+Number::~Number()
+{
+	Dispose();
+}
+
+void Number::Dispose()
+{
+	SetUnknown();
 }
 
 void Number::SetSingular()
 {
 	singular = true;
 	plural = false;
-	unknown = false;
+	both = false;
 }
 
 void Number::SetPlural()
 {
 	singular = false;
 	plural = true;
-	unknown = false;
+	both = false;
+}
+
+void Number::SetBoth()
+{
+	singular = true;
+	plural = true;
+	both = true;
 }
 
 void Number::SetUnknown()
 {
 	singular = false;
 	plural = false;
-	unknown = true;
+	both = false;
 }
 
 std::string Number::GetNumber()
@@ -41,7 +69,9 @@ std::string Number::GetNumber()
 	else if (plural) {
 		return "Plural";
 	}
-	else 
+	else if (both) {
+		return "Both";
+	}
 	return "Unknown";
 }
 
@@ -65,9 +95,19 @@ bool Number::IsPlural()
 	}
 }
 
+bool Number::IsBoth()
+{
+	if (both) {
+		return true;
+	}
+	else {
+		return false;
+	}
+}
+
 bool Number::IsUnknown()
 {
-	if (unknown) {
+	if (both) {
 		return true;
 	}
 	else {

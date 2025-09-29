@@ -1,122 +1,59 @@
 #pragma once
-#include "NominativeCase.h"
-#include "GenitiveCase.h"
-#include "DativeCase.h"
-#include "AccusativeCase.h"
-#include "AblativeCase.h"
-#include "VocativeCase.h"
-
+#include <Vector>
+#include <string>
 
 class Case {
 private:
 	std::string singularEnding = "";
 	std::wstring singularEnding_w_macron = L"";
+
 	std::string pluralEnding = "";
 	std::wstring pluralEnding_w_macron = L"";
-	std::string singularTranslation1 = "";
-	std::string singularTranslation2 = "";
-	std::string singularTranslation3 = "";
-	std::string singularTranslation4 = "";
-	std::string singularTranslation5 = "";
-	std::string singularTranslation6 = "";
-	std::string singularTranslation7 = "";
 
-	std::string pluralTranslation1 = "";
-	std::string pluralTranslation2 = "";
-	std::string pluralTranslation3 = "";
-	std::string pluralTranslation4 = "";
-	std::string pluralTranslation5 = "";
-	std::string pluralTranslation6 = "";
-	std::string pluralTranslation7 = "";
-
-	std::string explanation = "";
+	std::vector<std::string> singularTranslations;
+	std::vector<std::string> singularTranslations_Prefixes;
+	std::vector<std::string> pluralTranslations;
+	std::vector<std::string> pluralTranslations_Prefixes;
 public:
 	// Constructor
 	Case();
+	~Case();
+	void Dispose();
 
 	// Getters
 	std::string SingularEnding() const;
-
 	std::wstring SingularEnding_w_Macron() const;
-
 	std::string PluralEnding() const;
-
 	std::wstring PluralEnding_w_Macron() const;
 
-	std::string SingularTranslation1() const;
+	std::vector<std::string> SingularTranslations() const;
+	std::vector<std::string> SingularTranslations_Prefixes() const;
+	std::vector<std::string> PluralTranslations() const;
+	std::vector<std::string> PluralTranslations_Prefixes() const;
 
-	std::string SingularTranslation2() const;
-
-	std::string SingularTranslation3() const;
-
-	std::string SingularTranslation4() const;
-
-	std::string SingularTranslation5() const;
-
-	std::string SingularTranslation6() const;
-
-	std::string SingularTranslation7() const;
-
-	std::string PluralTranslation1() const;
-
-	std::string PluralTranslation2() const;
-
-	std::string PluralTranslation3() const;
-
-	std::string PluralTranslation4() const;
-
-	std::string PluralTranslation5() const;
-
-	std::string PluralTranslation6() const;
-
-	std::string PluralTranslation7() const;
-
-	std::string Explanation() const;
-
+	int SingularTranslationsCount() const;
+	int SingularTranslations_PrefixesCount() const;
+	int PluralTranslationsCount() const;
+	int PluralTranslations_PrefixesCount() const;	
 
 	// Setters
-	void SetSingularEnding(const char* thing);
+	void SetSingularEnding(const char* suffix);
+	void SetSingularEnding_w_Macron(wchar_t suffix1, const char suffix2);
+	void SetSingularEnding_w_Macron(const wchar_t suffix);
 
-	void SetSingularEnding_w_Macron(wchar_t thing1, const char thing2);
+	void SetPluralEnding(const char* suffix);
+	void SetPluralEnding_w_Macron(wchar_t suffix1, const char suffix2);
+	void SetPluralEnding_w_Macron(const wchar_t suffix);
 
-	void SetSingularEnding_w_Macron(const wchar_t thing);
+	void SetSingularTranslations(std::vector<std::string>& suffixes);
+	void SetPluralTranslations(std::vector<std::string>& suffixes);
 
-	void SetPluralEnding(const char* thing);
-
-	void SetPluralEnding_w_Macron(wchar_t thing1, const char thing2);
-
-	void SetPluralEnding_w_Macron(const wchar_t thing);
-
-	void SetSingularTranslation1(std::string addition);
-
-	void SetSingularTranslation2(std::string addition);
-
-	void SetSingularTranslation3(std::string addition);
-
-	void SetSingularTranslation4(std::string addition);
-
-	void SetSingularTranslation5(std::string addition);
-
-	void SetSingularTranslation6(std::string addition);
-
-	void SetSingularTranslation7(std::string addition);
-
-	void SetPluralTranslation1(std::string addition);
-
-	void SetPluralTranslation2(std::string addition);
-
-	void SetPluralTranslation3(std::string addition);
-
-	void SetPluralTranslation4(std::string addition);
-
-	void SetPluralTranslation5(std::string addition);
-
-	void SetPluralTranslation6(std::string addition);
-
-	void SetPluralTranslation7(std::string addition);
-
-	void SetExplanation(std::string info);
-
+	void AddToSingularTranslations(const char* suffix);
+	void AddToSingularTranslations_Prefixes(const char* prefix);
+	void AddToPluralTranslations(const char* suffix);
+	void AddToPluralTranslations_Prefixes(const char* prefix);
+	
+	
 };
 
 

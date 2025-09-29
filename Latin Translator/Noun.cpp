@@ -9,12 +9,12 @@ Noun::Noun(std::string _declension, std::string _gender, std::string _nominative
 	: declension(_declension), gender(_gender), nominative(_nominative), genitive(_genitive), definition(_definition)
 {
 	declension.SetDeclension();
-	nom.ApplyDeclension(declension.GetDeclension());
-	gen.ApplyDeclension(declension.GetDeclension());
-	dat.ApplyDeclension(declension.GetDeclension());
-	acc.ApplyDeclension(declension.GetDeclension());
-	abl.ApplyDeclension(declension.GetDeclension());
-	voc.ApplyDeclension(declension.GetDeclension());
+	nom.ApplyDeclension(declension.GetDeclensionNumber());
+	gen.ApplyDeclension(declension.GetDeclensionNumber());
+	dat.ApplyDeclension(declension.GetDeclensionNumber());
+	acc.ApplyDeclension(declension.GetDeclensionNumber());
+	abl.ApplyDeclension(declension.GetDeclensionNumber());
+	voc.ApplyDeclension(declension.GetDeclensionNumber());
 
 	SetBase();
 	StoreForms();

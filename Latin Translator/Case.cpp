@@ -1,7 +1,31 @@
 #include "Case.h"
 
 // Constructor
-Case::Case() {}
+Case::Case() 
+{
+	singularTranslations = std::vector<std::string>();
+	singularTranslations_Prefixes = std::vector<std::string>();
+	pluralTranslations = std::vector<std::string>();
+	pluralTranslations_Prefixes = std::vector<std::string>();
+}
+
+Case::~Case()
+{
+	Dispose();
+}
+
+void Case::Dispose()
+{
+	singularEnding.clear();
+	singularEnding_w_macron.clear();
+	pluralEnding.clear();
+	pluralEnding_w_macron.clear();
+
+	singularTranslations.clear();
+	singularTranslations_Prefixes.clear();
+	pluralTranslations.clear();
+	pluralTranslations_Prefixes.clear();
+}
 
 // Getters
 std::string Case::SingularEnding() const {
@@ -16,119 +40,92 @@ std::string Case::PluralEnding() const {
 std::wstring Case::PluralEnding_w_Macron() const {
 	return pluralEnding_w_macron;
 }
-std::string Case::SingularTranslation1() const {
-	return singularTranslation1;
+
+
+std::vector<std::string> Case::SingularTranslations() const
+{
+	return singularTranslations;
 }
-std::string Case::SingularTranslation2() const {
-	return singularTranslation2;
+std::vector<std::string> Case::SingularTranslations_Prefixes() const
+{
+	return singularTranslations_Prefixes;
 }
-std::string Case::SingularTranslation3() const {
-	return singularTranslation3;
+std::vector<std::string> Case::PluralTranslations() const
+{
+	return pluralTranslations;
 }
-std::string Case::SingularTranslation4() const {
-	return singularTranslation4;
+std::vector<std::string> Case::PluralTranslations_Prefixes() const
+{
+	return pluralTranslations_Prefixes;
 }
-std::string Case::SingularTranslation5() const {
-	return singularTranslation5;
+int Case::SingularTranslationsCount() const
+{
+	return singularTranslations.size();
 }
-std::string Case::SingularTranslation6() const {
-	return singularTranslation6;
+int Case::SingularTranslations_PrefixesCount() const
+{
+	return singularTranslations_Prefixes.size();
 }
-std::string Case::SingularTranslation7() const {
-	return singularTranslation7;
+int Case::PluralTranslationsCount() const
+{
+	return pluralTranslations.size();
 }
-std::string Case::PluralTranslation1() const {
-	return pluralTranslation1;
-}
-std::string Case::PluralTranslation2() const {
-	return pluralTranslation2;
-}
-std::string Case::PluralTranslation3() const {
-	return pluralTranslation3;
-}
-std::string Case::PluralTranslation4() const {
-	return pluralTranslation4;
-}
-std::string Case::PluralTranslation5() const {
-	return pluralTranslation5;
-}
-std::string Case::PluralTranslation6() const {
-	return pluralTranslation6;
-}
-std::string Case::PluralTranslation7() const {
-	return pluralTranslation7;
-}
-std::string Case::Explanation() const {
-	return explanation;
+int Case::PluralTranslations_PrefixesCount() const
+{
+	return pluralTranslations_Prefixes.size();
 }
 
 // Setters
-void Case::SetSingularEnding(const char* thing) {
-	singularEnding = thing;
+void Case::SetSingularEnding(const char* suffix) {
+	singularEnding = suffix;
 }
-void Case::SetSingularEnding_w_Macron(wchar_t thing1, const char thing2) {
-	singularEnding_w_macron += thing1;
-	singularEnding_w_macron += thing2;
+void Case::SetSingularEnding_w_Macron(wchar_t suffix1, const char suffix2) {
+	singularEnding_w_macron += suffix1;
+	singularEnding_w_macron += suffix2;
 }
-void Case::SetSingularEnding_w_Macron(const wchar_t thing) {
-	singularEnding_w_macron += thing;
+void Case::SetSingularEnding_w_Macron(const wchar_t suffix) {
+	singularEnding_w_macron += suffix;
 }
-void Case::SetPluralEnding(const char* thing) {
-	pluralEnding = thing;
+void Case::SetPluralEnding(const char* suffix) {
+	pluralEnding = suffix;
 }
-void Case::SetPluralEnding_w_Macron(wchar_t thing1, const char thing2) {
-	pluralEnding_w_macron += thing1;
-	pluralEnding_w_macron += thing2;
+void Case::SetPluralEnding_w_Macron(wchar_t suffix1, const char suffix2) {
+	pluralEnding_w_macron += suffix1;
+	pluralEnding_w_macron += suffix2;
 }
-void Case::SetPluralEnding_w_Macron(const wchar_t thing) {
-	pluralEnding_w_macron += thing;
-}
-void Case::SetSingularTranslation1(std::string addition) {
-	singularTranslation1 = addition;
-}
-void Case::SetSingularTranslation2(std::string addition) {
-	singularTranslation2 = addition;
-}
-void Case::SetSingularTranslation3(std::string addition) {
-	singularTranslation3 = addition;
-}
-void Case::SetSingularTranslation4(std::string addition) {
-	singularTranslation4 = addition;
-}
-void Case::SetSingularTranslation5(std::string addition) {
-	singularTranslation5 = addition;
-}
-void Case::SetSingularTranslation6(std::string addition) {
-	singularTranslation6 = addition;
-}
-void Case::SetSingularTranslation7(std::string addition) {
-	singularTranslation7 = addition;
-}
-void Case::SetPluralTranslation1(std::string addition) {
-	pluralTranslation1 = addition;
-}
-void Case::SetPluralTranslation2(std::string addition) {
-	pluralTranslation2 = addition;
-}
-void Case::SetPluralTranslation3(std::string addition) {
-	pluralTranslation3 = addition;
-}
-void Case::SetPluralTranslation4(std::string addition) {
-	pluralTranslation4 = addition;
-}
-void Case::SetPluralTranslation5(std::string addition) {
-	pluralTranslation5 = addition;
-}
-void Case::SetPluralTranslation6(std::string addition) {
-	pluralTranslation6 = addition;
-}
-void Case::SetPluralTranslation7(std::string addition) {
-	pluralTranslation7 = addition;
-}
-void Case::SetExplanation(std::string info) {
-	explanation = info;
+void Case::SetPluralEnding_w_Macron(const wchar_t suffix) {
+	pluralEnding_w_macron += suffix;
 }
 
+void Case::SetSingularTranslations(std::vector<std::string>& suffixes)
+{
+	singularTranslations = suffixes;
+}
+
+void Case::SetPluralTranslations(std::vector<std::string>& suffixes)
+{
+	pluralTranslations = suffixes;
+}
+
+void Case::AddToSingularTranslations(const char* suffix)
+{
+	singularTranslations.push_back(suffix);
+}
+
+void Case::AddToSingularTranslations_Prefixes(const char* prefix)
+{
+	singularTranslations_Prefixes.push_back(prefix);
+}
+
+void Case::AddToPluralTranslations(const char* suffix)
+{
+	pluralTranslations.push_back(suffix);
+}
+
+void Case::AddToPluralTranslations_Prefixes(const char* prefix)
+{
+	pluralTranslations_Prefixes.push_back(prefix);
+}
 
 
 

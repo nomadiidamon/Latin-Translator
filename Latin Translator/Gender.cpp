@@ -11,14 +11,40 @@ Gender::Gender(std::string _gender)
 	SetGender(_gender);
 }
 
-void Gender::SetGender(std::string _gender) {
-	if (_gender == "Masculine" || _gender == "Masc" || _gender == "M") {
+Gender::Gender(char genderInitial)
+{
+	if (genderInitial == 'M' || genderInitial == 'm') {
 		SetMasculine();
 	}
-	else if (_gender == "Feminine" || _gender == "Fem" || _gender == "F") {
+	else if (genderInitial == 'F' || genderInitial == 'f') {
 		SetFeminine();
 	}
-	else if (_gender == "Neuter" || _gender == "Neut" || _gender == "N") {
+	else if (genderInitial == 'N' || genderInitial == 'n') {
+		SetNeuter();
+	}
+	else {
+		SetUnknown();
+	}
+}
+
+Gender::~Gender()
+{
+	Dispose();
+}
+
+void Gender::Dispose()
+{
+	SetUnknown();
+}
+
+void Gender::SetGender(std::string _gender) {
+	if (_gender == "Masculine" || _gender == "Masc" || _gender == "M" || _gender == "m") {
+		SetMasculine();
+	}
+	else if (_gender == "Feminine" || _gender == "Fem" || _gender == "F" || _gender == "f") {
+		SetFeminine();
+	}
+	else if (_gender == "Neuter" || _gender == "Neut" || _gender == "N" || _gender == "n") {
 		SetNeuter();
 	}
 	else {
@@ -55,4 +81,27 @@ void Gender::SetUnknown() {
 	masculine = false;
 	feminine = false;
 	neuter = false;
+}
+
+bool Gender::IsMasculine() const
+{
+	return masculine;
+}
+
+bool Gender::IsFeminine() const
+{
+	return feminine;
+}
+
+bool Gender::IsNeuter() const
+{
+	return neuter;
+}
+
+bool Gender::IsValid() const
+{
+	if (masculine || feminine || neuter) {
+		return true;
+	}
+	return false;
 }
