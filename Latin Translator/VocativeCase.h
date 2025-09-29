@@ -20,6 +20,7 @@ private:
 
 public:
 
+	VocativeCase();
 	VocativeCase(int declension);
 	~VocativeCase();
 
@@ -30,6 +31,10 @@ public:
 
 	void SetExplanation(std::string info);
 
+	std::string SingularEnding() const;
+	int SingularEndingLength() const;
+	std::string PluralEnding() const;
+	int PluralEndingLength() const;
 
 };
 

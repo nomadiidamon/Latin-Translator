@@ -1,10 +1,17 @@
 #include "AccusativeCase.h"
 
 
+AccusativeCase::AccusativeCase()
+{
+	dec = Declension();
+	accCase = Case();
+	ApplyDeclension(dec.GetDeclensionNumber());
+}
+
 //Constructor
 AccusativeCase::AccusativeCase(int declension) {
-	Declension _dec;
-	dec = _dec;
+	dec = Declension(declension);
+	accCase = Case();
 	ApplyDeclension(dec.GetDeclensionNumber());
 }
 
@@ -71,4 +78,24 @@ std::string AccusativeCase::Explanation() const {
 //Setters
 void AccusativeCase::SetExplanation(std::string info) {
 	explanation = info;
+}
+
+std::string AccusativeCase::SingularEnding() const
+{
+	return accCase.SingularEnding();
+}
+
+int AccusativeCase::SingularEndingLength() const
+{
+	return accCase.SingularEnding().length();
+}
+
+std::string AccusativeCase::PluralEnding() const
+{
+	return accCase.PluralEnding();
+}
+
+int AccusativeCase::PluralEndingLength() const
+{
+	return accCase.PluralEnding().length();
 }

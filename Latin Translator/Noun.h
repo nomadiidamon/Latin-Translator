@@ -15,6 +15,13 @@ private:
 	Gender gender;
 	Number number;
 
+	NominativeCase nom;
+	GenitiveCase gen;
+	DativeCase dat;
+	AccusativeCase acc;
+	AblativeCase abl;
+	VocativeCase voc;
+
 	std::string nominative;
 	std::string genitive;
 	std::string dative;
@@ -24,59 +31,43 @@ private:
 	std::string definition;
 	std::string base;
 
-	NominativeCase nom;
-	GenitiveCase gen;
-	DativeCase dat;
-	AccusativeCase acc;
-	AblativeCase abl;
-	VocativeCase voc;
 
 
 public:
-	std::vector<std::string> forms;
-	std::vector<std::string> translations;
-	std::vector<std::string> definitions;
+	std::vector<std::string> translationsByCase;
 
 	Noun();
-	Noun(std::string _declension, std::string _gender, std::string _nominative, std::string _genitive, std::string _definition, bool onlySingular = false, bool onlyPlural = false);
+	Noun(std::string _declension, std::string _gender, std::string _number, std::string _nominative, std::string _genitive, std::string _definition);
 
 	// Getters and setters
 	std::string Nominative() const;
-	//void SetNominative(const std::string& newWord);
+	void SetNominative(const std::string& newWord);
 	void SetNominative();
 
 	std::string Genitive() const;
-	//void SetGenitive(const std::string& newWord);
+	void SetGenitive(const std::string& newWord);
 	void SetGenitive();
 
 	std::string Dative() const;
-	//void SetDative(const std::string& newWord);
+	void SetDative(const std::string& newWord);
 	void SetDative();
 
 	std::string Accusative() const;
-	//void SetAccusative(const std::string& newWord);
+	void SetAccusative(const std::string& newWord);
 	void SetAccusative();
 
 	std::string Ablative() const;
-	//void SetAblative(const std::string& newWord);
+	void SetAblative(const std::string& newWord);
 	void SetAblative();
 
 	std::string Vocative() const;
-	//void SetVocative(const std::string& newWord);
+	void SetVocative(const std::string& newWord);
 	void SetVocative();
 
 	std::string Definition() const;
 	void SetDefinition(const std::string& newLatinDefinition);
-	void ParseDefinitions();
-	void StoreDefinitions(std::string def);
-
-	//void SetTranslations();
-	//void StoreTranslation(std::string input);
-	//void CleanUpTranslations();
-	//bool FindTranslation(std::string toFind);
 
 	void SetForms();
-	void StoreForms();
 	bool FindForm(std::string toFind);
 
 	const Declension& getDeclension() const;

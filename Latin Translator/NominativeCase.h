@@ -17,7 +17,7 @@ private:
 	std::string explanation = "";
 
 public:
-
+	NominativeCase();
 	NominativeCase(int declension);
 	~NominativeCase();
 
@@ -26,5 +26,10 @@ public:
 	std::string Explanation() const;
 
 	void SetExplanation(std::string info);
+
+	std::string SingularEnding();
+	int SingularEndingLength();
+	std::string PluralEnding();
+	int PluralEndingLength();
 
 };

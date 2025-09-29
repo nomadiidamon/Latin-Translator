@@ -1,8 +1,16 @@
 #include "VocativeCase.h"
 
+VocativeCase::VocativeCase()
+{
+	dec = Declension();
+	vocCase = Case();
+	ApplyDeclension(dec.GetDeclensionNumber());
+}
+
 //Constructor
 VocativeCase::VocativeCase(int declension) {
 	dec = Declension(declension);
+	vocCase = Case();
 	ApplyDeclension(dec.GetDeclensionNumber());
 }
 
@@ -32,7 +40,7 @@ void VocativeCase::ApplyDeclension(const int& _declension) {
 	}
 	else if (dec.GetDeclensionNumber() == 3) {
 		vocCase.SetSingularEnding("");
-		vocCase.SetSingularEnding_w_Macron(L'');
+		//vocCase.SetSingularEnding_w_Macron(L'');
 		vocCase.SetPluralEnding("es");
 		vocCase.SetPluralEnding_w_Macron(lower_e, 's');
 	}
@@ -74,4 +82,24 @@ std::string VocativeCase::Explanation() const {
 //Setters
 void VocativeCase::SetExplanation(std::string info) {
 	explanation = info;
+}
+
+std::string VocativeCase::SingularEnding() const
+{
+	return vocCase.SingularEnding();
+}
+
+int VocativeCase::SingularEndingLength() const
+{
+	return vocCase.SingularEnding().length();
+}
+
+std::string VocativeCase::PluralEnding() const
+{
+	return vocCase.PluralEnding();
+}
+
+int VocativeCase::PluralEndingLength() const
+{
+	return vocCase.PluralEnding().length();
 }

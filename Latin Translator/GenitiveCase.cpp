@@ -1,6 +1,13 @@
 #include "GenitiveCase.h"
 #include "Macrons.h"
 
+GenitiveCase::GenitiveCase()
+{
+	dec = Declension();
+	genCase = Case();
+	ApplyDeclension(dec.GetDeclensionNumber());
+}
+
 GenitiveCase::GenitiveCase(int declension) {
 	dec = Declension(declension);
 	genCase = Case();
@@ -75,4 +82,24 @@ std::string GenitiveCase::Explanation() const {
 // Setters
 void GenitiveCase::SetExplanation(std::string info) {
 	explanation = info;
+}
+
+std::string GenitiveCase::SingularEnding() const
+{
+	return genCase.SingularEnding();
+}
+
+int GenitiveCase::SingularEndingLength() const
+{
+	return genCase.SingularEnding().length();
+}
+
+std::string GenitiveCase::PluralEnding() const
+{
+	return genCase.PluralEnding();
+}
+
+int GenitiveCase::PluralEndingLength() const
+{
+	return genCase.PluralEnding().length();
 }

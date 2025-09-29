@@ -15,27 +15,27 @@ namespace TranslatorTests
 			Declension one;
 			one.SetFirst();
 			std::string title = "First";
-			Assert::AreEqual(one.GetDeclension(), title);
+			Assert::AreEqual(one.GetDeclensionString(), title);
 
 			Declension two;
 			two.SetSecond();
 			title = "Second";
-			Assert::AreEqual(two.GetDeclension(), title);
+			Assert::AreEqual(two.GetDeclensionString(), title);
 
 			Declension three;
 			three.SetThird();
 			title = "Third";
-			Assert::AreEqual(three.GetDeclension(), title);
+			Assert::AreEqual(three.GetDeclensionString(), title);
 
 			Declension four;
 			four.SetFourth();
 			title = "Fourth";
-			Assert::AreEqual(four.GetDeclension(), title);
+			Assert::AreEqual(four.GetDeclensionString(), title);
 
 			Declension five;
 			five.SetFifth();
 			title = "Fifth";
-			Assert::AreEqual(five.GetDeclension(), title);
+			Assert::AreEqual(five.GetDeclensionString(), title);
 
 		}
 

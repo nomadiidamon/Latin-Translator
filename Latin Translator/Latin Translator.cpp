@@ -5,18 +5,12 @@
 #include "Noun.h"
 int main()
 {
-	Noun port("First", "F", "Porta", "Portae", "gate, entrance");
+	Noun port("First", "F", "Both", "Porta", "Portae", "gate, entrance");
+	port.Display();
 
-	//for (int i = 0; i < port.forms.size(); i++) {
-	//	std::cout << port.forms[i] << "\n";
-	//}
+	std::cout << "------------------------" << std::endl;
 
-	port.ParseDefinitions();
-
-	//port.SetTranslations();
-
-	//for (int i = 0; i < port.translations.size(); i++) {
-	//	std::cout << i << "\t" << port.translations[i] << "\n";
-	//}
+	Noun gladius("Second", "M", "Both", "Gladius", "Gladii", "sword");
+	gladius.Display();
 }
 

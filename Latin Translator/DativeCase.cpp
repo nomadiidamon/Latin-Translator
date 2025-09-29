@@ -1,5 +1,12 @@
 #include "DativeCase.h"
 
+DativeCase::DativeCase()
+{
+	dec = Declension();
+	datCase = Case();
+	ApplyDeclension(dec.GetDeclensionNumber());
+}
+
 //Constructor
 DativeCase::DativeCase(int declension) {
 	dec = Declension(declension);
@@ -78,4 +85,24 @@ std::string DativeCase::Explanation() const {
 //Setters
 void DativeCase::SetExplanation(std::string info) {
 	explanation = info;
+}
+
+std::string DativeCase::SingularEnding()
+{
+	return datCase.SingularEnding();
+}
+
+int DativeCase::SingularEndingLength()
+{
+	return datCase.SingularEnding().length();
+}
+
+std::string DativeCase::PluralEnding()
+{
+	return datCase.PluralEnding();
+}
+
+int DativeCase::PluralEndingLength()
+{
+	return datCase.PluralEnding().length();
 }

@@ -19,6 +19,7 @@ private:
 
 public:
 
+	DativeCase();
 	DativeCase(int declension);
 	~DativeCase();
 
@@ -27,6 +28,12 @@ public:
 	std::string Explanation() const;
 
 	void SetExplanation(std::string info);
+
+	std::string SingularEnding();
+	int SingularEndingLength();
+	std::string PluralEnding();
+	int PluralEndingLength();
+	
 
 };
 

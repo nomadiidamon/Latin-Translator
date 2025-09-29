@@ -2,6 +2,13 @@
 #include "Macrons.h"
 
 
+NominativeCase::NominativeCase()
+{
+	dec = Declension();
+	nomCase = Case();
+	ApplyDeclension(dec.GetDeclensionNumber());
+}
+
 //Constructor
 NominativeCase::NominativeCase(int declension) {
 	dec = Declension(declension);
@@ -19,6 +26,7 @@ NominativeCase::~NominativeCase()
 }
 
 void NominativeCase::ApplyDeclension(const int& _declension) {
+	
 
 	if (dec.GetDeclensionNumber() == 1) {
 		nomCase.SetSingularEnding("a");
@@ -34,7 +42,7 @@ void NominativeCase::ApplyDeclension(const int& _declension) {
 	}
 	else if (dec.GetDeclensionNumber() == 3) {
 		nomCase.SetSingularEnding("");
-		nomCase.SetSingularEnding_w_Macron(L'');
+		//nomCase.SetSingularEnding_w_Macron(L'');
 		nomCase.SetPluralEnding("es");
 		nomCase.SetPluralEnding_w_Macron(lower_e, 's');
 	}
@@ -77,4 +85,24 @@ std::string NominativeCase::Explanation() const {
 // Setters
 void NominativeCase::SetExplanation(std::string info) {
 	explanation = info;
+}
+
+std::string NominativeCase::SingularEnding()
+{
+	return nomCase.SingularEnding();
+}
+
+int NominativeCase::SingularEndingLength()
+{
+	return nomCase.SingularEnding().length();
+}
+
+std::string NominativeCase::PluralEnding()
+{
+	return nomCase.PluralEnding();
+}
+
+int NominativeCase::PluralEndingLength()
+{
+	return nomCase.PluralEnding().length();
 }

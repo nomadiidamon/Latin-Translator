@@ -19,6 +19,7 @@ private:
 
 public:
 
+	GenitiveCase();
 	GenitiveCase(int declension);
 	~GenitiveCase();
 
@@ -28,7 +29,10 @@ public:
 
 	void SetExplanation(std::string info);
 
-
+	std::string SingularEnding() const;
+	int SingularEndingLength() const;
+	std::string PluralEnding() const;
+	int PluralEndingLength() const;
 
 
 

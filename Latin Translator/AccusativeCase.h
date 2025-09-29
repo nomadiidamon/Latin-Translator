@@ -18,6 +18,7 @@ private:
 
 public:
 
+	AccusativeCase();
 	AccusativeCase(int declension);
 	~AccusativeCase();
 
@@ -27,6 +28,10 @@ public:
 
 	void SetExplanation(std::string info);
 
+	std::string SingularEnding() const;
+	int SingularEndingLength() const;
+	std::string PluralEnding() const;
+	int PluralEndingLength() const;
 
 
 

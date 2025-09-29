@@ -145,7 +145,21 @@ std::string Declension::GetDeclensionString() const {
 
 int Declension::GetDeclensionNumber() const
 {
-	return std::stoi(declension);
+	if (declension == "First") {
+		return 1;
+	}
+	else if (declension == "Second") {
+		return 2;
+	}
+	else if (declension == "Third") {
+		return 3;
+	}
+	else if (declension == "Fourth") {
+		return 4;
+	}
+	else if (declension == "Fifth") {
+		return 5;
+	}
 }
 
 bool Declension::IsValid() const

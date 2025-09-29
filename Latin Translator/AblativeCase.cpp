@@ -1,8 +1,16 @@
 #include "AblativeCase.h"
 
+AblativeCase::AblativeCase()
+{
+	dec = Declension();
+	ablCase = Case();
+	ApplyDeclension(dec.GetDeclensionNumber());
+}
+
 //Constructor
 AblativeCase::AblativeCase(int declension) {
 	dec = Declension(declension);
+	ablCase = Case();
 	ApplyDeclension(dec.GetDeclensionNumber());
 }
 
@@ -76,4 +84,24 @@ std::string AblativeCase::Explanation() const {
 //Setters
 void AblativeCase::SetExplanation(std::string info) {
 	explanation = info;
+}
+
+std::string AblativeCase::SingularEnding() const
+{
+	return ablCase.SingularEnding();
+}
+
+int AblativeCase::SingularEndingLength() const
+{
+	return ablCase.SingularEnding().length();
+}
+
+std::string AblativeCase::PluralEnding() const
+{
+	return ablCase.PluralEnding();
+}
+
+int AblativeCase::PluralEndingLength() const
+{
+	return ablCase.PluralEnding().length();
 }
