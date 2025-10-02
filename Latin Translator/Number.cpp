@@ -15,7 +15,7 @@ Number::Number(std::string _number)
 	else if (_number == "Plural" || _number == "plural" || _number == "Plur" || _number == "plur") {
 		SetPlural();
 	}
-	else if (_number == "Both" || _number == "both") {
+	else if (_number == "Both" || _number == "both" || _number == "B" || _number == "b") {
 		SetBoth();
 	}
 	else {
@@ -107,7 +107,7 @@ bool Number::IsBoth() const
 
 bool Number::IsUnknown() const
 {
-	if (both) {
+	if (!singular && !plural && !both) {
 		return true;
 	}
 	else {

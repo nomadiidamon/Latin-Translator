@@ -156,9 +156,21 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\Latin Translator\AblativeCase.cpp" />
+    <ClCompile Include="..\Latin Translator\AccusativeCase.cpp" />
+    <ClCompile Include="..\Latin Translator\Case.cpp" />
+    <ClCompile Include="..\Latin Translator\DativeCase.cpp" />
     <ClCompile Include="..\Latin Translator\Declension.cpp" />
+    <ClCompile Include="..\Latin Translator\Gender.cpp" />
+    <ClCompile Include="..\Latin Translator\GenitiveCase.cpp" />
+    <ClCompile Include="..\Latin Translator\NominativeCase.cpp" />
+    <ClCompile Include="..\Latin Translator\Noun.cpp" />
     <ClCompile Include="..\Latin Translator\Number.cpp" />
+    <ClCompile Include="..\Latin Translator\VocativeCase.cpp" />
+    <ClCompile Include="CaseTests.cpp" />
     <ClCompile Include="DeclensionTests.cpp" />
+    <ClCompile Include="GenderTests.cpp" />
+    <ClCompile Include="NounTests.cpp" />
     <ClCompile Include="NumberTests.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>

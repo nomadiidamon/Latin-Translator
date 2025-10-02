@@ -18,5 +18,6 @@
 #include "../Latin Translator/Declension.h"
 #include "../Latin Translator/Number.h"
 #include "../Latin Translator/json.hpp"
+#include "../Latin Translator/Noun.h"
 
 #endif //PCH_H
