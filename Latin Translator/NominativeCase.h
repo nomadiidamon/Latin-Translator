@@ -33,4 +33,7 @@ public:
 	std::string PluralEnding();
 	int PluralEndingLength();
 
+	std::vector<std::string> SingularTranslation(std::string base);
+	std::vector<std::string> PluralTranslation(std::string base);
+
 };

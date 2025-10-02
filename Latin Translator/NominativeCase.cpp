@@ -11,9 +11,8 @@ NominativeCase::NominativeCase()
 
 //Constructor
 NominativeCase::NominativeCase(int declension) {
-	dec = Declension(declension);
 	nomCase = Case();
-	ApplyDeclension(dec.GetDeclensionNumber());
+	ApplyDeclension(declension);
 }
 
 NominativeCase::~NominativeCase()
@@ -32,7 +31,7 @@ void NominativeCase::Dispose()
 
 void NominativeCase::ApplyDeclension(const int& _declension) {
 	
-
+	dec = Declension(_declension);
 	if (dec.GetDeclensionNumber() == 1) {
 		nomCase.SetSingularEnding("a");
 		nomCase.SetSingularEnding_w_Macron('a');
@@ -110,4 +109,14 @@ std::string NominativeCase::PluralEnding()
 int NominativeCase::PluralEndingLength()
 {
 	return nomCase.PluralEnding().length();
+}
+
+std::vector<std::string> NominativeCase::SingularTranslation(std::string base)
+{
+	return std::vector<std::string>();
+}
+
+std::vector<std::string> NominativeCase::PluralTranslation(std::string base)
+{
+	return std::vector<std::string>();
 }

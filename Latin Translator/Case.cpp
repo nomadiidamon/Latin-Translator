@@ -80,21 +80,23 @@ void Case::SetSingularEnding(const char* suffix) {
 	singularEnding = suffix;
 }
 void Case::SetSingularEnding_w_Macron(wchar_t suffix1, const char suffix2) {
-	singularEnding_w_macron += suffix1;
+	singularEnding_w_macron.clear();
+	singularEnding_w_macron = suffix1;
 	singularEnding_w_macron += suffix2;
 }
 void Case::SetSingularEnding_w_Macron(const wchar_t suffix) {
-	singularEnding_w_macron += suffix;
+	singularEnding_w_macron = suffix;
 }
 void Case::SetPluralEnding(const char* suffix) {
 	pluralEnding = suffix;
 }
 void Case::SetPluralEnding_w_Macron(wchar_t suffix1, const char suffix2) {
-	pluralEnding_w_macron += suffix1;
+	pluralEnding_w_macron.clear();
+	pluralEnding_w_macron = suffix1;
 	pluralEnding_w_macron += suffix2;
 }
 void Case::SetPluralEnding_w_Macron(const wchar_t suffix) {
-	pluralEnding_w_macron += suffix;
+	pluralEnding_w_macron = suffix;
 }
 
 void Case::SetSingularTranslations(std::vector<std::string>& suffixes)
