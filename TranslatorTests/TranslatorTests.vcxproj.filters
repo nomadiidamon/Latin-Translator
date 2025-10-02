@@ -30,7 +30,7 @@
     <ClCompile Include="NumberTests.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Number.cpp">
+    <ClCompile Include="..\Latin Translator\Number.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

@@ -157,8 +157,8 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\Latin Translator\Declension.cpp" />
+    <ClCompile Include="..\Latin Translator\Number.cpp" />
     <ClCompile Include="DeclensionTests.cpp" />
-    <ClCompile Include="Number.cpp" />
     <ClCompile Include="NumberTests.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>

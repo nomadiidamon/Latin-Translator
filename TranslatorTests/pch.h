@@ -15,6 +15,8 @@
 #include "../Latin Translator/AccusativeCase.h"
 #include "../Latin Translator/AblativeCase.h"
 #include "../Latin Translator/VocativeCase.h"
+#include "../Latin Translator/Declension.h"
+#include "../Latin Translator/Number.h"
 #include "../Latin Translator/json.hpp"
 
 #endif //PCH_H
