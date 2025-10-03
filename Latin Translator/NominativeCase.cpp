@@ -20,6 +20,7 @@ NominativeCase::~NominativeCase()
 
 void NominativeCase::Dispose()
 {
+	Case::Dispose();
 	gender.Dispose();
 	number.Dispose();
 	dec.Dispose();
@@ -66,13 +67,13 @@ void NominativeCase::ApplyDeclension(const int& _declension) {
 		AddToPluralTranslations("ERROR");
 	}
 
-	AddToSingularTranslations("the");
-	AddToSingularTranslations("a");
-	AddToSingularTranslations("one");
+	AddToSingularTranslations_Articles("the");
+	AddToSingularTranslations_Articles("a");
+	AddToSingularTranslations_Articles("one");
 
-	AddToPluralTranslations("the");
-	AddToPluralTranslations("some");
-	AddToPluralTranslations("many");
+	AddToPluralTranslations_Articles("the");
+	AddToPluralTranslations_Articles("some");
+	AddToPluralTranslations_Articles("many");
 
 	SetExplanation("This case has two distinct uses:\n1.)The Subject of a verb- When a noun is used in this manner it is typically the person or thing performing the actions in the sentence.\n2.) A Predicate Nominative- This typically involves a sentence with two nouns in the Nominative Case, where one is used to provide further information about the other. This grammatical construction typically involves some form of the verb Sum(to be/exist)");
 }
@@ -88,13 +89,3 @@ void NominativeCase::SetExplanation(std::string info) {
 	explanation = info;
 }
 
-
-std::vector<std::string> NominativeCase::SingularTranslation(std::string base)
-{
-	return std::vector<std::string>();
-}
-
-std::vector<std::string> NominativeCase::PluralTranslation(std::string base)
-{
-	return std::vector<std::string>();
-}

@@ -6,7 +6,8 @@
 #include "Number.h"
 #include "Macrons.h"
 
-class NominativeCase : public Case{
+class NominativeCase : public Case
+{
 private:
 
 	Gender gender;
@@ -19,15 +20,12 @@ public:
 	NominativeCase();
 	NominativeCase(int declension);
 	~NominativeCase();
-	void Dispose();
+	virtual void Dispose() override;
 
 	void ApplyDeclension(const int& _declension);
 
 	std::string Explanation() const;
 
 	void SetExplanation(std::string info);
-
-	std::vector<std::string> SingularTranslation(std::string base);
-	std::vector<std::string> PluralTranslation(std::string base);
 
 };

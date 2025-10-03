@@ -6,11 +6,10 @@
 #include "Number.h"
 #include "Macrons.h"
 
-class GenitiveCase
+class GenitiveCase : public Case
 {
 private:
 
-	Case genCase;
 	Gender gender;
 	Number number;
 	Declension dec;
@@ -22,22 +21,13 @@ public:
 	GenitiveCase();
 	GenitiveCase(int declension);
 	~GenitiveCase();
-	void Dispose();
+	virtual void Dispose() override;
 
 	void ApplyDeclension(const int& _declension);
 
 	std::string Explanation() const;
 
 	void SetExplanation(std::string info);
-
-	std::string SingularEnding() const;
-	int SingularEndingLength() const;
-	std::string PluralEnding() const;
-	int PluralEndingLength() const;
-
-
-
-
 
 };
 

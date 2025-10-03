@@ -170,6 +170,7 @@
     <ClCompile Include="CaseTests.cpp" />
     <ClCompile Include="DeclensionTests.cpp" />
     <ClCompile Include="GenderTests.cpp" />
+    <ClCompile Include="GenetiveCaseTests.cpp" />
     <ClCompile Include="NominativeCaseTests.cpp" />
     <ClCompile Include="NounTests.cpp" />
     <ClCompile Include="NumberTests.cpp" />

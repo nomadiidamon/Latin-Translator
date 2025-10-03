@@ -4,13 +4,10 @@
 GenitiveCase::GenitiveCase()
 {
 	dec = Declension();
-	genCase = Case();
 	ApplyDeclension(dec.GetDeclensionNumber());
 }
 
 GenitiveCase::GenitiveCase(int declension) {
-	dec = Declension(declension);
-	genCase = Case();
 	ApplyDeclension(dec.GetDeclensionNumber());
 }
 
@@ -21,7 +18,7 @@ GenitiveCase::~GenitiveCase()
 
 void GenitiveCase::Dispose()
 {
-	genCase.Dispose();
+	Case::Dispose();
 	gender.Dispose();
 	number.Dispose();
 	dec.Dispose();
@@ -29,52 +26,54 @@ void GenitiveCase::Dispose()
 }
 
 
-void GenitiveCase::ApplyDeclension(const int& _declension) {
+void GenitiveCase::ApplyDeclension(const int& _declension) 
+{
+	dec = Declension(_declension);
 
 	if (dec.GetDeclensionNumber() == 1) {
-		genCase.SetSingularEnding("ae");
-		genCase.SetSingularEnding_w_Macron('ae');
-		genCase.SetPluralEnding("arum");
-		genCase.SetPluralEnding_w_Macron(lower_a, (char)'rum');
+		SetSingularEnding("ae");
+		SetSingularEnding_w_Macron('ae');
+		SetPluralEnding("arum");
+		SetPluralEnding_w_Macron(lower_a, (char)'rum');
 	}
 	else if (dec.GetDeclensionNumber() == 2) {
-		genCase.SetSingularEnding("i");
-		genCase.SetSingularEnding_w_Macron('i');
-		genCase.SetPluralEnding("orum");
-		genCase.SetPluralEnding_w_Macron(lower_o, (char)'rum');
+		SetSingularEnding("i");
+		SetSingularEnding_w_Macron('i');
+		SetPluralEnding("orum");
+		SetPluralEnding_w_Macron(lower_o, (char)'rum');
 	}
 	else if (dec.GetDeclensionNumber() == 3) {
-		genCase.SetSingularEnding("is");
-		genCase.SetSingularEnding_w_Macron('i', 's');
-		genCase.SetPluralEnding("um");
-		genCase.SetPluralEnding_w_Macron(lower_u, 'm');
+		SetSingularEnding("is");
+		SetSingularEnding_w_Macron('i', 's');
+		SetPluralEnding("um");
+		SetPluralEnding_w_Macron(lower_u, 'm');
 	}
 	else if (dec.GetDeclensionNumber() == 4) {
-		genCase.SetSingularEnding("us");
-		genCase.SetSingularEnding_w_Macron('u', 's');
-		genCase.SetPluralEnding("uum");
-		genCase.SetPluralEnding_w_Macron(lower_u, (char)'um');
+		SetSingularEnding("us");
+		SetSingularEnding_w_Macron('u', 's');
+		SetPluralEnding("uum");
+		SetPluralEnding_w_Macron(lower_u, (char)'um');
 	}
 	else if (dec.GetDeclensionNumber() == 5) {
-		genCase.SetSingularEnding("ei");
-		genCase.SetSingularEnding_w_Macron('ei');
-		genCase.SetPluralEnding("erum");
-		genCase.SetPluralEnding_w_Macron(lower_e, (char)'rum');
+		SetSingularEnding("ei");
+		SetSingularEnding_w_Macron('ei');
+		SetPluralEnding("erum");
+		SetPluralEnding_w_Macron(lower_e, (char)'rum');
 	}
 	else {
-		genCase.SetSingularEnding("ERROR");
-		genCase.SetPluralEnding("ERROR");
-		genCase.AddToSingularTranslations("ERROR");
-		genCase.AddToPluralTranslations("ERROR");
+		SetSingularEnding("ERROR");
+		SetPluralEnding("ERROR");
+		AddToSingularTranslations("ERROR");
+		AddToPluralTranslations("ERROR");
 	}
 
-	genCase.AddToSingularTranslations("of the");
-	genCase.AddToSingularTranslations("of a");
-	genCase.AddToSingularTranslations("the __'s");
+	AddToSingularTranslations_Articles("of the");
+	AddToSingularTranslations_Articles("of a");
+	AddToSingularTranslations_Articles("the __'s");
 
-	genCase.AddToSingularTranslations("a __'s");
-	genCase.AddToPluralTranslations("of the");
-	genCase.AddToPluralTranslations("__'s");
+	AddToPluralTranslations_Articles("a __'s");
+	AddToPluralTranslations_Articles("of the");
+	AddToPluralTranslations_Articles("__'s");
 
 	SetExplanation("");
 }
@@ -87,24 +86,4 @@ std::string GenitiveCase::Explanation() const {
 // Setters
 void GenitiveCase::SetExplanation(std::string info) {
 	explanation = info;
-}
-
-std::string GenitiveCase::SingularEnding() const
-{
-	return genCase.SingularEnding();
-}
-
-int GenitiveCase::SingularEndingLength() const
-{
-	return genCase.SingularEnding().length();
-}
-
-std::string GenitiveCase::PluralEnding() const
-{
-	return genCase.PluralEnding();
-}
-
-int GenitiveCase::PluralEndingLength() const
-{
-	return genCase.PluralEnding().length();
 }

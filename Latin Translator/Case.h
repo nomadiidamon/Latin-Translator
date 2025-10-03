@@ -11,14 +11,14 @@ private:
 	std::wstring pluralEnding_w_macron = L"";
 
 	std::vector<std::string> singularTranslations;
-	std::vector<std::string> singularTranslations_Prefixes;
+	std::vector<std::string> singularTranslations_Articles;
 	std::vector<std::string> pluralTranslations;
-	std::vector<std::string> pluralTranslations_Prefixes;
+	std::vector<std::string> pluralTranslations_Articles;
 public:
 	// Constructor
 	Case();
 	~Case();
-	void Dispose();
+	virtual void Dispose();
 
 	// Getters
 	std::string SingularEnding() const;
@@ -32,9 +32,9 @@ public:
 	std::vector<std::string> PluralTranslations_Prefixes() const;
 
 	int SingularTranslationsCount() const;
-	int SingularTranslations_PrefixesCount() const;
+	int SingularTranslations_ArticlesCount() const;
 	int PluralTranslationsCount() const;
-	int PluralTranslations_PrefixesCount() const;	
+	int PluralTranslations_ArticlesCount() const;	
 
 	// Setters
 	void SetSingularEnding(const char* suffix);
@@ -45,13 +45,13 @@ public:
 	void SetPluralEnding_w_Macron(wchar_t suffix1, const char suffix2);
 	void SetPluralEnding_w_Macron(const wchar_t suffix);
 
-	void SetSingularTranslations(std::vector<std::string>& suffixes);
-	void SetPluralTranslations(std::vector<std::string>& suffixes);
-
+	void SetSingularTranslations(std::vector<std::string> suffixes);
 	void AddToSingularTranslations(const char* suffix);
-	void AddToSingularTranslations_Prefixes(const char* prefix);
+	void AddToSingularTranslations_Articles(const char* prefix);
+
+	void SetPluralTranslations(std::vector<std::string> suffixes);
 	void AddToPluralTranslations(const char* suffix);
-	void AddToPluralTranslations_Prefixes(const char* prefix);
+	void AddToPluralTranslations_Articles(const char* prefix);
 	
 	
 };

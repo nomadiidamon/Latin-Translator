@@ -17,7 +17,7 @@ namespace TranslatorTests
 			Assert::AreEqual(std::string(""), latinCase.SingularEnding());
 			Assert::AreEqual(std::wstring(L""), latinCase.SingularEnding_w_Macron());
 			Assert::AreEqual(0, latinCase.SingularTranslationsCount());
-			Assert::AreEqual(0, latinCase.SingularTranslations_PrefixesCount());
+			Assert::AreEqual(0, latinCase.SingularTranslations_ArticlesCount());
 		}
 
 		TEST_METHOD(blankConstructor_pluralFuncs)
@@ -26,7 +26,7 @@ namespace TranslatorTests
 			Assert::AreEqual(std::string(""), latinCase.PluralEnding());
 			Assert::AreEqual(std::wstring(L""), latinCase.PluralEnding_w_Macron());
 			Assert::AreEqual(0, latinCase.PluralTranslationsCount());
-			Assert::AreEqual(0, latinCase.PluralTranslations_PrefixesCount());
+			Assert::AreEqual(0, latinCase.PluralTranslations_ArticlesCount());
 		}
 
 		TEST_METHOD(SingularFuncs)

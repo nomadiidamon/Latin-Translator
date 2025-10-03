@@ -652,7 +652,7 @@ std::string Noun::GetBase() const {
 void Noun::SetBase()
 {
 	base = genitive_singular;
-	size_t x = gen.SingularEndingLength();
+	size_t x = gen.SingularEnding().length();
 	for (int i = 0; i < x; i++) {
 		base.pop_back();
 	}

@@ -16,19 +16,19 @@ namespace TranslatorTests
 			NominativeCase nomCase;
 			nomCase.ApplyDeclension(1);
 			Assert::AreEqual(std::string("a"), nomCase.SingularEnding());
-			Assert::AreEqual(1, nomCase.SingularEndingLength());
+			Assert::AreEqual(1, (int)nomCase.SingularEnding().length());
 			nomCase.ApplyDeclension(2);
 			Assert::AreEqual(std::string("us"), nomCase.SingularEnding());
-			Assert::AreEqual(2, nomCase.SingularEndingLength());
+			Assert::AreEqual(2, (int)nomCase.SingularEnding().length());
 			nomCase.ApplyDeclension(3);
 			Assert::AreEqual(std::string(""), nomCase.SingularEnding());
-			Assert::AreEqual(0, nomCase.SingularEndingLength());
+			Assert::AreEqual(0, (int)nomCase.SingularEnding().length());
 			nomCase.ApplyDeclension(4);
 			Assert::AreEqual(std::string("us"), nomCase.SingularEnding());
-			Assert::AreEqual(2, nomCase.SingularEndingLength());
+			Assert::AreEqual(2, (int)nomCase.SingularEnding().length());
 			nomCase.ApplyDeclension(5);
 			Assert::AreEqual(std::string("es"), nomCase.SingularEnding());
-			Assert::AreEqual(2, nomCase.SingularEndingLength());
+			Assert::AreEqual(2, (int)nomCase.SingularEnding().length());
 		}
 
 		TEST_METHOD(blankConstructor_PluralFuncs)
@@ -36,19 +36,19 @@ namespace TranslatorTests
 			NominativeCase nomCase;
 			nomCase.ApplyDeclension(1);
 			Assert::AreEqual(std::string("ae"), nomCase.PluralEnding());
-			Assert::AreEqual(2, nomCase.PluralEndingLength());
+			Assert::AreEqual(2, (int)nomCase.PluralEnding().length());
 			nomCase.ApplyDeclension(2);
 			Assert::AreEqual(std::string("i"), nomCase.PluralEnding());
-			Assert::AreEqual(1, nomCase.PluralEndingLength());
+			Assert::AreEqual(1, (int)nomCase.PluralEnding().length());
 			nomCase.ApplyDeclension(3);
 			Assert::AreEqual(std::string("es"), nomCase.PluralEnding());
-			Assert::AreEqual(2, nomCase.PluralEndingLength());
+			Assert::AreEqual(2, (int)nomCase.PluralEnding().length());
 			nomCase.ApplyDeclension(4);
 			Assert::AreEqual(std::string("us"), nomCase.PluralEnding());
-			Assert::AreEqual(2, nomCase.PluralEndingLength());
+			Assert::AreEqual(2, (int)nomCase.PluralEnding().length());
 			nomCase.ApplyDeclension(5);
 			Assert::AreEqual(std::string("es"), nomCase.PluralEnding());
-			Assert::AreEqual(2, nomCase.PluralEndingLength());
+			Assert::AreEqual(2, (int)nomCase.PluralEnding().length());
 
 		}
 
@@ -56,38 +56,38 @@ namespace TranslatorTests
 		{
 			NominativeCase nomCase(1);
 			Assert::AreEqual(std::string("a"), nomCase.SingularEnding());
-			Assert::AreEqual(1, nomCase.SingularEndingLength());
+			Assert::AreEqual(1, (int)nomCase.SingularEnding().length());
 			nomCase.ApplyDeclension(2);
 			Assert::AreEqual(std::string("us"), nomCase.SingularEnding());
-			Assert::AreEqual(2, nomCase.SingularEndingLength());
+			Assert::AreEqual(2, (int)nomCase.SingularEnding().length());
 			nomCase.ApplyDeclension(3);
 			Assert::AreEqual(std::string(""), nomCase.SingularEnding());
-			Assert::AreEqual(0, nomCase.SingularEndingLength());
+			Assert::AreEqual(0, (int)nomCase.SingularEnding().length());
 			nomCase.ApplyDeclension(4);
 			Assert::AreEqual(std::string("us"), nomCase.SingularEnding());
-			Assert::AreEqual(2, nomCase.SingularEndingLength());
+			Assert::AreEqual(2, (int)nomCase.SingularEnding().length());
 			nomCase.ApplyDeclension(5);
 			Assert::AreEqual(std::string("es"), nomCase.SingularEnding());
-			Assert::AreEqual(2, nomCase.SingularEndingLength());
+			Assert::AreEqual(2, (int)nomCase.SingularEnding().length());
 		}
 
 		TEST_METHOD(intConstructor_PluralFuncs)
 		{
 			NominativeCase nomCase(1);
 			Assert::AreEqual(std::string("ae"), nomCase.PluralEnding());
-			Assert::AreEqual(2, nomCase.PluralEndingLength());
+			Assert::AreEqual(2, (int)nomCase.PluralEnding().length());
 			nomCase.ApplyDeclension(2);
 			Assert::AreEqual(std::string("i"), nomCase.PluralEnding());
-			Assert::AreEqual(1, nomCase.PluralEndingLength());
+			Assert::AreEqual(1, (int)nomCase.PluralEnding().length());
 			nomCase.ApplyDeclension(3);
 			Assert::AreEqual(std::string("es"), nomCase.PluralEnding());
-			Assert::AreEqual(2, nomCase.PluralEndingLength());
+			Assert::AreEqual(2, (int)nomCase.PluralEnding().length());
 			nomCase.ApplyDeclension(4);
 			Assert::AreEqual(std::string("us"), nomCase.PluralEnding());
-			Assert::AreEqual(2, nomCase.PluralEndingLength());
+			Assert::AreEqual(2, (int)nomCase.PluralEnding().length());
 			nomCase.ApplyDeclension(5);
 			Assert::AreEqual(std::string("es"), nomCase.PluralEnding());
-			Assert::AreEqual(2, nomCase.PluralEndingLength());
+			Assert::AreEqual(2, (int)nomCase.PluralEnding().length());
 		}
 
 		TEST_METHOD(SingularTranslations)
@@ -125,11 +125,10 @@ namespace TranslatorTests
 		{
 			NominativeCase nomCase = NominativeCase(1);
 			nomCase.ApplyDeclension(2);
+			nomCase.SetExplanation("Second Declension Nominative Case");
 			nomCase.Dispose();
 			Assert::AreEqual(std::string(""), nomCase.SingularEnding());
-			Assert::AreEqual(0, nomCase.SingularEndingLength());
 			Assert::AreEqual(std::string(""), nomCase.PluralEnding());
-			Assert::AreEqual(0, nomCase.PluralEndingLength());
 			Assert::AreEqual(std::string(""), nomCase.Explanation());
 		}
 
