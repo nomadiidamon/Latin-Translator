@@ -1,6 +1,6 @@
 {
     "ArrayName": "Nouns",
-    "Count": 10,
+    "Count": 2,
     "Items": [
         {
             "Declension": "First",
@@ -18,78 +18,6 @@
             "Genitive": "Pueri",
             "Nominative": "Puer",
             "Noun": "Puer",
-            "Number": "Both"
-        },
-        {
-            "Declension": "Second",
-            "Definition": "sword",
-            "Gender": "Masculine",
-            "Genitive": "Gladii",
-            "Nominative": "Gladius",
-            "Noun": "Gladius",
-            "Number": "Both"
-        },
-        {
-            "Declension": "Third",
-            "Definition": "king",
-            "Gender": "Masculine",
-            "Genitive": "Regis",
-            "Nominative": "Rex",
-            "Noun": "Rex",
-            "Number": "Both"
-        },
-        {
-            "Declension": "Third",
-            "Definition": "mother",
-            "Gender": "Feminine",
-            "Genitive": "Matris",
-            "Nominative": "Mater",
-            "Noun": "Mater",
-            "Number": "Both"
-        },
-        {
-            "Declension": "First",
-            "Definition": "gate, entrance",
-            "Gender": "Feminine",
-            "Genitive": "Portae",
-            "Nominative": "Porta",
-            "Noun": "Porta",
-            "Number": "Both"
-        },
-        {
-            "Declension": "Second",
-            "Definition": "boy, child",
-            "Gender": "Masculine",
-            "Genitive": "Pueri",
-            "Nominative": "Puer",
-            "Noun": "Puer",
-            "Number": "Both"
-        },
-        {
-            "Declension": "Second",
-            "Definition": "sword",
-            "Gender": "Masculine",
-            "Genitive": "Gladii",
-            "Nominative": "Gladius",
-            "Noun": "Gladius",
-            "Number": "Both"
-        },
-        {
-            "Declension": "Third",
-            "Definition": "king",
-            "Gender": "Masculine",
-            "Genitive": "Regis",
-            "Nominative": "Rex",
-            "Noun": "Rex",
-            "Number": "Both"
-        },
-        {
-            "Declension": "Third",
-            "Definition": "mother",
-            "Gender": "Feminine",
-            "Genitive": "Matris",
-            "Nominative": "Mater",
-            "Noun": "Mater",
             "Number": "Both"
         }
     ]

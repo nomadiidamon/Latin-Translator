@@ -1,8 +1,50 @@
 #include "Noun.h"
 
+void Noun::AddToSingularForms(const std::string& form)
+{
+	if (form.empty()) return;
+	if (std::find(singularForms.begin(), singularForms.end(), form) != singularForms.end()) {
+		return;
+	}
+	singularForms.push_back(form);
+}
+
+void Noun::AddToPluralForms(const std::string& form)
+{
+	if (form.empty()) return;
+	if (std::find(pluralForms.begin(), pluralForms.end(), form) != pluralForms.end()) {
+		return;
+	}
+	pluralForms.push_back(form);
+}
+
+void Noun::ClearSingularForms()
+{
+	singularForms.clear();
+}
+
+void Noun::ClearPluralForms()
+{
+	pluralForms.clear();
+}
+
 Noun::Noun()
 {
+	declension = Declension();
+	int decNum = declension.GetDeclensionNumber();
+	nom = NominativeCase(decNum);
+	gen = GenitiveCase(decNum);
+	dat = DativeCase(decNum);
+	acc = AccusativeCase(decNum);
+	abl = AblativeCase(decNum);
+	voc = VocativeCase(decNum);
 
+	nominative_singular = "";
+	genitive_singular = "";
+	definition = "";
+
+	SetBase();
+	SetForms();
 }
 
 Noun::Noun(std::string _declension, std::string _gender, std::string _number, std::string _nominative, std::string _genitive, std::string _definition)
@@ -21,6 +63,22 @@ Noun::Noun(std::string _declension, std::string _gender, std::string _number, st
 	genitive_singular = _genitive;
 	definition = _definition;
 
+	SetBase();
+	SetForms();
+}
+
+Noun::Noun(const Noun& other)
+{
+	if (this != &other && &other != nullptr) {
+		*this = other;
+	}
+
+	SetDeclension(other.declension);
+	SetNominativeSingular(other.nominative_singular);
+	SetGenitiveSingular(other.genitive_singular);
+	SetDefinition(other.definition);
+	SetGender(other.gender);
+	SetNumber(other.number);
 	SetBase();
 	SetForms();
 }
@@ -56,6 +114,10 @@ void Noun::Dispose()
 	accusative_plural.clear();
 	ablative_plural.clear();
 	vocative_plural.clear();
+
+	singularForms.clear();
+	pluralForms.clear();
+
 
 	definition.clear();
 	base.clear();
@@ -124,7 +186,7 @@ void Noun::SetForms()
 	SetVocativeForms();
 }
 
-bool Noun::FindForm(std::string toFind, std::string& outFoundCase)
+bool Noun::FindForm(std::string toFind, std::string& outFoundCase) const
 {
 	if (toFind == NominativeSingular() || toFind == NominativePlural()) {
 		outFoundCase = "Nominative";
@@ -184,6 +246,18 @@ void Noun::SetGender(const std::string& newGender)
 std::string Noun::GetNumber() const
 {
 	return number.GetNumber();
+}
+
+std::string Noun::GetCaseFromForm(const std::string form)
+{
+	std::string foundCase;
+
+	if (FindForm(form, foundCase)) {
+		return foundCase;
+	}
+	else {
+		return "Unknown";
+	}
 }
 
 void Noun::SetNominativeSingular(const std::string& newNominativeSingular)
@@ -446,12 +520,12 @@ void Noun::DeserializeFromJson(const std::string& filename)
 }
 
 
-bool Noun::DeserializeNounsFromJson(const std::string& filename, std::vector<Noun>& nouns)
+std::vector<Noun> Noun::DeserializeNounsFromJson(const std::string& filename)
 {
 	std::ifstream infile(filename);
 	if (!infile.is_open()) {
 		std::cerr << "Error: Cannot open file " << filename << std::endl;
-		return false;
+		return std::vector<Noun>();
 	}
 
 	json root;
@@ -460,65 +534,34 @@ bool Noun::DeserializeNounsFromJson(const std::string& filename, std::vector<Nou
 	}
 	catch (const std::exception& e) {
 		std::cerr << "Error parsing JSON: " << e.what() << std::endl;
-		return false;
+		return std::vector<Noun>();
 	}
 
 	// Validate structure
 	if (!root.is_object() || !root.contains("Items") || !root["Items"].is_array()) {
 		std::cerr << "Error: JSON format is invalid." << std::endl;
-		return false;
+		return std::vector<Noun>();
 	}
 
 	int count = root.value("Count", static_cast<int>(root["Items"].size()));
 	std::cout << "ArrayName: " << root.value("ArrayName", "Unknown") << "\n";
 	std::cout << "Count: " << count << "\n";
 
+	std::vector<Noun> nouns;
 	nouns.clear();
 	for (const auto& item : root["Items"]) {
-		// Pull fields safely
-		//if (item.contains("Noun"))        //n. = item["Noun"].get<std::string>();
-		//if (item.contains("Declension"))  n.SetDeclension(Declension(item["Declension"].get<std::string>()));
-		//if (item.contains("Gender"))      n.SetGender(Gender(item["Gender"].get<std::string>()));
-		//if (item.contains("Number")) {
-		//	std::string num = item["Number"];
-		//	if (num == "Singular") n.SetNumber("Singular");
-		//	else if (num == "Plural") n.SetNumber("Plural");
-		//	else if (num == "Both") n.SetNumber("Both");
-		//	else n.SetNumber("Unknown");
-		//}
-		//if (item.contains("Nominative"))  n.SetNominativeSingular(item["Nominative"].get<std::string>());
-		//if (item.contains("Genitive"))    n.SetGenitiveSingular(item["Genitive"].get<std::string>());
-		//if (item.contains("Definition"))  n.SetDefinition(item["Definition"].get<std::string>());
-		std::string dec;
-		std::string gend;
-		std::string number;
-		std::string nom;
-		std::string geni;
-		std::string definition;
 
-		if (item.contains("Noun")) {}
-		if (item.contains("Declension")) {
-			dec = item["Declension"].get<std::string>();
-		}
-		if (item.contains("Gender")) {
-			gend = item["Gender"].get<std::string>();
-		}
-		if (item.contains("Number")) {
-			number = item["Number"].get<std::string>();
-		}
-		if (item.contains("Nominative")) {
-			nom = item["Nominative"].get<std::string>();
-		}
-		if (item.contains("Genitive")) {
-			geni = item["Genitive"].get<std::string>();
-		}
-		if (item.contains("Definition")) {
-			definition = item["Definition"].get<std::string>();
-		}
-		Noun n(dec, gend, number, nom, geni, definition);
-		nouns.push_back(std::move(n));
+		std::string dec = item["Declension"].get<std::string>();
+		std::string gender = item["Gender"].get<std::string>();
+		std::string number = item["Number"].get<std::string>();
+		std::string nom = item["Nominative"].get<std::string>();
+		std::string gen = item["Genitive"].get<std::string>();
+		std::string def = item["Definition"].get<std::string>();
+
+		Noun newNoun = Noun(dec, gender, number, nom, gen, def);
+		nouns.push_back(newNoun);
 	}
-	return true;
+	return nouns;
 }
 
 bool Noun::QuickSerializeToJson(const std::string& filename, const std::string& arrayName) const

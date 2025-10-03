@@ -6,10 +6,9 @@
 #include "Number.h"
 #include "Macrons.h"
 
-class NominativeCase {
+class NominativeCase : public Case{
 private:
 
-	Case nomCase;
 	Gender gender;
 	Number number;
 	Declension dec;
@@ -27,11 +26,6 @@ public:
 	std::string Explanation() const;
 
 	void SetExplanation(std::string info);
-
-	std::string SingularEnding();
-	int SingularEndingLength();
-	std::string PluralEnding();
-	int PluralEndingLength();
 
 	std::vector<std::string> SingularTranslation(std::string base);
 	std::vector<std::string> PluralTranslation(std::string base);

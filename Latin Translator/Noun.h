@@ -1,4 +1,5 @@
 #pragma once
+
 #include "NominativeCase.h"
 #include "GenitiveCase.h"
 #include "DativeCase.h"
@@ -41,12 +42,19 @@ private:
 	std::string definition;
 	std::string base;
 
+	std::vector<std::string> singularForms;
+	std::vector<std::string> pluralForms;
 
+	void AddToSingularForms(const std::string& form);
+	void AddToPluralForms(const std::string& form);
+	void ClearSingularForms();
+	void ClearPluralForms();
 
 public:
 
 	Noun();
 	Noun(std::string _declension, std::string _gender, std::string _number, std::string _nominative, std::string _genitive, std::string _definition);
+	Noun(const Noun& other);
 	~Noun();
 	void Dispose();
 
@@ -69,6 +77,7 @@ public:
 	const Declension& GetDeclension() const;
 
 	std::string GetNumber() const;
+	std::string GetCaseFromForm(const std::string form);
 
 
 	// Setters
@@ -99,7 +108,7 @@ public:
 	void SetVocativePluralForm();
 
 	void SetForms();
-	bool FindForm(std::string toFind, std::string& outFoundCase);
+	bool FindForm(std::string toFind, std::string& outFoundCase) const;
 
 
 
@@ -129,7 +138,7 @@ public:
 	// Deserialize function to read the object from a file
 	void Deserialize(const std::string& filename);
 	void DeserializeFromJson(const std::string& filename);
-	static bool DeserializeNounsFromJson(const std::string& filename, std::vector<Noun>& nouns);
+	static std::vector<Noun> DeserializeNounsFromJson(const std::string& filename);
 
 	// Function to get the base of the noun
 	std::string GetBase() const;

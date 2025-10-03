@@ -51,6 +51,15 @@
     <ClCompile Include="Gender.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="IuvoLatin.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="NounDictionary.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Parser.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Noun.h">
@@ -87,6 +96,15 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="VocativeCase.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="IuvoLatin.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="NounDictionary.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Parser.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
