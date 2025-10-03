@@ -4,15 +4,12 @@
 AccusativeCase::AccusativeCase()
 {
 	dec = Declension();
-	accCase = Case();
 	ApplyDeclension(dec.GetDeclensionNumber());
 }
 
 //Constructor
 AccusativeCase::AccusativeCase(int declension) {
-	dec = Declension(declension);
-	accCase = Case();
-	ApplyDeclension(dec.GetDeclensionNumber());
+	ApplyDeclension(declension);
 }
 
 AccusativeCase::~AccusativeCase()
@@ -22,7 +19,7 @@ AccusativeCase::~AccusativeCase()
 
 void AccusativeCase::Dispose()
 {
-	accCase.Dispose();
+	Case::Dispose();
 	gender.Dispose();
 	number.Dispose();
 	dec.Dispose();
@@ -32,45 +29,45 @@ void AccusativeCase::Dispose()
 void AccusativeCase::ApplyDeclension(const int& _declension) {
 
 	if (dec.GetDeclensionNumber() == 1) {
-		accCase.SetSingularEnding("am");
-		accCase.SetSingularEnding_w_Macron('am');
-		accCase.SetPluralEnding("as");
-		accCase.SetPluralEnding_w_Macron(lower_a, 's');
+		SetSingularEnding("am");
+		SetSingularEnding_w_Macron('am');
+		SetPluralEnding("as");
+		SetPluralEnding_w_Macron(lower_a, 's');
 	}
 	else if (dec.GetDeclensionNumber() == 2) {
-		accCase.SetSingularEnding("um");
-		accCase.SetSingularEnding_w_Macron('u', 'm');
-		accCase.SetPluralEnding("os");
-		accCase.SetPluralEnding_w_Macron(lower_o, 's');
+		SetSingularEnding("um");
+		SetSingularEnding_w_Macron('u', 'm');
+		SetPluralEnding("os");
+		SetPluralEnding_w_Macron(lower_o, 's');
 	}
 	else if (dec.GetDeclensionNumber() == 3) {
-		accCase.SetSingularEnding("em");
-		accCase.SetSingularEnding_w_Macron('e', 'm');
-		accCase.SetPluralEnding("es");
-		accCase.SetPluralEnding_w_Macron(lower_e, 's');
+		SetSingularEnding("em");
+		SetSingularEnding_w_Macron('e', 'm');
+		SetPluralEnding("es");
+		SetPluralEnding_w_Macron(lower_e, 's');
 	}
 	else if (dec.GetDeclensionNumber() == 4) {
-		accCase.SetSingularEnding("um");
-		accCase.SetSingularEnding_w_Macron('u', 'm');
-		accCase.SetPluralEnding("us");
-		accCase.SetPluralEnding_w_Macron('u', 's');
+		SetSingularEnding("um");
+		SetSingularEnding_w_Macron('u', 'm');
+		SetPluralEnding("us");
+		SetPluralEnding_w_Macron('u', 's');
 	}
 	else if (dec.GetDeclensionNumber() == 5) {
-		accCase.SetSingularEnding("em");
-		accCase.SetSingularEnding_w_Macron('e', 'm');
-		accCase.SetPluralEnding("es");
-		accCase.SetPluralEnding_w_Macron('e', 's');
+		SetSingularEnding("em");
+		SetSingularEnding_w_Macron('e', 'm');
+		SetPluralEnding("es");
+		SetPluralEnding_w_Macron('e', 's');
 	}
 	else {
-		accCase.SetSingularEnding("ERROR");
-		accCase.SetPluralEnding("ERROR");
-		accCase.AddToSingularTranslations("ERROR");
-		accCase.AddToPluralTranslations("ERROR");
+		SetSingularEnding("ERROR");
+		SetPluralEnding("ERROR");
+		AddToSingularTranslations("ERROR");
+		AddToPluralTranslations("ERROR");
 	}
-	accCase.AddToSingularTranslations("the");
-	accCase.AddToSingularTranslations("a");
-	accCase.AddToPluralTranslations("the");
-	accCase.AddToPluralTranslations("s");
+	AddToSingularTranslations_Articles("the");
+	AddToSingularTranslations_Articles("a");
+	AddToPluralTranslations_Articles("the");
+	AddToPluralTranslations_Articles("s");
 
 	SetExplanation("");
 }
@@ -83,24 +80,4 @@ std::string AccusativeCase::Explanation() const {
 //Setters
 void AccusativeCase::SetExplanation(std::string info) {
 	explanation = info;
-}
-
-std::string AccusativeCase::SingularEnding() const
-{
-	return accCase.SingularEnding();
-}
-
-int AccusativeCase::SingularEndingLength() const
-{
-	return accCase.SingularEnding().length();
-}
-
-std::string AccusativeCase::PluralEnding() const
-{
-	return accCase.PluralEnding();
-}
-
-int AccusativeCase::PluralEndingLength() const
-{
-	return accCase.PluralEnding().length();
 }

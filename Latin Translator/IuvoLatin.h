@@ -4,19 +4,18 @@
 #include "NounDictionary.h"
 
 
-static class IuvoLatin {
+class IuvoLatin {
 
-	std::string TranslateNoun(std::string latinWord);
+	static std::string TranslateNoun(std::string latinWord);
 
 };
 
 
 
 
-static class Formatter 
+class Formatter 
 {
 public:
-
 
 	static bool IsWordPlural(std::string noun);
 	static std::string WordsPluralForm(std::string englishWord);

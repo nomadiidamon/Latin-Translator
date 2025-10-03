@@ -6,11 +6,10 @@
 #include "Number.h"
 #include "Macrons.h"
 
-class DativeCase
+class DativeCase : public Case
 {
 private:
 
-	Case datCase;
 	Gender gender;
 	Number number;
 	Declension dec;
@@ -29,12 +28,5 @@ public:
 	std::string Explanation() const;
 
 	void SetExplanation(std::string info);
-
-	std::string SingularEnding();
-	int SingularEndingLength();
-	std::string PluralEnding();
-	int PluralEndingLength();
-	
-
 };
 

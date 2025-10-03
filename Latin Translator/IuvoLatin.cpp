@@ -21,7 +21,7 @@ bool Formatter::IsWordPlural(std::string noun)
 
 std::string Formatter::WordsPluralForm(std::string englishWord)
 {
-	int len = englishWord.length();
+	int len = (int)englishWord.length();
 	std::string ending = englishWord.substr(len - 1, 1);
 	if (ending == "s" || ending == "x" || ending == "o") {
 		return englishWord + "es";
@@ -51,7 +51,7 @@ std::string Formatter::WordsPluralForm(std::string englishWord)
 
 std::string Formatter::WordsSingularForm(std::string englishWord)
 {
-	int len = englishWord.length();
+	int len = (int)englishWord.length();
 	std::string ending = englishWord.substr(len - 2, 2);
 	if (ending == "es") {
 		std::string testEnding = englishWord.substr(len - 4, 2);

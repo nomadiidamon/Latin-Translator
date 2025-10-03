@@ -90,7 +90,7 @@ Noun* NounDictionary::GetNoun(const std::string& latinWord)
 
 	for (const auto& pair : nounMap) {
 		const Noun& noun = pair.second;
-		int baseLength = noun.GetBase().length();
+		int baseLength = (int)noun.GetBase().length();
 		// if the word is shorter than the base, skip
 		if (latinWord.length() <= baseLength) continue;
 		// if the base is longer than the word, skip
@@ -105,8 +105,8 @@ Noun* NounDictionary::GetNoun(const std::string& latinWord)
 		std::string caseFound = "";
 		
 		if (noun.FindForm(latinWord, caseFound)) {
-			Noun foundNoun = Noun(noun);
-			return &foundNoun;
+			Noun* foundNoun = new Noun(noun);
+			return foundNoun;
 		}
 	}
 	return nullptr;

@@ -73,11 +73,13 @@ public:
 	std::string AblativePlural() const;
 	std::string VocativePlural() const;
 
+	bool FindForm(std::string toFind, std::string& outFoundCase) const;
+
 	std::string Definition() const;
 	const Declension& GetDeclension() const;
 
 	std::string GetNumber() const;
-	std::string GetCaseFromForm(const std::string form);
+	std::string GetCaseFromForm(const std::string form) const;
 
 
 	// Setters
@@ -108,13 +110,8 @@ public:
 	void SetVocativePluralForm();
 
 	void SetForms();
-	bool FindForm(std::string toFind, std::string& outFoundCase) const;
-
-
 
 	void SetDefinition(const std::string& newLatinDefinition);
-
-
 	void SetDeclension(const Declension& newDeclension);
 
 	void SetNumber(const Number& newNumber);
@@ -124,10 +121,10 @@ public:
 
 
 	// Display functions
-	void ShowSingular();
-	void ShowPlural();
+	void ShowSingular() const;
+	void ShowPlural() const;
 	void SimpleDisplay()const;
-	void Display();
+	void Display() const;
 
 	// Serialize function to write the object to a file
 	void Serialize(const std::string& filename) const;

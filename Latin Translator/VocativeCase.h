@@ -7,11 +7,10 @@
 #include "Macrons.h"
 
 
-class VocativeCase
+class VocativeCase : public Case
 {
 private:
 
-	Case vocCase;
 	Gender gender;
 	Number number;
 	Declension dec;
@@ -29,13 +28,7 @@ public:
 
 	std::string Explanation() const;
 
-
 	void SetExplanation(std::string info);
-
-	std::string SingularEnding() const;
-	int SingularEndingLength() const;
-	std::string PluralEnding() const;
-	int PluralEndingLength() const;
 
 };
 

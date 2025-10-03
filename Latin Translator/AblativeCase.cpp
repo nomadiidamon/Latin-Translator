@@ -3,15 +3,12 @@
 AblativeCase::AblativeCase()
 {
 	dec = Declension();
-	ablCase = Case();
 	ApplyDeclension(dec.GetDeclensionNumber());
 }
 
 //Constructor
 AblativeCase::AblativeCase(int declension) {
-	dec = Declension(declension);
-	ablCase = Case();
-	ApplyDeclension(dec.GetDeclensionNumber());
+	ApplyDeclension(declension);
 }
 
 AblativeCase::~AblativeCase()
@@ -21,7 +18,7 @@ AblativeCase::~AblativeCase()
 
 void AblativeCase::Dispose()
 {
-	ablCase.Dispose();
+	Case::Dispose();
 	gender.Dispose();
 	number.Dispose();
 	dec.Dispose();
@@ -31,52 +28,52 @@ void AblativeCase::Dispose()
 void AblativeCase::ApplyDeclension(const int& _declension) {
 
 	if (dec.GetDeclensionNumber() == 1) {
-		ablCase.SetSingularEnding("a");
-		ablCase.SetSingularEnding_w_Macron(lower_a);
-		ablCase.SetPluralEnding("is");
-		ablCase.SetPluralEnding_w_Macron(lower_i, 's');
+		SetSingularEnding("a");
+		SetSingularEnding_w_Macron(lower_a);
+		SetPluralEnding("is");
+		SetPluralEnding_w_Macron(lower_i, (char)'s');
 	}
 	else if (dec.GetDeclensionNumber() == 2) {
-		ablCase.SetSingularEnding("o");
-		ablCase.SetSingularEnding_w_Macron(lower_o);
-		ablCase.SetPluralEnding("is");
-		ablCase.SetPluralEnding_w_Macron(lower_i, 's');
+		SetSingularEnding("o");
+		SetSingularEnding_w_Macron(lower_o);
+		SetPluralEnding("is");
+		SetPluralEnding_w_Macron(lower_i, (char)'s');
 	}
 	else if (dec.GetDeclensionNumber() == 3) {
-		ablCase.SetSingularEnding("e");
-		ablCase.SetSingularEnding_w_Macron(lower_e);
-		ablCase.SetPluralEnding("ibus");
-		ablCase.SetPluralEnding_w_Macron(lower_i, 'bus');
+		SetSingularEnding("e");
+		SetSingularEnding_w_Macron(lower_e);
+		SetPluralEnding("ibus");
+		SetPluralEnding_w_Macron(lower_i, (char)'bus');
 	}
 	else if (dec.GetDeclensionNumber() == 4) {
-		ablCase.SetSingularEnding("u");
-		ablCase.SetSingularEnding_w_Macron(lower_u);
-		ablCase.SetPluralEnding("ibus");
-		ablCase.SetPluralEnding_w_Macron(lower_i, 'bus');
+		SetSingularEnding("u");
+		SetSingularEnding_w_Macron(lower_u);
+		SetPluralEnding("ibus");
+		SetPluralEnding_w_Macron(lower_i, (char)'bus');
 	}
 	else if (dec.GetDeclensionNumber() == 5) {
-		ablCase.SetSingularEnding("e");
-		ablCase.SetSingularEnding_w_Macron(lower_e);
-		ablCase.SetPluralEnding("ebus");
-		ablCase.SetPluralEnding_w_Macron(lower_e, 'bus');
+		SetSingularEnding("e");
+		SetSingularEnding_w_Macron(lower_e);
+		SetPluralEnding("ebus");
+		SetPluralEnding_w_Macron(lower_e, (char)'bus');
 	}
 	else {
-		ablCase.SetSingularEnding("ERROR");
-		ablCase.SetPluralEnding("ERROR");
-		ablCase.AddToSingularTranslations("ERROR");
-		ablCase.AddToPluralTranslations("ERROR");
+		SetSingularEnding("ERROR");
+		SetPluralEnding("ERROR");
+		AddToSingularTranslations("ERROR");
+		AddToPluralTranslations("ERROR");
 	}
 
-	ablCase.AddToSingularTranslations("by the");
-	ablCase.AddToSingularTranslations("by a");
-	ablCase.AddToSingularTranslations("with a");
-	ablCase.AddToSingularTranslations("with the");
-	ablCase.AddToSingularTranslations("from a");
-	ablCase.AddToSingularTranslations("from the");
+	AddToSingularTranslations_Articles("by the");
+	AddToSingularTranslations_Articles("by a");
+	AddToSingularTranslations_Articles("with a");
+	AddToSingularTranslations_Articles("with the");
+	AddToSingularTranslations_Articles("from a");
+	AddToSingularTranslations_Articles("from the");
 
-	ablCase.AddToPluralTranslations("by the");
-	ablCase.AddToPluralTranslations("with the");
-	ablCase.AddToPluralTranslations("from the");
+	AddToPluralTranslations_Articles("by the");
+	AddToPluralTranslations_Articles("with the");
+	AddToPluralTranslations_Articles("from the");
 
 	SetExplanation("");
 }
@@ -89,24 +86,4 @@ std::string AblativeCase::Explanation() const {
 //Setters
 void AblativeCase::SetExplanation(std::string info) {
 	explanation = info;
-}
-
-std::string AblativeCase::SingularEnding() const
-{
-	return ablCase.SingularEnding();
-}
-
-int AblativeCase::SingularEndingLength() const
-{
-	return ablCase.SingularEnding().length();
-}
-
-std::string AblativeCase::PluralEnding() const
-{
-	return ablCase.PluralEnding();
-}
-
-int AblativeCase::PluralEndingLength() const
-{
-	return ablCase.PluralEnding().length();
 }

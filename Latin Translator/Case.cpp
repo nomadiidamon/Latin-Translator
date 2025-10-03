@@ -60,19 +60,19 @@ std::vector<std::string> Case::PluralTranslations_Prefixes() const
 }
 int Case::SingularTranslationsCount() const
 {
-	return singularTranslations.size();
+	return (int)singularTranslations.size();
 }
 int Case::SingularTranslations_ArticlesCount() const
 {
-	return singularTranslations_Articles.size();
+	return (int)singularTranslations_Articles.size();
 }
 int Case::PluralTranslationsCount() const
 {
-	return pluralTranslations.size();
+	return (int)pluralTranslations.size();
 }
 int Case::PluralTranslations_ArticlesCount() const
 {
-	return singularTranslations_Articles.size();
+	return (int)singularTranslations_Articles.size();
 }
 
 // Setters

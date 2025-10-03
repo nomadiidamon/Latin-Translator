@@ -167,7 +167,10 @@
     <ClCompile Include="..\Latin Translator\Noun.cpp" />
     <ClCompile Include="..\Latin Translator\Number.cpp" />
     <ClCompile Include="..\Latin Translator\VocativeCase.cpp" />
+    <ClCompile Include="AblativeCaseTests.cpp" />
+    <ClCompile Include="AccusativeCaseTests.cpp" />
     <ClCompile Include="CaseTests.cpp" />
+    <ClCompile Include="DativeCaseTests.cpp" />
     <ClCompile Include="DeclensionTests.cpp" />
     <ClCompile Include="GenderTests.cpp" />
     <ClCompile Include="GenetiveCaseTests.cpp" />
@@ -181,6 +184,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="TranslatorTests.cpp" />
+    <ClCompile Include="VocativeCaseTest.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h" />

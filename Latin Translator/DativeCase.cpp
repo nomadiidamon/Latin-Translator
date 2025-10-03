@@ -3,15 +3,12 @@
 DativeCase::DativeCase()
 {
 	dec = Declension();
-	datCase = Case();
 	ApplyDeclension(dec.GetDeclensionNumber());
 }
 
 //Constructor
 DativeCase::DativeCase(int declension) {
-	dec = Declension(declension);
-	datCase = Case();
-	ApplyDeclension(dec.GetDeclensionNumber());
+	ApplyDeclension(declension);
 }
 
 DativeCase::~DativeCase()
@@ -21,7 +18,7 @@ DativeCase::~DativeCase()
 
 void DativeCase::Dispose()
 {
-	datCase.Dispose();
+	Case::Dispose();
 	gender.Dispose();
 	number.Dispose();
 	dec.Dispose();
@@ -31,53 +28,53 @@ void DativeCase::Dispose()
 void DativeCase::ApplyDeclension(const int& _declension) {
 
 	if (dec.GetDeclensionNumber() == 1) {
-		datCase.SetSingularEnding("ae");
-		datCase.SetSingularEnding_w_Macron('ae');
-		datCase.SetPluralEnding("is");
-		datCase.SetPluralEnding_w_Macron(lower_i, 's');
+		SetSingularEnding("ae");
+		SetSingularEnding_w_Macron('ae');
+		SetPluralEnding("is");
+		SetPluralEnding_w_Macron(lower_i, (char)'s');
 	}
 	else if (dec.GetDeclensionNumber() == 2) {
-		datCase.SetSingularEnding("o");
-		datCase.SetSingularEnding_w_Macron(lower_o);
-		datCase.SetPluralEnding("is");
-		datCase.SetPluralEnding_w_Macron(lower_i, 's');
+		SetSingularEnding("o");
+		SetSingularEnding_w_Macron(lower_o);
+		SetPluralEnding("is");
+		SetPluralEnding_w_Macron(lower_i, (char)'s');
 	}
 	else if (dec.GetDeclensionNumber() == 3) {
-		datCase.SetSingularEnding("i");
-		datCase.SetSingularEnding_w_Macron(lower_i);
-		datCase.SetPluralEnding("ibus");
-		datCase.SetPluralEnding_w_Macron(lower_i, 'bus');
+		SetSingularEnding("i");
+		SetSingularEnding_w_Macron(lower_i);
+		SetPluralEnding("ibus");
+		SetPluralEnding_w_Macron(lower_i, (char)'bus');
 	}
 	else if (dec.GetDeclensionNumber() == 4) {
-		datCase.SetSingularEnding("ui");
-		datCase.SetSingularEnding_w_Macron(lower_u, 'i');
-		datCase.SetPluralEnding("ibus");
-		datCase.SetPluralEnding_w_Macron(lower_i, 'bus');
+		SetSingularEnding("ui");
+		SetSingularEnding_w_Macron(lower_u, (char)'i');
+		SetPluralEnding("ibus");
+		SetPluralEnding_w_Macron(lower_i, (char)'bus');
 	}
 	else if (dec.GetDeclensionNumber() == 5) {
-		datCase.SetSingularEnding("ei");
-		datCase.SetSingularEnding_w_Macron(lower_e, 'i');
-		datCase.SetPluralEnding("ebus");
-		datCase.SetPluralEnding_w_Macron(lower_e, 'bus');
+		SetSingularEnding("ei");
+		SetSingularEnding_w_Macron(lower_e, (char)'i');
+		SetPluralEnding("ebus");
+		SetPluralEnding_w_Macron(lower_e, (char)'bus');
 	}
 	else {
-		datCase.SetSingularEnding("ERROR");
-		datCase.SetPluralEnding("ERROR");
-		datCase.AddToSingularTranslations("ERROR");
-		datCase.AddToPluralTranslations("ERROR");
+		SetSingularEnding("ERROR");
+		SetPluralEnding("ERROR");
+		AddToSingularTranslations("ERROR");
+		AddToPluralTranslations("ERROR");
 	}
 
-	datCase.AddToSingularTranslations("to the");
-	datCase.AddToSingularTranslations("for the");
-	datCase.AddToSingularTranslations("to a");
-	datCase.AddToSingularTranslations("for a");
-	datCase.AddToSingularTranslations("to ");
-	datCase.AddToSingularTranslations("for");
+	AddToSingularTranslations_Articles("to the");
+	AddToSingularTranslations_Articles("for the");
+	AddToSingularTranslations_Articles("to a");
+	AddToSingularTranslations_Articles("for a");
+	AddToSingularTranslations_Articles("to ");
+	AddToSingularTranslations_Articles("for");
 
-	datCase.AddToPluralTranslations("to the");
-	datCase.AddToPluralTranslations("for the");
-	datCase.AddToPluralTranslations("to");
-	datCase.AddToPluralTranslations("for");
+	AddToPluralTranslations_Articles("to the");
+	AddToPluralTranslations_Articles("for the");
+	AddToPluralTranslations_Articles("to");
+	AddToPluralTranslations_Articles("for");
 
 	SetExplanation("");
 }
@@ -92,22 +89,4 @@ void DativeCase::SetExplanation(std::string info) {
 	explanation = info;
 }
 
-std::string DativeCase::SingularEnding()
-{
-	return datCase.SingularEnding();
-}
 
-int DativeCase::SingularEndingLength()
-{
-	return datCase.SingularEnding().length();
-}
-
-std::string DativeCase::PluralEnding()
-{
-	return datCase.PluralEnding();
-}
-
-int DativeCase::PluralEndingLength()
-{
-	return datCase.PluralEnding().length();
-}

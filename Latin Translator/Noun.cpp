@@ -69,7 +69,7 @@ Noun::Noun(std::string _declension, std::string _gender, std::string _number, st
 
 Noun::Noun(const Noun& other)
 {
-	if (this != &other && &other != nullptr) {
+	if (this != &other) {
 		*this = other;
 	}
 
@@ -248,7 +248,7 @@ std::string Noun::GetNumber() const
 	return number.GetNumber();
 }
 
-std::string Noun::GetCaseFromForm(const std::string form)
+std::string Noun::GetCaseFromForm(const std::string form) const
 {
 	std::string foundCase;
 
@@ -374,7 +374,7 @@ void Noun::SetDefinition(const std::string& newLatinDefinition) {
 	definition = newLatinDefinition;
 }
 
-void Noun::ShowSingular() {
+void Noun::ShowSingular() const {
 	std::cout << "Singular Forms:" << std::endl;
 	std::cout << "Nominative: " << NominativeSingular() << std::endl;
 	std::cout << "Genitive: " << GenitiveSingular() << std::endl;
@@ -384,7 +384,7 @@ void Noun::ShowSingular() {
 	std::cout << "Vocative: " << VocativeSingular() << std::endl;
 }
 
-void Noun::ShowPlural() {
+void Noun::ShowPlural() const {
 	std::cout << "Plural Forms:" << std::endl;
 	std::cout << "Nominative: " << NominativePlural() << std::endl;
 	std::cout << "Genitive: " << GenitivePlural() << std::endl;
@@ -400,7 +400,7 @@ void Noun::SimpleDisplay() const {
 	std::cout << "Definition: " << Definition() << std::endl;
 }
 
-void Noun::Display() {
+void Noun::Display() const {
 	std::cout << "Declension: " << declension.GetDeclensionNumber() << std::endl;
 	std::cout << "Gender: " << gender.GetGender() << std::endl;
 	std::cout << "Nominative & Genitive: " << NominativeSingular() << ", " << GenitiveSingular() << std::endl;

@@ -160,6 +160,9 @@ int Declension::GetDeclensionNumber() const
 	else if (declension == "Fifth") {
 		return 5;
 	}
+	else {
+		return -1;
+	}
 }
 
 bool Declension::IsValid() const

@@ -6,10 +6,10 @@
 #include "Number.h"
 #include "Macrons.h"
 
-class AccusativeCase
+class AccusativeCase : public Case
 {
 private:
-	Case accCase;
+
 	Gender gender;
 	Number number;
 	Declension dec;
@@ -28,15 +28,6 @@ public:
 	std::string Explanation() const;
 
 	void SetExplanation(std::string info);
-
-	std::string SingularEnding() const;
-	int SingularEndingLength() const;
-	std::string PluralEnding() const;
-	int PluralEndingLength() const;
-
-
-
-
 
 };
 

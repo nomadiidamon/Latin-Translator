@@ -8,7 +8,7 @@ GenitiveCase::GenitiveCase()
 }
 
 GenitiveCase::GenitiveCase(int declension) {
-	ApplyDeclension(dec.GetDeclensionNumber());
+	ApplyDeclension(declension);
 }
 
 GenitiveCase::~GenitiveCase()
