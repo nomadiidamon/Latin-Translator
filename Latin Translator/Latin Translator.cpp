@@ -9,7 +9,6 @@ int main()
 	/// placing items in a file
 	Noun port("First", "F", "Both", "Porta", "Portae", "gate, entrance");
 	port.SerializeToJson("./Nouns/noun.txt");
-	port.Display();
 
 	Noun puer("Second", "M", "Both", "Puer", "Pueri", "boy, child");
 	puer.SerializeToJson("./Nouns/noun.txt");

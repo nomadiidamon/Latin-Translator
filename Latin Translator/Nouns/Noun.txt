@@ -1,6 +1,6 @@
 {
     "ArrayName": "Nouns",
-    "Count": 6,
+    "Count": 8,
     "Items": [
         {
             "Declension": "First",
@@ -36,6 +36,24 @@
             "Genitive": "Pueri",
             "Nominative": "Puer",
             "Noun": "Puer",
+            "Number": "Both"
+        },
+        {
+            "Declension": "First",
+            "Definition": "gate, entrance",
+            "Gender": "Feminine",
+            "Genitive": "Portae",
+            "Nominative": "Porta",
+            "Noun": "Porta",
+            "Number": "Both"
+        },
+        {
+            "Declension": "First",
+            "Definition": "gate, entrance",
+            "Gender": "Feminine",
+            "Genitive": "Portae",
+            "Nominative": "Porta",
+            "Noun": "Porta",
             "Number": "Both"
         },
         {

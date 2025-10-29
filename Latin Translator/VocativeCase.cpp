@@ -26,7 +26,7 @@ void VocativeCase::Dispose()
 }
 
 void VocativeCase::ApplyDeclension(const int& _declension) {
-
+	dec = Declension(_declension);
 	if (dec.GetDeclensionNumber() == 1) {
 		SetSingularEnding("a");
 		SetSingularEnding_w_Macron('a');

@@ -27,7 +27,7 @@ void AccusativeCase::Dispose()
 }
 
 void AccusativeCase::ApplyDeclension(const int& _declension) {
-
+	dec = Declension(_declension);
 	if (dec.GetDeclensionNumber() == 1) {
 		SetSingularEnding("am");
 		SetSingularEnding_w_Macron('am');

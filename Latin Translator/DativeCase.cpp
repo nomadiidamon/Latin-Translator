@@ -26,6 +26,7 @@ void DativeCase::Dispose()
 }
 
 void DativeCase::ApplyDeclension(const int& _declension) {
+	dec = Declension(_declension);
 
 	if (dec.GetDeclensionNumber() == 1) {
 		SetSingularEnding("ae");

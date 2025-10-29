@@ -559,6 +559,7 @@ std::vector<Noun> Noun::DeserializeNounsFromJson(const std::string& filename)
 		std::string def = item["Definition"].get<std::string>();
 
 		Noun newNoun = Noun(dec, gender, number, nom, gen, def);
+		newNoun.SetForms();
 		nouns.push_back(newNoun);
 	}
 	return nouns;
